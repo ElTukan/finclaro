@@ -40,6 +40,20 @@ jobs:
                   text = text[:i] + tag + '\\n' + text[i:]
                   path.write_text(text, encoding='utf-8')
           PY
+      - name: Add Google AdSense
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          tag = '''<!-- Google AdSense -->
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2993676855543434"
+                  crossorigin="anonymous"></script>'''
+          for path in Path('.').rglob('*.html'):
+              text = path.read_text(encoding='utf-8')
+              if 'ca-pub-2993676855543434' not in text and '</head>' in text.lower():
+                  i = text.lower().index('</head>')
+                  text = text[:i] + tag + '\\n' + text[i:]
+                  path.write_text(text, encoding='utf-8')
+          PY
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
