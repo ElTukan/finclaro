@@ -38,3 +38,169 @@ html{scroll-behavior:smooth}body{background:#f8f9f8;color:var(--ink);font-family
   .home .hero h1{letter-spacing:-.025em}
   .home .section h2{letter-spacing:-.015em}
 }
+
+
+/* Awesome Design — Editorial refinement */
+:root{
+  --editorial-ink:#171717;
+  --editorial-paper:#fbfaf7;
+  --editorial-rule:#d9d6ce;
+  --editorial-green:#18794e;
+  --editorial-serif:"Gelasio","Source Serif 4",Georgia,serif;
+}
+.home{
+  background:var(--editorial-paper);
+}
+.home .site-header{
+  background:rgba(251,250,247,.94);
+  border-bottom:1px solid var(--editorial-rule);
+}
+.home .brand{
+  font-family:var(--editorial-serif);
+  font-weight:700;
+  letter-spacing:-.045em;
+}
+.home .dot{background:var(--editorial-green)}
+.home .navlinks a{font-size:13px;letter-spacing:.01em}
+.home .hero{
+  background:var(--editorial-ink);
+  padding:96px 0 88px;
+}
+.home .hero:before{
+  opacity:.18;
+  background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+.home .hero h1{
+  font-family:var(--editorial-serif);
+  font-size:clamp(52px,7vw,88px);
+  font-weight:600;
+  letter-spacing:-.045em;
+  line-height:.94;
+}
+.home .hero p:not(.eyebrow){font-size:18px;max-width:62ch}
+.home .section{
+  padding:88px 0;
+}
+.home .section + .section{
+  border-top:1px solid rgba(23,23,23,.08);
+}
+.home .section h2{
+  font-family:var(--editorial-serif);
+  font-size:clamp(34px,4vw,52px);
+  font-weight:600;
+}
+.home .section-head>div:last-child{
+  max-width:46ch;
+  font-size:15px;
+}
+.home .topics{
+  gap:0;
+  border-top:1px solid var(--editorial-rule);
+  border-left:1px solid var(--editorial-rule);
+}
+.home .topic,
+.home .topic:nth-child(1),
+.home .topic:nth-child(2),
+.home .topic:nth-child(3),
+.home .topic:nth-child(4),
+.home .topic:nth-child(5),
+.home .topic:nth-child(6){
+  grid-column:span 4;
+  border:0;
+  border-right:1px solid var(--editorial-rule);
+  border-bottom:1px solid var(--editorial-rule);
+  border-radius:0;
+  min-height:220px;
+  background:transparent;
+  padding:28px;
+}
+.home .topic:hover{
+  transform:none;
+  background:#f3f1eb;
+  box-shadow:none;
+}
+.home .topic h3{
+  font-family:var(--editorial-serif);
+  font-size:28px;
+  font-weight:600;
+  letter-spacing:-.025em;
+}
+.home .topic .arrow{
+  color:var(--editorial-green);
+}
+.home .tools-grid{gap:0;border:1px solid var(--editorial-rule)}
+.home .tool-feature{
+  border-radius:0;
+  background:#171717;
+}
+.home .tool-side{gap:0}
+.home .tool-link{
+  border:0;
+  border-left:1px solid var(--editorial-rule);
+  border-radius:0;
+}
+.home .tool-link + .tool-link{border-top:1px solid var(--editorial-rule)}
+.home .tool-link:hover{
+  transform:none;
+  box-shadow:none;
+  background:#f3f1eb;
+}
+.home .tool-link h3{
+  font-family:var(--editorial-serif);
+  font-size:27px;
+}
+.home .content-shell{
+  border-radius:0;
+  border:1px solid var(--editorial-rule);
+}
+.home .toolbar{
+  background:#f3f1eb;
+  border-bottom:1px solid var(--editorial-rule);
+}
+.home .article{
+  border-bottom:1px solid var(--editorial-rule);
+}
+.home .article:nth-child(odd){border-right:1px solid var(--editorial-rule)}
+.home .article:hover{background:#f3f1eb}
+.home .article h3{
+  font-family:var(--editorial-serif);
+  font-size:23px;
+  font-weight:600;
+}
+.home .article .tag{
+  background:transparent;
+  color:var(--editorial-green);
+  border:0;
+  padding:0;
+  letter-spacing:.09em;
+}
+.home .read{font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.home .quick{
+  border-radius:0;
+  border:1px solid var(--editorial-rule);
+  background:#f3f1eb;
+}
+.home .quick h3{
+  font-family:var(--editorial-serif);
+  font-size:36px;
+}
+.home .quick-form{background:#fff;border-radius:0}
+.home footer{margin-top:0;border-top:1px solid #292929}
+.home footer strong{font-family:var(--editorial-serif);font-weight:600}
+@media(max-width:900px){
+  .home .topic,.home .topic:nth-child(n){grid-column:span 6}
+  .home .tool-link{border-left:0}
+}
+@media(max-width:650px){
+  .home .hero{padding:70px 0 64px}
+  .home .hero h1{font-size:clamp(46px,14vw,64px)}
+  .home .section{padding:64px 0}
+  .home .topic,.home .topic:nth-child(n){
+    grid-column:span 12;
+    min-height:185px;
+  }
+  .home .tools-grid{border-left:0;border-right:0}
+  .home .tool-link{border-left:1px solid var(--editorial-rule)}
+}
