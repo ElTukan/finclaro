@@ -7,3 +7,34 @@
 */
 :root{--ink:#15181d;--muted:#66707b;--line:#dfe4e8;--soft:#f2f5f4;--card:#fff;--accent:#18794e;--accent-soft:#e8f3ed;--radius:14px;--shadow:0 14px 36px rgba(21,24,29,.07)}
 html{scroll-behavior:smooth}body{background:#f8f9f8;color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap,.container{max-width:1240px}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid rgba(24,121,78,.35);outline-offset:3px}.card,.article-card,.topic-card,.mini,.tool,.search-wrap,.calc-form{border-radius:var(--radius);box-shadow:none}.card:hover,.article-card:hover,.topic-card:hover{box-shadow:var(--shadow);border-color:#cbd4cf}.card:active,.article-card:active,.topic-card:active,.btn:active,.tool button:active{transform:translateY(1px) scale(.99)}.card h3,.article-card h3,.topic-card h3{text-wrap:balance}article p,article li{max-width:68ch}article h1,article h2{text-wrap:balance}.ad{background:#f7f8f7;border-color:#cfd7d2}footer{background:#15181d}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+
+/* Impeccable polish — homepage finish */
+.home .hero h1,
+.home .section h2,
+.home .topic h3,
+.home .tool-feature h3,
+.home .tool-link h3,
+.home .quick h3,
+.home .article h3{
+  font-family:"Source Serif 4",Georgia,serif;
+  font-weight:600;
+}
+.home .hero h1{letter-spacing:-.035em;line-height:.98}
+.home .section h2{letter-spacing:-.025em}
+.home .topic h3{margin-top:28px}
+.home .topic .ico{display:none}
+.home .topic{padding-top:28px}
+.home .navlinks a{min-height:44px;display:inline-flex;align-items:center}
+.home .filter{min-height:44px}
+.home ::selection{background:#18794e;color:#fff}
+.home input,.home button{accent-color:#18794e}
+.home .quick-form input:focus{border-color:#18794e;box-shadow:0 0 0 3px rgba(24,121,78,.14)}
+.home .hero .button.light{box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.home .hero .button.outline:hover{background:rgba(255,255,255,.07)}
+.home .topic:hover .arrow{transform:translate(3px,-3px)}
+.home .topic .arrow{transition:transform .2s ease,color .2s ease}
+@media(max-width:650px){
+  .home .hero h1{letter-spacing:-.025em}
+  .home .section h2{letter-spacing:-.015em}
+}
