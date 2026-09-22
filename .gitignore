@@ -1,3 +1,6 @@
+# Keep local agent/tooling files out of the website distribution
+.agents/
+
 # Impeccable ephemeral output
 .impeccable/config.local.json
 .impeccable/hook.cache.json
