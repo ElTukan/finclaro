@@ -69,38 +69,32 @@
 @keyframes cueBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
 @media(max-width:750px){.home .ts-a{width:100px;height:100px;right:8%;top:12%}.home .ts-b{width:78px;height:78px;right:20%;top:58%}.home .ts-c{display:none}}
 /* ===== Premium Future Hero v2 ===== */
-/* ===== iPhone Liquid Glass navigation — floating version ===== */
+/* ===== Full-width iPhone Liquid Glass navigation ===== */
 .home .site-header{
+  background:linear-gradient(180deg,rgba(255,255,255,.90) 0%,rgba(255,255,255,.72) 100%)!important;
+  border:0!important;
+  border-bottom:1px solid rgba(255,255,255,.88)!important;
+  box-shadow:0 12px 34px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.98)!important;
+  -webkit-backdrop-filter:saturate(190%) blur(28px)!important;
+  backdrop-filter:saturate(190%) blur(28px)!important;
+  padding:8px 0!important;
+}
+.home .site-header:after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,175,90,.28),transparent);
+  pointer-events:none;
+}
+.home .site-header .nav{
+  width:min(1160px,calc(100% - 40px))!important;
+  min-height:58px!important;
+  padding:0!important;
+  border-radius:0!important;
   background:transparent!important;
   border:0!important;
   box-shadow:none!important;
-  backdrop-filter:none!important;
-  -webkit-backdrop-filter:none!important;
-  padding:12px 0!important;
-}
-.home .site-header:after{display:none!important}
-.home .site-header .nav{
-  width:min(1160px,calc(100% - 40px))!important;
-  min-height:62px!important;
-  padding:0 18px 0 22px!important;
-  border-radius:22px!important;
-  background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(255,255,255,.24))!important;
-  border:1px solid rgba(255,255,255,.72)!important;
-  -webkit-backdrop-filter:saturate(180%) blur(28px)!important;
-  backdrop-filter:saturate(180%) blur(28px)!important;
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.14),
-    inset 0 1px 0 rgba(255,255,255,.96),
-    inset 0 -1px 0 rgba(255,255,255,.18)!important;
   position:relative!important;
-  overflow:hidden!important;
 }
-.home .site-header .nav:before{
-  content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
-  background:
-    radial-gradient(400px 80px at 20% 0%,rgba(255,255,255,.42),transparent 75%),
-    linear-gradient(110deg,rgba(255,255,255,.14),transparent 30%,transparent 70%,rgba(255,255,255,.08));
-}
+.home .site-header .nav:before{display:none!important}
 .home .site-header .brand,
 .home .site-header .navlinks,
 .home .site-header .nav-cta{position:relative;z-index:2}
@@ -108,15 +102,15 @@
 .home .site-header .navlinks a{color:#171717!important}
 .home .site-header .navlinks a:hover{color:#000!important}
 .home .site-header .nav-cta{
-  border-radius:15px!important;
-  background:rgba(255,255,255,.40)!important;
-  border:1px solid rgba(255,255,255,.76)!important;
-  box-shadow:0 8px 20px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.92)!important;
+  border-radius:16px!important;
+  background:rgba(255,255,255,.56)!important;
+  border:1px solid rgba(255,255,255,.90)!important;
+  box-shadow:0 8px 22px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.98)!important;
 }
-.home .site-header .nav-cta:hover{background:rgba(255,255,255,.60)!important}
+.home .site-header .nav-cta:hover{background:rgba(255,255,255,.74)!important}
 @media(max-width:700px){
-  .home .site-header{padding:9px 0!important}
-  .home .site-header .nav{width:calc(100% - 24px)!important;border-radius:19px!important}
+  .home .site-header{padding:6px 0!important}
+  .home .site-header .nav{width:calc(100% - 24px)!important}
 }
 
 /* ===== iPhone glass finish ===== */
