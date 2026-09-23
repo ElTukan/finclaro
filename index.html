@@ -68,6 +68,96 @@
 .home .scroll-cue svg{animation:cueBounce 1.7s ease-in-out infinite}
 @keyframes cueBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
 @media(max-width:750px){.home .ts-a{width:100px;height:100px;right:8%;top:12%}.home .ts-b{width:78px;height:78px;right:20%;top:58%}.home .ts-c{display:none}}
+/* ===== Premium Future Hero v2 ===== */
+.home .site-header .nav{min-height:74px}
+.home .nav-cta{display:inline-flex;align-items:center;gap:9px;padding:10px 15px;border:1px solid rgba(212,175,90,.48);border-radius:12px;color:var(--lux-gold-bright);text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.02em;box-shadow:inset 0 0 0 1px rgba(212,175,90,.06),0 0 28px rgba(212,175,90,.06);transition:.25s}
+.home .nav-cta span{font-size:15px}.home .nav-cta:hover{background:rgba(212,175,90,.1);border-color:var(--lux-gold-bright);transform:translateY(-1px)}
+.home .future-layout{width:min(1380px,calc(100% - 64px));max-width:none;margin:0 auto;padding:0;display:grid;grid-template-columns:minmax(460px,.86fr) minmax(600px,1.14fr);gap:44px;align-items:center;min-height:calc(100svh - 74px);position:relative;z-index:5}
+.home .future-copy{padding:28px 0 38px;position:relative;z-index:8}
+.home .future-copy .teaser-h1{max-width:660px;font-size:clamp(54px,5.75vw,88px);line-height:.92;margin:20px 0 25px;letter-spacing:-.06em}
+.home .future-copy .teaser-p{font-size:17px;line-height:1.65;max-width:560px;color:#b7b7b1}
+.home .future-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:34px;max-width:620px}
+.home .future-proof span{padding:0 18px 0 0;border-right:1px solid rgba(255,255,255,.10);display:grid;gap:3px}
+.home .future-proof span+span{padding-left:18px}.home .future-proof span:last-child{border-right:0}
+.home .future-proof b{font:700 10px var(--mono);color:var(--lux-gold-bright);letter-spacing:.1em}
+.home .future-proof strong{font-size:12px;color:#eee;font-weight:750}.home .future-proof small{font-size:10px;color:#686864;line-height:1.35}
+.home .future-demo{height:690px;position:relative;min-width:0;display:flex;align-items:center;justify-content:center;perspective:1500px;overflow:visible}
+.home .demo-halo{position:absolute;border-radius:50%;pointer-events:none}
+.home .demo-halo-a{width:620px;height:620px;background:radial-gradient(circle,rgba(212,175,90,.13) 0%,rgba(212,175,90,.04) 35%,transparent 68%);filter:blur(2px);animation:haloBreath 5s ease-in-out infinite}
+.home .demo-halo-b{width:470px;height:470px;border:1px solid rgba(212,175,90,.12);box-shadow:0 0 80px rgba(212,175,90,.08),inset 0 0 60px rgba(212,175,90,.03);animation:haloRotate 18s linear infinite}
+@keyframes haloBreath{50%{transform:scale(1.08);opacity:.72}}@keyframes haloRotate{to{transform:rotate(360deg)}}
+.home .demo-orbit{position:absolute;width:560px;height:560px;border-radius:50%;border:1px solid rgba(255,255,255,.08);transform:rotate(12deg) scaleY(.6);box-shadow:0 0 0 1px rgba(212,175,90,.035);animation:orbitDrift 9s ease-in-out infinite}
+.home .demo-orbit:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--lux-gold-bright);box-shadow:0 0 20px rgba(212,175,90,.85);left:10%;top:13%}
+@keyframes orbitDrift{50%{transform:rotate(-8deg) scaleY(.6) translateY(-6px)}}
+.home .demo-label{position:absolute;top:74px;right:4%;display:flex;align-items:center;gap:10px;color:#6b6b66;font:700 9px var(--mono);letter-spacing:.2em}
+.home .demo-label i{display:block;width:32px;height:1px;background:rgba(212,175,90,.45)}
+.home .story-progress{position:absolute;top:99px;right:4%;display:flex;gap:6px;z-index:9}
+.home .story-progress i{width:42px;height:2px;background:rgba(255,255,255,.15);overflow:hidden}
+.home .story-progress i:after{content:"";display:block;width:0;height:100%;background:var(--lux-gold-bright)}
+.home .story-progress i:nth-child(1):after{animation:progressOne 13.5s linear infinite}.home .story-progress i:nth-child(2):after{animation:progressTwo 13.5s linear infinite}.home .story-progress i:nth-child(3):after{animation:progressThree 13.5s linear infinite}
+@keyframes progressOne{0%,30%{width:100%}30.1%,100%{width:0}}@keyframes progressTwo{0%,33%{width:0}33.1%,63%{width:100%}63.1%,100%{width:0}}@keyframes progressThree{0%,66%{width:0}66.1%,96%{width:100%}96.1%,100%{width:0}}
+.home .story-slides{position:relative;width:100%;height:100%;z-index:8}
+.home .story-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:15px;opacity:0;pointer-events:none;will-change:transform,opacity;animation:storyPremium 13.5s cubic-bezier(.2,.65,.2,1) infinite}
+.home .story-slide.story-itv{animation-delay:0s}.home .story-slide.story-health{animation-delay:4.5s}.home .story-slide.story-bot{animation-delay:9s}
+@keyframes storyPremium{
+0%{opacity:0;transform:translateX(-110px) scale(.96)}
+5%,28%{opacity:1;transform:translateX(0) scale(1)}
+33%,36%{opacity:0;transform:translateX(150px) scale(.96)}
+100%{opacity:0;transform:translateX(-110px) scale(.96)}
+}
+.home .phone-wrap{position:relative;transform:rotate(-4deg);transition:transform .4s}
+.home .story-health .phone-wrap{transform:rotate(3deg) translateY(2px)}.home .phone-shadow{position:absolute;left:9%;right:9%;bottom:-28px;height:55px;border-radius:50%;background:rgba(0,0,0,.8);filter:blur(18px);opacity:.9}
+.home .phone{width:300px;height:574px;border:1.5px solid rgba(255,255,255,.5);border-radius:45px;background:linear-gradient(155deg,#242424 0%,#080808 45%,#141414 100%);box-shadow:0 45px 110px rgba(0,0,0,.8),0 0 0 7px rgba(255,255,255,.025),0 0 0 1px rgba(212,175,90,.12),inset 0 1px 0 rgba(255,255,255,.16);padding:25px 18px 18px;position:relative;overflow:hidden}
+.home .phone:after{content:"";position:absolute;inset:0;border-radius:43px;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.12),transparent 18%,transparent 70%,rgba(212,175,90,.09));mix-blend-mode:screen}
+.home .phone-top{display:flex;justify-content:space-between;color:#f2f2ee;font:700 9px var(--mono);padding:4px 9px 0;position:relative;z-index:3}
+.home .phone-island{position:absolute;top:10px;left:50%;width:96px;height:21px;transform:translateX(-50%);background:#050505;border-radius:20px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);z-index:4}
+.home .phone-date{font:700 8px var(--mono);letter-spacing:.15em;color:#666660;margin:36px 8px 18px}
+.home .notification{position:relative;z-index:3;margin:0 4px;padding:18px;border-radius:21px;background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.045));border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 45px rgba(0,0,0,.4)}
+.home .notif-head{display:flex;align-items:center;gap:10px}.home .notif-head>div:nth-child(2){display:flex;flex-direction:column;gap:2px;flex:1}.home .notification strong{font-size:12px;color:#fff}.home .notification small{color:#777;font-size:8px;margin-left:auto}
+.home .notif-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:var(--lux-gold);color:#080808;font-size:17px}
+.home .notification h3{margin:23px 0 0;color:#fff;font:600 25px/1.02 var(--editorial-serif);letter-spacing:-.03em}
+.home .notification p{color:#aaa;font-size:10.5px;line-height:1.55;margin:12px 0 17px}
+.home .notification button{width:100%;border:0;border-radius:10px;padding:11px;background:var(--lux-gold);color:#080808;font-weight:800;font-size:10.5px;cursor:pointer}
+.home .notification button span{float:right;font-size:13px}.home .notification.health .notif-icon{background:#efefeb;color:#111}
+.home .appointment-chip{margin:14px 4px 0;padding:12px;border-radius:14px;background:#0d0d0d;border:1px solid rgba(255,255,255,.10);display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.home .appointment-chip span{grid-column:1/-1;color:#73736e;font:700 7px var(--mono);letter-spacing:.14em}.home .appointment-chip strong{font-size:10px;color:#f0f0ec}.home .appointment-chip small{font-size:8px;color:#777;text-align:right}
+.home .phone-footer{position:absolute;bottom:18px;left:42px;right:42px;display:flex;justify-content:space-between;color:#50504c;font-size:13px;z-index:3}.home .phone-footer .active{color:var(--lux-gold-bright)}
+.home .story-caption{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;position:relative;z-index:9}
+.home .story-kicker{font:700 8px var(--mono);letter-spacing:.18em;color:var(--lux-gold-bright)}
+.home .story-caption strong{font-size:14px;color:#efefeb}.home .story-caption small{font-size:10px;color:#696965}
+.home .bot-stage{position:relative;display:grid;place-items:center;margin-top:6px}
+.home .bot-device{width:162px;height:162px;border-radius:40px;background:linear-gradient(145deg,#e7c968,#7f5a18);box-shadow:0 32px 85px rgba(212,175,90,.2),inset 0 1px 0 rgba(255,255,255,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transform:rotate(-5deg);animation:botFloat 3.2s ease-in-out infinite}
+.home .bot-head{width:90px;height:59px;border-radius:24px;background:#101010;border:1px solid #73736d;display:flex;align-items:center;justify-content:center;gap:17px;box-shadow:inset 0 0 18px rgba(255,255,255,.04)}
+.home .bot-eye{width:9px;height:9px;border-radius:50%;background:var(--lux-gold-bright);box-shadow:0 0 13px var(--lux-gold)}
+.home .bot-body{font:700 10px var(--mono);color:#151515;letter-spacing:.15em}
+.home .signal-dot{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--lux-gold-bright);box-shadow:0 0 12px rgba(212,175,90,.8)}.home .signal-dot.s1{top:20%;left:25%;animation:signal1 2s ease-in-out infinite}.home .signal-dot.s2{right:22%;bottom:13%;animation:signal2 2.3s -.7s ease-in-out infinite}
+@keyframes botFloat{50%{transform:translateY(-10px) rotate(3deg)}}@keyframes signal1{50%{transform:translate(18px,-10px);opacity:.35}}@keyframes signal2{50%{transform:translate(-14px,9px);opacity:.3}}
+.home .chat-card{width:315px;padding:14px;border-radius:22px;background:rgba(15,15,15,.97);border:1px solid rgba(255,255,255,.13);box-shadow:0 32px 80px rgba(0,0,0,.62)}
+.home .chat-kicker{font:700 8px var(--mono);letter-spacing:.18em;color:var(--lux-gold-bright);margin-bottom:12px}.home .chat-user,.home .chat-bot{padding:11px 12px;border-radius:14px;font-size:10.5px;line-height:1.5;margin-bottom:9px}
+.home .chat-user{background:#242424;color:#ddd;margin-left:24px}.home .chat-bot{background:rgba(212,175,90,.11);color:#eee;margin-right:20px;border:1px solid rgba(212,175,90,.16)}.home .chat-bot b{color:var(--lux-gold-bright);font-size:9px}
+.home .calendar-card{display:flex;align-items:center;gap:9px;padding:11px;border-radius:12px;background:#0b0b0b;border:1px solid rgba(255,255,255,.1);color:#eee}.home .calendar-card>span{color:var(--lux-gold-bright);font-size:18px}.home .calendar-card div{display:flex;flex-direction:column;gap:3px}.home .calendar-card b{font-size:10px}.home .calendar-card small{font-size:9px;color:#777}.home .calendar-card em{font-style:normal;margin-left:auto;color:#83d39a}
+.home .reminder-row{display:flex;align-items:center;gap:7px;font-size:9.5px;color:#aaa;padding:8px 2px 0}.home .reminder-row b{margin-left:auto;color:#83d39a}
+@media(max-width:1180px){
+  .home .future-layout{width:min(1100px,calc(100% - 44px));grid-template-columns:minmax(410px,.92fr) minmax(500px,1.08fr);gap:22px}
+  .home .future-copy .teaser-h1{font-size:clamp(50px,6vw,78px)}
+  .home .phone{width:270px;height:520px}
+  .home .chat-card{width:285px}
+}
+@media(max-width:980px){
+  .home .nav-cta{display:none}
+  .home .future-layout{width:min(740px,calc(100% - 40px));display:block;padding:78px 0 50px;min-height:auto}
+  .home .future-copy{padding:0}
+  .home .future-copy .teaser-h1{max-width:650px}
+  .home .future-demo{height:650px;margin-top:5px}
+  .home .demo-label{top:20px;right:2%}.home .story-progress{top:45px;right:2%}
+}
+@media(max-width:650px){
+  .home .future-layout{width:calc(100% - 32px);padding:68px 0 34px}
+  .home .future-copy .teaser-h1{font-size:clamp(44px,13vw,66px)}
+  .home .future-copy .teaser-p{font-size:15px}.home .future-proof{grid-template-columns:1fr;gap:12px;max-width:300px}.home .future-proof span,.home .future-proof span+span{border-right:0;border-top:1px solid rgba(255,255,255,.08);padding:11px 0 0}.home .future-proof span:first-child{border-top:0;padding-top:0}
+  .home .future-demo{height:560px}.home .phone{width:235px;height:452px;border-radius:38px}.home .notification h3{font-size:21px}.home .demo-halo-a{width:420px;height:420px}.home .demo-halo-b{width:350px;height:350px}.home .demo-orbit{width:370px;height:370px}.home .chat-card{width:270px}.home .story-caption{max-width:280px}
+}
+
 @media(prefers-reduced-motion:reduce){.home .tshape{animation:none}.home .scroll-cue svg{animation:none}}
 
 /* ===== FinClaro Black / White / Gold — 23/09/2026 ===== */
@@ -319,7 +409,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FinClaro","url":"https://finclaro.es/","logo":"https://finclaro.es/favicon.svg"}</script>
 </head>
 <body class="home"><a class="skip-link" href="#main-content">Saltar al contenido</a>
-<header class="site-header"><div class="container nav"><a class="brand" href="/">FinClaro<span class="dot"></span></a><nav class="navlinks" aria-label="Principal"><a href="/ahorro.html">Ahorro</a><a href="/hipotecas.html">Hipotecas</a><a href="/nomina.html">Nómina</a><a href="/inversion.html">Inversión</a><a href="/cuentas.html">Cuentas</a><a href="/prestamos.html">Préstamos</a></nav></div></header>
+<header class="site-header"><div class="container nav"><a class="brand" href="/">FinClaro<span class="dot"></span></a><nav class="navlinks" aria-label="Principal"><a href="/ahorro.html">Ahorro</a><a href="/hipotecas.html">Hipotecas</a><a href="/nomina.html">Nómina</a><a href="/inversion.html">Inversión</a><a href="/cuentas.html">Cuentas</a><a href="/prestamos.html">Préstamos</a></nav><a class="nav-cta" href="#finclaroFuture">El proyecto <span>↗</span></a></div></header>
 <main id="main-content">
 <section class="intro-teaser" id="finclaroFuture">
 <div class="teaser-grid" aria-hidden="true">
@@ -327,68 +417,77 @@
 </div>
 <div class="container future-layout">
   <div class="future-copy">
-    <span class="eyebrow">EL FUTURO DE FINCLARO</span>
+    <span class="eyebrow">TU VIDA. MÁS SIMPLE.</span>
     <h1 class="teaser-h1">Estamos trabajando en un proyecto para hacerte la vida más fácil.</h1>
-    <p class="teaser-p">Un asistente que recuerda por ti lo importante: ITV, citas médicas, renovaciones y gestiones. Tú escribes qué necesitas y FinClaro se encarga de organizarlo.</p>
+    <p class="teaser-p">Un asistente que recuerda por ti lo importante: ITV, citas médicas, renovaciones y gestiones. Tú escribes qué necesitas. FinClaro lo organiza y te avisa.</p>
     <div class="teaser-actions">
-      <a class="button light" href="#homeHero">Descubrir FinClaro <span>↓</span></a>
+      <a class="button light" href="#homeHero">Descubrir FinClaro <span>→</span></a>
       <span class="teaser-note">Menos olvidos. Más tiempo para ti.</span>
     </div>
-    <div class="future-mini-stats"><span><b>01</b> Te avisamos</span><span><b>02</b> Lo organizamos</span><span><b>03</b> Lo recuerdas a tiempo</span></div>
+    <div class="future-proof">
+      <span><b>01</b><strong>Te avisa</strong><small>antes de que se te pase</small></span>
+      <span><b>02</b><strong>Lo organiza</strong><small>sin que tengas que hacerlo</small></span>
+      <span><b>03</b><strong>Se anticipa</strong><small>cuando sea importante</small></span>
+    </div>
   </div>
-  <div class="future-demo" aria-label="Ejemplo animado de cómo funcionará el futuro asistente de FinClaro">
+
+  <div class="future-demo" aria-label="Demostración del futuro asistente de FinClaro">
+    <div class="demo-halo demo-halo-a"></div><div class="demo-halo demo-halo-b"></div>
     <div class="demo-orbit"></div>
-    <div class="story-progress"><i></i><i></i><i></i></div>
+    <div class="demo-label"><span>ASÍ PODRÍA FUNCIONAR</span><i></i></div>
+    <div class="story-progress" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="story-slides">
       <article class="story-slide story-itv">
-        <div class="story-label">01 · AVISO AUTOMÁTICO</div>
-        <div class="phone">
+        <div class="phone-wrap"><span class="phone-shadow"></span><div class="phone">
           <div class="phone-top"><span>9:41</span><span>● ● ●</span></div>
-          <div class="phone-date">HOY · FINCLARO</div>
+          <div class="phone-island"></div><div class="phone-date">HOY · FINCLARO</div>
           <div class="notification">
-            <div class="notif-icon car">🚗</div><div><strong>ITV</strong><small>Ahora</small></div>
+            <div class="notif-head"><div class="notif-icon car">🚗</div><div><strong>ITV</strong><small>Ahora</small></div></div>
             <h3>Tu ITV vence en 30 días</h3>
-            <p>Te avisaremos de nuevo 7 días antes y el mismo día.</p>
-            <button>Ver detalles</button>
+            <p>Te avisaremos 7 días antes y el mismo día para que no tengas que acordarte.</p>
+            <button>Ver detalles <span>↗</span></button>
           </div>
-          <div class="phone-bottom"><span>⌂</span><span>◉</span><span>□</span></div>
-        </div>
-        <div class="story-caption"><strong>No tienes que acordarte.</strong><span>FinClaro lo hace por ti.</span></div>
+          <div class="phone-footer"><span>⌂</span><span class="active">◉</span><span>□</span></div>
+        </div></div>
+        <div class="story-caption"><span class="story-kicker">01 · AVISO AUTOMÁTICO</span><strong>No tienes que acordarte.</strong><small>FinClaro lo hace por ti.</small></div>
       </article>
+
       <article class="story-slide story-health">
-        <div class="story-label">02 · RECORDATORIO PERSONAL</div>
-        <div class="phone">
+        <div class="phone-wrap"><span class="phone-shadow"></span><div class="phone">
           <div class="phone-top"><span>9:41</span><span>● ● ●</span></div>
-          <div class="phone-date">MARTES · FINCLARO</div>
+          <div class="phone-island"></div><div class="phone-date">MARTES · FINCLARO</div>
           <div class="notification health">
-            <div class="notif-icon">✚</div><div><strong>Centro de Salud</strong><small>Ahora</small></div>
+            <div class="notif-head"><div class="notif-icon">✚</div><div><strong>Centro de Salud</strong><small>Ahora</small></div></div>
             <h3>Tienes una cita médica</h3>
             <p>20 de mayo · 10:30 h<br>Centro de Salud</p>
-            <button>Añadir al calendario</button>
+            <button>Añadir al calendario <span>→</span></button>
           </div>
-          <div class="phone-bottom"><span>⌂</span><span>◉</span><span>□</span></div>
-        </div>
-        <div class="story-caption"><strong>También tus citas.</strong><span>Un aviso justo cuando lo necesitas.</span></div>
+          <div class="appointment-chip"><span>CALENDARIO</span><strong>20 MAY · 10:30</strong><small>Cita médica</small></div>
+          <div class="phone-footer"><span>⌂</span><span class="active">◉</span><span>□</span></div>
+        </div></div>
+        <div class="story-caption"><span class="story-kicker">02 · RECORDATORIO PERSONAL</span><strong>También tus citas.</strong><small>Un aviso justo cuando lo necesitas.</small></div>
       </article>
+
       <article class="story-slide story-bot">
-        <div class="story-label">03 · TU ASISTENTE LO GESTIONA</div>
-        <div class="bot-device">
-          <div class="bot-head"><span class="bot-eye"></span><span class="bot-eye"></span></div>
-          <div class="bot-body">FinClaro</div>
+        <div class="bot-stage">
+          <div class="bot-device"><div class="bot-head"><span class="bot-eye"></span><span class="bot-eye"></span></div><div class="bot-body">FINCLARO</div></div>
+          <div class="signal-dot s1"></div><div class="signal-dot s2"></div>
         </div>
         <div class="chat-card">
+          <div class="chat-kicker">03 · TU ASISTENTE</div>
           <div class="chat-user">“Añade una llamada con mi asesor fiscal el lunes a las 16:00.”</div>
-          <div class="chat-bot"><b>FinClaro · ahora</b><br>Listo. He actualizado tu calendario.</div>
+          <div class="chat-bot"><b>FinClaro · ahora</b><br>Listo. He actualizado tu calendario y activado tus avisos.</div>
           <div class="calendar-card"><span>▣</span><div><b>Lunes · 16:00</b><small>Asesor fiscal</small></div><em>✓</em></div>
           <div class="reminder-row"><span>🔔</span> Aviso 1 día antes <b>✓</b></div>
           <div class="reminder-row"><span>🔔</span> Aviso el mismo día <b>✓</b></div>
         </div>
-        <div class="story-caption"><strong>Tú lo pides. Nosotros lo organizamos.</strong><span>Calendario actualizado y avisos activados.</span></div>
+        <div class="story-caption"><span class="story-kicker">AUTOMÁTICO</span><strong>Tú lo pides. Nosotros lo organizamos.</strong><small>Calendario actualizado y avisos activados.</small></div>
       </article>
     </div>
   </div>
 </div>
 </section>
+
 <section class="hero" id="homeHero"><div class="hero-orbs" aria-hidden="true"><span class="orb orb-a"></span><span class="orb orb-b"></span></div><div class="container hero-grid">
 <div class="hero-copy"><span class="eyebrow">Finanzas personales · España</span><h1>Entender tu dinero puede ser mucho más sencillo.</h1><p>Guías prácticas, calculadoras y explicaciones claras para ahorrar mejor, entender tu nómina, comprar vivienda y tomar decisiones financieras con más información.</p><div class="buttons"><a class="button light" href="#herramientas">Ver calculadoras →</a><a class="button outline" href="#contenidos">Explorar guías</a></div><div class="proof-strip"><div><strong data-count-to="29" data-count-suffix="+">0+</strong><span>Guías claras</span></div><div><strong data-count-to="100" data-count-suffix="%">0%</strong><span>Gratis y sin registro</span></div><div><strong>2026</strong><span>Datos actualizados</span></div></div></div>
 <div class="hero-tool" id="heroTool">
