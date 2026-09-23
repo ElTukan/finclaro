@@ -37,7 +37,7 @@ jobs:
               text = path.read_text(encoding='utf-8')
               if 'G-ECDR680DVZ' not in text and '</head>' in text.lower():
                   i = text.lower().index('</head>')
-                  text = text[:i] + tag + '\\n' + text[i:]
+                  text = text[:i] + tag + '\n' + text[i:]
                   path.write_text(text, encoding='utf-8')
           PY
       - name: Add Google AdSense
@@ -51,7 +51,7 @@ jobs:
               text = path.read_text(encoding='utf-8')
               if 'ca-pub-2993676855543434' not in text and '</head>' in text.lower():
                   i = text.lower().index('</head>')
-                  text = text[:i] + tag + '\\n' + text[i:]
+                  text = text[:i] + tag + '\n' + text[i:]
                   path.write_text(text, encoding='utf-8')
           PY
       - name: Upload artifact
