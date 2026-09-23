@@ -49,6 +49,26 @@
 .home footer{background:var(--navy);color:#a9aebb;padding:54px 0;margin-top:14px}.home footer strong{font-family:var(--serif);color:#fff;font-size:21px;font-weight:600}.home footer a{color:#d7dae2;text-decoration:none}.home footer a:hover{color:var(--gold-soft);text-decoration:underline}.home .footergrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:30px}.home .ft{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft);font-weight:750}.home .footergrid p{line-height:1.8}
 @media(max-width:960px){.home .hero-grid{grid-template-columns:1fr}.home .topics{grid-template-columns:repeat(2,1fr)}.home .tools-grid,.home .quick{grid-template-columns:1fr}.home .search{min-width:220px}.home .footergrid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.home .container{padding:0 18px}.home .nav{align-items:flex-start;flex-direction:column;padding:16px 0}.home .navlinks{gap:11px}.home .hero{padding:58px 0 54px}.home .hero h1{font-size:36px}.home .topics,.home .article-grid{grid-template-columns:1fr}.home .article:nth-child(odd){border-right:0}.home .section{padding:52px 0}.home .section-head{align-items:flex-start;flex-direction:column}.home .toolbar{align-items:stretch;flex-direction:column}.home .search{min-width:0}.home .tool-feature{min-height:260px;padding:24px}.home .tool-feature h3{font-size:28px}.home .quick{padding:20px}.home .footergrid{grid-template-columns:1fr}.home .proof-strip{gap:18px}}
+
+/* Pantalla de bienvenida — teaser de lo que viene */
+.home .intro-teaser{min-height:100svh;min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;color:#fff;background:radial-gradient(1300px 700px at 50% -25%,#232a40 0%,var(--navy) 60%),var(--navy)}
+.home .teaser-shapes{position:absolute;inset:0;pointer-events:none}
+.home .tshape{position:absolute;border-radius:26px;box-shadow:0 30px 70px rgba(0,0,0,.4);animation:tfloat 8s ease-in-out infinite}
+.home .ts-a{width:150px;height:150px;right:16%;top:16%;background:linear-gradient(135deg,rgba(255,255,255,.4),transparent 45%),linear-gradient(135deg,#e9cb87,#8a6720);transform:rotate(-10deg)}
+.home .ts-b{width:112px;height:112px;right:30%;top:46%;background:linear-gradient(135deg,rgba(255,255,255,.4),transparent 45%),linear-gradient(135deg,#7fd9c4,#1f6f54);transform:rotate(12deg);animation-delay:-2.6s}
+.home .ts-c{width:92px;height:92px;right:9%;top:58%;background:linear-gradient(135deg,rgba(255,255,255,.4),transparent 45%),linear-gradient(135deg,#a9b8ff,#3d4a6b);transform:rotate(-16deg);animation-delay:-5.2s}
+@keyframes tfloat{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-24px) rotate(var(--r,0deg))}}
+.home .ts-a{--r:-10deg}.home .ts-b{--r:12deg}.home .ts-c{--r:-16deg}
+.home .teaser-in{position:relative;z-index:1;max-width:640px}
+.home .teaser-in .eyebrow{color:var(--gold-soft)}
+.home .teaser-h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,6.4vw,78px);line-height:1.03;letter-spacing:-.02em;margin:16px 0 20px}
+.home .teaser-p{font-size:18px;line-height:1.6;color:#c8cbd8;max-width:520px}
+.home .scroll-cue{display:inline-flex;flex-direction:column;align-items:center;gap:10px;margin-top:46px;color:#aeb5c1;text-decoration:none;font-size:12px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
+.home .scroll-cue:hover{color:#fff}
+.home .scroll-cue svg{animation:cueBounce 1.7s ease-in-out infinite}
+@keyframes cueBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+@media(max-width:750px){.home .ts-a{width:100px;height:100px;right:8%;top:12%}.home .ts-b{width:78px;height:78px;right:20%;top:58%}.home .ts-c{display:none}}
+@media(prefers-reduced-motion:reduce){.home .tshape{animation:none}.home .scroll-cue svg{animation:none}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"FinClaro","url":"https://finclaro.es/","inLanguage":"es-ES","description":"Finanzas personales explicadas de forma sencilla."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FinClaro","url":"https://finclaro.es/","logo":"https://finclaro.es/favicon.svg"}</script>
@@ -56,7 +76,16 @@
 <body class="home"><a class="skip-link" href="#main-content">Saltar al contenido</a>
 <header class="site-header"><div class="container nav"><a class="brand" href="/">FinClaro<span class="dot"></span></a><nav class="navlinks" aria-label="Principal"><a href="/ahorro.html">Ahorro</a><a href="/hipotecas.html">Hipotecas</a><a href="/nomina.html">Nómina</a><a href="/inversion.html">Inversión</a><a href="/cuentas.html">Cuentas</a><a href="/prestamos.html">Préstamos</a></nav></div></header>
 <main id="main-content">
-<section class="hero"><div class="hero-orbs" aria-hidden="true"><span class="orb orb-a"></span><span class="orb orb-b"></span></div><div class="container hero-grid">
+<section class="intro-teaser">
+<div class="teaser-shapes" aria-hidden="true"><span class="tshape ts-a"></span><span class="tshape ts-b"></span><span class="tshape ts-c"></span></div>
+<div class="container teaser-in">
+<span class="eyebrow">Próximamente en FinClaro</span>
+<h1 class="teaser-h1">Estamos diseñando algo para ti.</h1>
+<p class="teaser-p">Un asistente con IA que entiende tus documentos, te avisa de lo que tienes que renovar y resuelve tus dudas de dinero al momento.</p>
+<a class="scroll-cue" href="#homeHero"><span>Descubre FinClaro</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+</div>
+</section>
+<section class="hero" id="homeHero"><div class="hero-orbs" aria-hidden="true"><span class="orb orb-a"></span><span class="orb orb-b"></span></div><div class="container hero-grid">
 <div class="hero-copy"><span class="eyebrow">Finanzas personales · España</span><h1>Entender tu dinero puede ser mucho más sencillo.</h1><p>Guías prácticas, calculadoras y explicaciones claras para ahorrar mejor, entender tu nómina, comprar vivienda y tomar decisiones financieras con más información.</p><div class="buttons"><a class="button light" href="#herramientas">Ver calculadoras →</a><a class="button outline" href="#contenidos">Explorar guías</a></div><div class="proof-strip"><div><strong data-count-to="29" data-count-suffix="+">0+</strong><span>Guías claras</span></div><div><strong data-count-to="100" data-count-suffix="%">0%</strong><span>Gratis y sin registro</span></div><div><strong>2026</strong><span>Datos actualizados</span></div></div></div>
 <div class="hero-tool" id="heroTool">
 <div class="hero-tool-tabs"><button class="ht-tab active" data-tool="ahorro" type="button">Ahorro</button><button class="ht-tab" data-tool="hipoteca" type="button">Hipoteca</button><button class="ht-tab" data-tool="nomina" type="button">Nómina</button></div>
@@ -118,6 +147,15 @@ if('IntersectionObserver' in window){
   revealTopics.forEach(t=>io.observe(t));
 }else{revealTopics.forEach(t=>t.classList.add('in'))}
 setTimeout(()=>revealTopics.forEach(t=>t.classList.add('in')),1500);
+
+// El hero (segunda pantalla) aparece animado al llegar desde la pantalla de bienvenida
+const revealHero=[...document.querySelectorAll('.hero-copy,.hero-tool')];
+revealHero.forEach(el=>el.classList.add('reveal'));
+if('IntersectionObserver' in window){
+  const ioHero=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){e.target.style.transitionDelay=(i*90)+'ms';e.target.classList.add('in');ioHero.unobserve(e.target)}})},{threshold:.2});
+  revealHero.forEach(el=>ioHero.observe(el));
+}else{revealHero.forEach(el=>el.classList.add('in'))}
+setTimeout(()=>revealHero.forEach(el=>el.classList.add('in')),1500);
 
 // Calculadora interactiva del hero
 const eur=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
