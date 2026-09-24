@@ -334,7 +334,7 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, 200, {
         ok: true,
         service: "finclaro-api",
-        version: "0.3.0",
+        version: "0.3.2",
         timestamp: new Date().toISOString()
       });
     }
@@ -440,7 +440,16 @@ const server = http.createServer(async (req, res) => {
         timezone: body.timezone
       });
 
-      return sendJson(res, 200, { ok: true, ...result });
+      return sendJson(res, 200, {
+        ok: true,
+        ai_execution: true,
+        action: result.result?.action || null,
+        message: result.result?.message || null,
+        parsed: result.parsed || null,
+        event: result.result?.event || null,
+        reminder: result.result?.reminder || null,
+        events: result.result?.events || null
+      });
     }
 
     if (req.method === "POST" && url.pathname === "/ai/parse") {
