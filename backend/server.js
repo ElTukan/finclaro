@@ -1,6 +1,9 @@
 import http from "node:http";
+import pg from "pg";
 
+const { Pool } = pg;
 const PORT = Number(process.env.PORT || 8080);
+const pool = process.env.DATABASE_URL ? new Pool({ connectionString: process.env.DATABASE_URL }) : null;
 
 function sendJson(res, statusCode, payload) {
   const body = JSON.stringify(payload);
@@ -12,7 +15,7 @@ function sendJson(res, statusCode, payload) {
   res.end(body);
 }
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   const url = new URL(req.url || "/", "http://localhost");
 
   if (req.method === "GET" && url.pathname === "/health") {
@@ -22,6 +25,27 @@ const server = http.createServer((req, res) => {
       version: "0.1.0",
       timestamp: new Date().toISOString()
     });
+  }
+
+  if (req.method === "GET" && url.pathname === "/health/db") {
+    if (!pool) {
+      return sendJson(res, 503, { ok: false, database: "not_configured" });
+    }
+
+    try {
+      const result = await pool.query("SELECT NOW() AS now");
+      return sendJson(res, 200, {
+        ok: true,
+        database: "connected",
+        now: result.rows[0].now
+      });
+    } catch (error) {
+      console.error("Database health check failed:", error);
+      return sendJson(res, 503, {
+        ok: false,
+        database: "error"
+      });
+    }
   }
 
   if (req.method === "GET" && url.pathname === "/") {
