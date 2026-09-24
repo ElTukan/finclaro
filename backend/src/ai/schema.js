@@ -23,6 +23,12 @@ export const FINCLARO_INTENT_SCHEMA = {
     start_at: {
       anyOf: [{ type: "string" }, { type: "null" }]
     },
+    new_start_time: {
+      anyOf: [{ type: "string" }, { type: "null" }]
+    },
+    new_end_time: {
+      anyOf: [{ type: "string" }, { type: "null" }]
+    },
     end_at: {
       anyOf: [{ type: "string" }, { type: "null" }]
     },
@@ -64,6 +70,8 @@ export const FINCLARO_INTENT_SCHEMA = {
     "intent",
     "title",
     "start_at",
+    "new_start_time",
+    "new_end_time",
     "end_at",
     "range_from",
     "range_to",
