@@ -92,17 +92,45 @@ async function resolveEvent(db, userId, reference, parsed) {
     "AND start_at <= NOW() + INTERVAL '180 days' ORDER BY start_at ASC",
     [userId]
   );
-  const candidates = result.rows
+  const rawCandidates = result.rows
     .map((event) => ({ event, score: scoreCandidate(event, reference, parsed) }))
     .filter((item) => item.score >= 3)
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return new Date(b.event.created_at).getTime() - new Date(a.event.created_at).getTime();
+    });
+
+  // During testing the same event may have been created more than once.
+  // Treat exact duplicates as one logical candidate instead of asking the user
+  // to choose between identical copies.
+  const seen = new Set();
+  const candidates = rawCandidates.filter((item) => {
+    const event = item.event;
+    const key = [
+      event.title,
+      event.start_at,
+      event.end_at || "",
+      event.location || "",
+      event.notes || ""
+    ].map(normalizeText).join("|");
+
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 
   if (!candidates.length) return { status: "not_found", candidates: [] };
+
   const topScore = candidates[0].score;
   const top = candidates.filter((item) => item.score === topScore);
+
   if (top.length > 1 || (topScore < 5 && candidates.length > 1)) {
-    return { status: "ambiguous", candidates: candidates.slice(0, 5).map((item) => item.event) };
+    return {
+      status: "ambiguous",
+      candidates: candidates.slice(0, 5).map((item) => item.event)
+    };
   }
+
   return { status: "found", event: candidates[0].event };
 }
 
