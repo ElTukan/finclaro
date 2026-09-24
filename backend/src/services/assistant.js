@@ -1,4 +1,4 @@
-import { DateTime } from "luxon";
+import { DateTime, IANAZone } from "luxon";
 import { parseFinClaroMessage } from "../ai/parser.js";
 
 function normalizeText(value) {
@@ -150,11 +150,31 @@ async function resolveEvent(db, userId, reference, parsed) {
 
 function setTimeInZone(isoValue, hhmm, timezone) {
   if (!hhmm) return isoValue;
+
   const match = /^([01]\d|2[0-3]):([0-5]\d)$/.exec(hhmm);
   if (!match) throw new Error("INVALID_TIME_FORMAT");
-  const source = DateTime.fromISO(isoValue, { setZone: true }).setZone(timezone);
+
+  if (typeof timezone !== "string" || !IANAZone.isValidZone(timezone)) {
+    throw new Error("INVALID_EVENT_TIMEZONE");
+  }
+
+  const sourceDate = new Date(isoValue);
+  if (Number.isNaN(sourceDate.getTime())) {
+    throw new Error("INVALID_EVENT_TIME");
+  }
+
+  const source = DateTime.fromJSDate(sourceDate, { zone: timezone });
   if (!source.isValid) throw new Error("INVALID_EVENT_TIMEZONE");
-  return source.set({ hour: Number(match[1]), minute: Number(match[2]), second: 0, millisecond: 0 }).toUTC().toISO();
+
+  return source
+    .set({
+      hour: Number(match[1]),
+      minute: Number(match[2]),
+      second: 0,
+      millisecond: 0
+    })
+    .toUTC()
+    .toISO();
 }
 
 export async function handleFinClaroMessage({ db, userId, message, now = new Date().toISOString(), timezone }) {
