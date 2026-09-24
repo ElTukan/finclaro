@@ -23,20 +23,34 @@ function meaningfulTokens(value) {
 function scoreCandidate(event, reference, parsed) {
   const referenceTokens = new Set(meaningfulTokens(reference));
   const titleTokens = meaningfulTokens(event.title);
+  const locationTokens = meaningfulTokens(event.location);
   const referenceText = normalizeText(reference);
   const titleText = normalizeText(event.title);
+  const locationText = normalizeText(event.location);
   let score = 0;
 
   for (const token of titleTokens) {
     if (referenceTokens.has(token)) score += 3;
   }
-  if (referenceText && titleText && (referenceText.includes(titleText) || titleText.includes(referenceText))) score += 4;
+
+  for (const token of locationTokens) {
+    if (referenceTokens.has(token)) score += 4;
+  }
+
+  if (referenceText && titleText && (referenceText.includes(titleText) || titleText.includes(referenceText))) {
+    score += 4;
+  }
+
+  if (referenceText && locationText && (referenceText.includes(locationText) || locationText.includes(referenceText))) {
+    score += 5;
+  }
 
   if (parsed.start_at) {
     const diff = Math.abs(new Date(event.start_at).getTime() - new Date(parsed.start_at).getTime());
     if (diff <= 30 * 60 * 1000) score += 5;
     else if (diff <= 24 * 60 * 60 * 1000) score += 2;
   }
+
   return score;
 }
 
