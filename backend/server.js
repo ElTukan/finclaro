@@ -25,7 +25,7 @@ function sendJson(res, statusCode, payload) {
     "Content-Length": Buffer.byteLength(body),
     "Cache-Control": "no-store",
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type, X-FinClaro-User-Id, X-FinClaro-Internal-Token",
+    "Access-Control-Allow-Headers": "Content-Type, X-FinClaro-User-Id, X-FinClaro-Internal-Token, X-FinClaro-Idempotency-Key",
     "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS"
   });
   res.end(body);
@@ -437,7 +437,8 @@ const server = http.createServer(async (req, res) => {
         userId,
         message: body.message,
         now: body.now,
-        timezone: body.timezone
+        timezone: body.timezone,
+        idempotencyKey: req.headers["x-finclaro-idempotency-key"] || null
       });
 
       return sendJson(res, 200, {
