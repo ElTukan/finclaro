@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import pg from "pg";
 import { fileURLToPath } from "node:url";
+import { parseFinClaroMessage } from "./src/ai/parser.js";
 
 const { Pool } = pg;
 const PORT = Number(process.env.PORT || 8080);
@@ -23,7 +24,7 @@ function sendJson(res, statusCode, payload) {
     "Content-Length": Buffer.byteLength(body),
     "Cache-Control": "no-store",
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type, X-FinClaro-User-Id",
+    "Access-Control-Allow-Headers": "Content-Type, X-FinClaro-User-Id, X-FinClaro-Internal-Token",
     "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS"
   });
   res.end(body);
@@ -332,7 +333,7 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, 200, {
         ok: true,
         service: "finclaro-api",
-        version: "0.1.0",
+        version: "0.2.0",
         timestamp: new Date().toISOString()
       });
     }
@@ -409,6 +410,29 @@ const server = http.createServer(async (req, res) => {
         if (!deleted) return sendJson(res, 404, { ok: false, error: "EVENT_NOT_FOUND" });
         return sendJson(res, 200, { ok: true, deleted: true, event_id: eventId });
       }
+    }
+
+    if (req.method === "POST" && url.pathname === "/ai/parse") {
+      if (process.env.FINCLARO_AI_TEST_ENDPOINT !== "true") {
+        return sendJson(res, 404, { ok: false, error: "NOT_FOUND" });
+      }
+
+      const internalToken = process.env.FINCLARO_INTERNAL_TOKEN;
+      const providedToken = req.headers["x-finclaro-internal-token"];
+
+      if (!internalToken || providedToken !== internalToken) {
+        return sendJson(res, 401, { ok: false, error: "INTERNAL_TOKEN_REQUIRED" });
+      }
+
+      const body = await readJson(req);
+      const parsed = await parseFinClaroMessage({
+        message: body.message,
+        now: body.now,
+        timezone: body.timezone,
+        model: body.model
+      });
+
+      return sendJson(res, 200, { ok: true, parsed });
     }
 
     return sendJson(res, 404, {
