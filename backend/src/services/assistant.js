@@ -5,7 +5,7 @@ function normalizeText(value) {
   return String(value || "")
     .toLocaleLowerCase("es-ES")
     .normalize("NFD")
-    .replace(/[\\u0300-\\u036f]/g, "")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9 ]/gi, " ")
     .replace(/\s+/g, " ")
     .trim();
