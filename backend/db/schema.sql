@@ -46,3 +46,14 @@ CREATE INDEX IF NOT EXISTS idx_events_user_start
 
 CREATE INDEX IF NOT EXISTS idx_reminders_due
   ON reminders(status, remind_at);
+
+CREATE TABLE IF NOT EXISTS assistant_requests (
+  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  idempotency_key TEXT NOT NULL,
+  event_id UUID REFERENCES events(id) ON DELETE SET NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (user_id, idempotency_key)
+);
+
+CREATE INDEX IF NOT EXISTS idx_assistant_requests_event
+  ON assistant_requests(event_id);
