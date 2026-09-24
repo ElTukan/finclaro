@@ -177,7 +177,7 @@ function setTimeInZone(isoValue, hhmm, timezone) {
     .toISO();
 }
 
-export async function handleFinClaroMessage({ db, userId, message, now = new Date().toISOString(), timezone }) {
+export async function handleFinClaroMessage({ db, userId, message, now = new Date().toISOString(), timezone, idempotencyKey }) {
   const user = await getUser(db, userId);
   if (!user) {
     const error = new Error("USER_NOT_FOUND");
@@ -195,11 +195,54 @@ export async function handleFinClaroMessage({ db, userId, message, now = new Dat
     if (!parsed.title || !parsed.start_at) {
       return { parsed, result: { action: "CLARIFICATION_REQUIRED", message: "¿Qué evento es y qué día y hora tiene?" } };
     }
+
     const client = await db.connect();
     try {
       await client.query("BEGIN");
+
+      let request = null;
+      if (idempotencyKey) {
+        const claimed = await client.query(
+          "INSERT INTO assistant_requests (user_id, idempotency_key) VALUES ($1, $2) " +
+          "ON CONFLICT (user_id, idempotency_key) DO NOTHING RETURNING user_id, idempotency_key",
+          [userId, idempotencyKey]
+        );
+
+        if (!claimed.rowCount) {
+          const existing = await client.query(
+            "SELECT e.id, e.user_id, e.title, e.start_at, e.end_at, e.location, e.notes, e.status, e.created_at, e.updated_at " +
+            "FROM assistant_requests ar JOIN events e ON e.id = ar.event_id " +
+            "WHERE ar.user_id = $1 AND ar.idempotency_key = $2 LIMIT 1",
+            [userId, idempotencyKey]
+          );
+
+          if (existing.rows[0]) {
+            await client.query("ROLLBACK");
+            return {
+              parsed,
+              result: {
+                action: "EVENT_ALREADY_CREATED",
+                message: "Ese mensaje ya ha creado este evento.",
+                event: existing.rows[0],
+                reminder: null
+              }
+            };
+          }
+        } else {
+          request = claimed.rows[0];
+        }
+      }
+
       const event = await insertEvent(client, userId, parsed);
       const reminder = await insertReminder(client, event.id, parsed, now);
+
+      if (request) {
+        await client.query(
+          "UPDATE assistant_requests SET event_id = $3 WHERE user_id = $1 AND idempotency_key = $2",
+          [userId, idempotencyKey, event.id]
+        );
+      }
+
       await client.query("COMMIT");
       const when = new Date(event.start_at).toLocaleString("es-ES", { timeZone: userTimezone });
       return { parsed, result: { action: "EVENT_CREATED", message: "He añadido “" + event.title + "” para " + when + ".", event, reminder } };
