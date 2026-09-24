@@ -54,6 +54,8 @@ export async function parseFinClaroMessage({
     "Resuelve fechas relativas usando la fecha y zona horaria de referencia.",
     "Si falta un dato necesario o existe una ambigüedad relevante, usa needs_clarification=true y formula una pregunta breve.",
     "No inventes una hora concreta que el usuario no haya indicado.",
+    "Si el usuario pide cambiar solo la hora de un evento existente, conserva start_at como null y usa new_start_time en formato HH:mm.",
+    "Si el usuario pide cambiar solo la hora de finalización, usa new_end_time en formato HH:mm.",
     "Para UPDATE_EVENT o CANCEL_EVENT conserva la referencia humana en event_reference; nunca pongas un UUID.",
     "Para LIST_EVENTS usa range_from y range_to cuando se solicite un periodo.",
     "Para recordatorios usa remind_at cuando haya una hora concreta y reminder_offset_minutes cuando haya un desplazamiento explícito.",
