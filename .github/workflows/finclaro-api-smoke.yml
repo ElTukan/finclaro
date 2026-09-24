@@ -1,0 +1,108 @@
+name: FinClaro API smoke test
+
+on:
+  push:
+    branches:
+      - finclaro-backend-1.0
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test live API
+        env:
+          BASE_URL: https://finclaro-api-production.up.railway.app
+        run: |
+          node <<'NODE'
+          const base = process.env.BASE_URL;
+
+          async function request(path, options = {}) {
+            const response = await fetch(base + path, {
+              ...options,
+              headers: {
+                "Content-Type": "application/json",
+                ...(options.headers || {})
+              }
+            });
+            const text = await response.text();
+            let body = null;
+            try { body = text ? JSON.parse(text) : null; } catch {}
+            console.log(options.method || "GET", path, response.status, body);
+            if (!response.ok) {
+              throw new Error(`${options.method || "GET"} ${path} failed: ${response.status} ${text}`);
+            }
+            return body;
+          }
+
+          const health = await request("/health");
+          if (!health.ok) throw new Error("health check did not return ok");
+
+          const db = await request("/health/db");
+          if (!db.ok || db.database !== "connected") {
+            throw new Error("database health check failed");
+          }
+
+          const user = await request("/users", {
+            method: "POST",
+            body: JSON.stringify({
+              name: "FinClaro Smoke Test",
+              phone: "+34999999001",
+              timezone: "Europe/Madrid"
+            })
+          });
+
+          const userId = user.user?.id;
+          if (!userId) throw new Error("user creation did not return an id");
+
+          const start = new Date(Date.now() + 24 * 60 * 60 * 1000);
+          start.setMinutes(0, 0, 0);
+          const end = new Date(start.getTime() + 60 * 60 * 1000);
+
+          const created = await request("/events", {
+            method: "POST",
+            headers: { "X-FinClaro-User-Id": userId },
+            body: JSON.stringify({
+              title: "Smoke Test Event",
+              start_at: start.toISOString(),
+              end_at: end.toISOString(),
+              location: "Test",
+              notes: "Temporary CI verification"
+            })
+          });
+
+          const eventId = created.event?.id;
+          if (!eventId) throw new Error("event creation did not return an id");
+
+          const fetched = await request("/events/" + eventId, {
+            headers: { "X-FinClaro-User-Id": userId }
+          });
+
+          if (fetched.event?.title !== "Smoke Test Event") {
+            throw new Error("event read-back mismatch");
+          }
+
+          const updated = await request("/events/" + eventId, {
+            method: "PATCH",
+            headers: { "X-FinClaro-User-Id": userId },
+            body: JSON.stringify({ title: "Smoke Test Event Updated" })
+          });
+
+          if (updated.event?.title !== "Smoke Test Event Updated") {
+            throw new Error("event update mismatch");
+          }
+
+          await request("/events/" + eventId, {
+            method: "DELETE",
+            headers: { "X-FinClaro-User-Id": userId }
+          });
+
+          const list = await request("/events", {
+            headers: { "X-FinClaro-User-Id": userId }
+          });
+
+          if ((list.events || []).some(event => event.id === eventId)) {
+            throw new Error("deleted event is still present");
+          }
+
+          console.log("FINCLARO_SMOKE_TEST=PASS");
+          NODE
