@@ -4,6 +4,7 @@ import path from "node:path";
 import pg from "pg";
 import { fileURLToPath } from "node:url";
 import { parseFinClaroMessage } from "./src/ai/parser.js";
+import { handleFinClaroMessage } from "./src/services/assistant.js";
 
 const { Pool } = pg;
 const PORT = Number(process.env.PORT || 8080);
@@ -333,7 +334,7 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, 200, {
         ok: true,
         service: "finclaro-api",
-        version: "0.2.0",
+        version: "0.3.0",
         timestamp: new Date().toISOString()
       });
     }
@@ -410,6 +411,36 @@ const server = http.createServer(async (req, res) => {
         if (!deleted) return sendJson(res, 404, { ok: false, error: "EVENT_NOT_FOUND" });
         return sendJson(res, 200, { ok: true, deleted: true, event_id: eventId });
       }
+    }
+
+    if (req.method === "POST" && url.pathname === "/assistant/execute") {
+      if (process.env.FINCLARO_AI_TEST_ENDPOINT !== "true") {
+        return sendJson(res, 404, { ok: false, error: "NOT_FOUND" });
+      }
+
+      const internalToken = process.env.FINCLARO_INTERNAL_TOKEN;
+      const providedToken = req.headers["x-finclaro-internal-token"];
+      if (!internalToken || providedToken !== internalToken) {
+        return sendJson(res, 401, { ok: false, error: "INTERNAL_TOKEN_REQUIRED" });
+      }
+
+      if (!pool) {
+        return sendJson(res, 503, { ok: false, error: "DATABASE_NOT_CONFIGURED" });
+      }
+
+      const userId = requireUserId(req, res);
+      if (!userId) return;
+
+      const body = await readJson(req);
+      const result = await handleFinClaroMessage({
+        db: pool,
+        userId,
+        message: body.message,
+        now: body.now,
+        timezone: body.timezone
+      });
+
+      return sendJson(res, 200, { ok: true, ...result });
     }
 
     if (req.method === "POST" && url.pathname === "/ai/parse") {
