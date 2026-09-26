@@ -38,6 +38,8 @@ CREATE TABLE IF NOT EXISTS reminders (
   sent_at TIMESTAMPTZ,
   last_error TEXT,
   attempts INTEGER NOT NULL DEFAULT 0,
+  last_attempt_at TIMESTAMPTZ,
+  next_attempt_at TIMESTAMPTZ,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
@@ -46,6 +48,9 @@ CREATE INDEX IF NOT EXISTS idx_events_user_start
 
 CREATE INDEX IF NOT EXISTS idx_reminders_due
   ON reminders(status, remind_at);
+
+CREATE INDEX IF NOT EXISTS idx_reminders_next_attempt
+  ON reminders(status, next_attempt_at);
 
 CREATE TABLE IF NOT EXISTS assistant_requests (
   user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
