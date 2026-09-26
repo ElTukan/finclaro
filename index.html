@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="FinClaro | Tu día, claro. Y lo importante, a tiempo.">
   <meta name="twitter:description" content="Un asistente personal en desarrollo para organizar citas, tareas y recordatorios desde WhatsApp.">
   <meta name="twitter:image" content="https://finclaro.es/finclaro-product-og.svg">
-  <meta name="theme-color" content="#143c31">
+  <meta name="theme-color" content="#070809">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -335,6 +335,197 @@
       .hero-copy > * { opacity: 1; animation: none !important; transform: none; }
       .float-motion-one, .float-motion-two, .phone-caption { opacity: 1; animation: none !important; }
       .phone-float, .phone-aura, .phone-orbit { animation: none !important; }
+    }
+
+    /* Paleta original negro y dorado, con el hero ajustado a la primera pantalla. */
+    :root {
+      --forest: #101216;
+      --forest-deep: #070809;
+      --forest-soft: #f1e4c3;
+      --lime: #e0ba63;
+      --paper: #f3f0e8;
+      --white: #fbfaf6;
+      --ink: #15181d;
+      --muted: #66707b;
+      --line: #dfe4e8;
+      --sand: #e9e4d8;
+      --shadow: 0 24px 70px rgba(8, 9, 10, .14);
+    }
+    :focus-visible { outline-color: rgba(224, 186, 99, .82); }
+    .site-header { border-bottom-color: rgba(255, 255, 255, .08); background: rgba(7, 8, 9, .94); }
+    .brand { color: #fff; }
+    .brand-mark { background: linear-gradient(145deg, #f4d580, #b98935); color: #101114; }
+    .nav-links a { color: #b8bdc4; }
+    .nav-links a:hover { background: rgba(255, 255, 255, .07); color: #fff; }
+    .nav-links .nav-cta { background: linear-gradient(135deg, #f4d580, #c69a45); color: #101114; }
+    .nav-links .nav-cta:hover { background: #f7df9b; color: #101114; }
+    .menu-btn { border-color: rgba(255, 255, 255, .18); color: #fff; }
+
+    .hero { display: grid; min-height: calc(100svh - 76px); align-items: center; padding: 27px 0 31px; background: #070809; }
+    .hero::before { background: radial-gradient(ellipse at 74% 44%, rgba(224, 186, 99, .14), transparent 42%), radial-gradient(ellipse at 7% 83%, rgba(72, 91, 117, .15), transparent 38%); }
+    .hero-grid { grid-template-columns: minmax(0, .98fr) minmax(0, 1.02fr); gap: clamp(26px, 4.5vw, 60px); min-height: 0; }
+    .hero-copy { padding: 0; }
+    .hero .eyebrow { border-color: rgba(224, 186, 99, .26); background: rgba(224, 186, 99, .055); color: #ead49c; }
+    .status-dot { background: #e6c46f; box-shadow: 0 0 0 4px rgba(224, 186, 99, .12); }
+    .hero h1 { margin: 18px 0 15px; font-size: clamp(45px, 5.25vw, 67px); line-height: .96; letter-spacing: -.065em; }
+    .hero h1 span { color: #e8c873; }
+    .hero-lead { max-width: 520px; color: #b7bdc5; font-size: 16px; line-height: 1.58; }
+    .hero-actions { gap: 10px; margin-top: 20px; }
+    .btn-primary { background: linear-gradient(135deg, #f4d580, #c69a45); color: #101114; box-shadow: 0 9px 27px rgba(224, 186, 99, .16); }
+    .btn-primary:hover { background: #f7df9b; box-shadow: 0 14px 32px rgba(224, 186, 99, .22); }
+    .btn-secondary { border-color: rgba(255, 255, 255, .2); color: #f5f3ed; }
+    .btn-secondary:hover { background: rgba(255, 255, 255, .07); }
+    .hero-note { margin-top: 10px; color: #8d949e; font-size: 11px; }
+
+    .hero-visual { min-height: 510px; width: 100%; margin: 0; }
+    .phone-orbit { width: 430px; height: 430px; border-color: rgba(224, 186, 99, .15); }
+    .phone-orbit::before, .phone-orbit::after { background: #f0d17d; box-shadow: 0 0 22px 7px rgba(224, 186, 99, .26); }
+    .phone-aura { width: 305px; height: 380px; background: radial-gradient(ellipse, rgba(224, 186, 99, .16), transparent 68%); }
+    .phone-shadow { bottom: 29px; width: 245px; background: rgba(0, 0, 0, .7); }
+    .phone { width: 254px; height: 482px; border-color: rgba(236, 239, 241, .5); background: linear-gradient(105deg, #879098 0%, #3b4249 3%, #1c2229 7%, #11151a 17%, #343a41 49%, #14191e 89%, #81898f 97%, #272c32 100%); box-shadow: inset 1px 0 1px rgba(255, 255, 255, .72), inset -2px 0 3px rgba(0, 0, 0, .8), 1px 1px 0 #899198, 5px 5px 0 #282e34, 10px 10px 0 #0b0e11, 24px 34px 70px rgba(0, 0, 0, .52); }
+    .phone::before { border-color: rgba(211, 216, 220, .42); background: linear-gradient(90deg, #282e34, #7d858c 42%, #171b20); }
+    .phone-screen { border-color: rgba(255, 255, 255, .13); background: radial-gradient(ellipse at 48% 10%, #252a31 0, transparent 34%), linear-gradient(158deg, #12161b 0%, #0b0e12 50%, #11151a 100%); }
+    .screen-status { color: #9ca4ad; }
+    .screen-brand { color: #f3f3ef; }
+    .signal i { background: #d5d9d9; }
+    .app-greeting small { color: #a2a7ac; }
+    .app-greeting h2 em { color: #e8c873; }
+    .app-avatar { border-color: rgba(224, 186, 99, .3); background: rgba(224, 186, 99, .12); color: #e8ca7b; }
+    .phone-day { border-color: rgba(255, 255, 255, .075); background: rgba(255, 255, 255, .025); }
+    .phone-day span { color: #8b929a; }
+    .phone-day b { color: #e4e6e4; }
+    .phone-day.active { border-color: rgba(224, 186, 99, .45); background: #e7c66f; }
+    .phone-day.active span, .phone-day.active b { color: #211b0f; }
+    .phone-panel { border-color: rgba(255, 255, 255, .09); background: linear-gradient(145deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .025)); }
+    .phone-panel-head span { color: #a3a8ad; }
+    .phone-event { border-top-color: rgba(255, 255, 255, .075); }
+    .phone-event time { color: #e8c873; }
+    .phone-event strong, .phone-task strong { color: #f0f1ee; }
+    .phone-event small, .phone-task small { color: #a2a8ad; }
+    .event-mark { background: rgba(224, 186, 99, .13); color: #e8c873; }
+    .phone-task { border-color: rgba(255, 255, 255, .08); background: rgba(4, 7, 10, .34); }
+    .task-check { border-color: rgba(224, 186, 99, .58); color: #e8c873; }
+    .phone-tabbar { border-color: rgba(255, 255, 255, .1); background: rgba(15, 19, 23, .95); }
+    .phone-tabbar span { color: #969da3; }
+    .phone-tabbar span:first-child { background: rgba(224, 186, 99, .13); color: #e8c873; }
+    .home-indicator { background: rgba(240, 241, 239, .68); }
+    .float-note { border-color: rgba(255, 255, 255, .16); background: rgba(11, 13, 16, .92); }
+    .float-note small { color: #e8cc82; }
+    .phone-caption { color: #9299a2; }
+
+    .proof-strip { border-color: rgba(255, 255, 255, .08); background: #0a0c0f; }
+    .proof-item { color: #bac0c5; }
+    .proof-icon { background: rgba(224, 186, 99, .12); color: #e8c873; }
+    .section { background: var(--paper); }
+    .section-heading .eyebrow { color: #8f7135; }
+    .step { background: #fbfaf6; }
+    .step-number { border-color: #d8c493; color: #8b6b2c; }
+    .scope-section { background: var(--sand); }
+    .scope-tag { background: #f2e8cc; color: #785b21; }
+    .check { background: #f2e8cc; color: #8c6b2d; }
+    .why-section { background: #08090b; }
+    .why-section .eyebrow { color: #d8bd78; }
+    .why-copy { color: #b6bcc3; }
+    .why-note { border-color: rgba(255, 255, 255, .14); color: #c7cbd0; }
+    .why-note b { color: #e8c873; }
+    .faq-section { background: var(--paper); }
+    .faq-layout .eyebrow { color: #8f7135; }
+    .faq-list summary::after { color: #a17b30; }
+    .faq-list details a { color: #785b21; }
+    .cta-panel { border: 1px solid rgba(224, 186, 99, .2); background: radial-gradient(ellipse at 77% 8%, rgba(224, 186, 99, .14), transparent 42%), #08090b; }
+    .cta-panel .eyebrow { color: #e3ce9a; }
+    .cta-panel::after { border-color: rgba(224, 186, 99, .24); box-shadow: 0 0 0 48px rgba(224, 186, 99, .04), 0 0 0 96px rgba(224, 186, 99, .025); }
+    .site-footer { border-color: rgba(255, 255, 255, .08); background: #050607; color: #888f98; }
+    .footer-links a { color: #c5c9cd; }
+
+    @media (min-width: 681px) {
+      .hero-grid { grid-template-columns: minmax(0, .98fr) minmax(0, 1.02fr); }
+    }
+    @media (max-width: 680px) {
+      .site-header { background: rgba(7, 8, 9, .96); }
+      .nav-links { border-color: rgba(255, 255, 255, .13); background: #101216; }
+      .nav-links a { color: #c1c5ca; }
+      .nav-links a:hover { color: #fff; }
+      .nav-links .nav-cta { color: #101114; }
+      .hero { display: block; min-height: calc(100svh - 66px); padding: 16px 0 10px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 0; }
+      .hero-copy { padding: 0; }
+      .hero h1 { margin: 12px 0 9px; font-size: clamp(35px, 9.3vw, 46px); line-height: .96; }
+      .hero-lead { font-size: 13px; line-height: 1.45; }
+      .hero-actions { margin-top: 14px; }
+      .hero-note { display: none; }
+      .hero-visual { min-height: 380px; margin-top: -2px; }
+      .phone-orbit { width: 340px; height: 340px; }
+      .phone-aura { width: 245px; height: 320px; }
+      .phone-shadow { bottom: 30px; width: 205px; }
+      .phone { width: 206px; height: 397px; border-radius: 37px; }
+      .phone-screen { border-radius: 30px; }
+      .phone::after { border-radius: 35px; }
+      .phone-content { padding: 10px 11px 52px; }
+      .screen-status { height: 32px; padding: 10px 15px 0; }
+      .screen-brand { top: 12px; }
+      .dynamic-island { top: 6px; width: 74px; height: 18px; }
+      .app-greeting h2 { margin-top: 7px; font-size: 18px; }
+      .app-avatar { width: 25px; height: 25px; }
+      .phone-week { gap: 3px; margin-top: 13px; }
+      .phone-day { padding: 6px 1px; }
+      .phone-day span { font-size: 6px; }
+      .phone-day b { margin-top: 4px; font-size: 9px; }
+      .phone-panel { margin-top: 10px; padding: 8px; }
+      .phone-panel-head strong { font-size: 9px; }
+      .phone-panel-head span { font-size: 7px; }
+      .phone-event { grid-template-columns: 32px 1fr 18px; gap: 5px; padding: 7px 0; }
+      .phone-event time { font-size: 7px; }
+      .phone-event strong { font-size: 8px; }
+      .phone-event small { font-size: 7px; }
+      .event-mark { width: 18px; height: 18px; font-size: 8px; }
+      .phone-task { gap: 7px; margin-top: 8px; padding: 8px; }
+      .task-check { width: 14px; height: 14px; font-size: 8px; }
+      .phone-task strong { font-size: 8px; }
+      .phone-task small { font-size: 7px; }
+      .phone-tabbar { right: 10px; bottom: 11px; left: 10px; height: 32px; }
+      .phone-tabbar span { height: 24px; font-size: 9px; }
+      .home-indicator { bottom: 4px; width: 60px; height: 2px; }
+      .float-motion-one { top: 9%; right: -1%; }
+      .float-motion-two { bottom: 10%; left: -1%; }
+      .float-note { min-width: 125px; padding: 9px 10px; }
+      .float-note strong { font-size: 9px; }
+      .phone-caption { bottom: 2px; font-size: 8px; }
+      .proof-items { background: #0a0c0f; }
+    }
+    @media (max-width: 390px) {
+      .hero-visual { min-height: 355px; }
+      .phone { width: 190px; height: 367px; }
+      .phone-caption { font-size: 7px; }
+      .float-note { min-width: 116px; padding: 8px 9px; }
+      .float-note strong { font-size: 8px; }
+    }
+    @media (max-width: 680px) and (max-height: 740px) {
+      .hero { padding-top: 10px; padding-bottom: 6px; }
+      .hero h1 { margin-top: 9px; margin-bottom: 7px; font-size: 35px; }
+      .hero-lead { font-size: 12px; line-height: 1.4; }
+      .hero-actions { margin-top: 10px; }
+      .hero-visual { min-height: 286px; }
+      .phone { width: 164px; height: 317px; }
+      .phone-orbit { width: 275px; height: 275px; }
+      .phone-aura { width: 200px; height: 260px; }
+      .phone-caption { bottom: 0; }
+      .float-motion-one { top: 5%; }
+      .float-motion-two { bottom: 7%; }
+      .float-note { min-width: 108px; padding: 7px 8px; }
+      .float-note small { font-size: 6px; }
+      .float-note strong { font-size: 7px; }
+      .phone-content { padding: 8px 8px 44px; }
+      .screen-status { height: 28px; padding-top: 8px; }
+      .app-greeting h2 { font-size: 15px; }
+      .phone-week { margin-top: 9px; }
+      .phone-day { padding: 4px 0; }
+      .phone-panel { margin-top: 7px; padding: 6px; }
+      .phone-event { padding: 5px 0; }
+      .phone-task { margin-top: 6px; padding: 6px; }
+      .phone-tabbar { bottom: 9px; height: 27px; }
+      .phone-tabbar span { height: 20px; }
+      .home-indicator { bottom: 3px; }
     }
   </style>
   <script type="application/ld+json">
