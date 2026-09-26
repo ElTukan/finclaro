@@ -5,6 +5,7 @@ import pg from "pg";
 import { fileURLToPath } from "node:url";
 import { parseFinClaroMessage } from "./src/ai/parser.js";
 import { handleFinClaroMessage } from "./src/services/assistant.js";
+import { startReminderScheduler } from "./src/services/reminder-scheduler.js";
 
 const { Pool } = pg;
 const PORT = Number(process.env.PORT || 8080);
@@ -86,6 +87,9 @@ async function initializeDatabase() {
   for (let attempt = 1; attempt <= 5; attempt += 1) {
     try {
       await pool.query(schema);
+      await pool.query(`ALTER TABLE reminders ADD COLUMN IF NOT EXISTS last_attempt_at TIMESTAMPTZ`);
+      await pool.query(`ALTER TABLE reminders ADD COLUMN IF NOT EXISTS next_attempt_at TIMESTAMPTZ`);
+      await pool.query(`CREATE INDEX IF NOT EXISTS idx_reminders_next_attempt ON reminders(status, next_attempt_at)`);
       console.log("FinClaro database schema is ready.");
       return;
     } catch (error) {
@@ -334,7 +338,7 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, 200, {
         ok: true,
         service: "finclaro-api",
-        version: "0.3.2",
+        version: "0.4.0",
         timestamp: new Date().toISOString()
       });
     }
@@ -497,6 +501,7 @@ server.on("error", (error) => {
 async function start() {
   try {
     await initializeDatabase();
+    startReminderScheduler(pool);
     server.listen(PORT, "0.0.0.0", () => {
       console.log(`FinClaro API listening on port ${PORT}`);
     });
