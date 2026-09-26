@@ -209,6 +209,210 @@ footer a{text-decoration:none;color:#9199a3}
 }
 @media(max-width:430px){.hero h1{font-size:48px}.hero-stage{min-height:540px}.float-card{font-size:8px}.device{width:268px}.story-title{font-size:40px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* --- Mobile product hero refinement --- */
+.device{
+  width:min(374px,74vw);
+  padding:7px;
+  border-radius:48px;
+  background:linear-gradient(145deg,#414956 0%,#171b21 20%,#07090c 54%,#252a32 100%);
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 55px 135px rgba(0,0,0,.78),0 0 90px rgba(224,186,99,.12),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.device:before{
+  content:"";
+  position:absolute;
+  inset:1px;
+  border-radius:47px;
+  pointer-events:none;
+  background:linear-gradient(125deg,rgba(255,255,255,.09),transparent 24%,transparent 72%,rgba(255,255,255,.055));
+  z-index:20;
+}
+.notch{
+  position:relative;
+  z-index:21;
+  width:122px;
+  height:27px;
+  margin:0 auto -1px;
+  border-radius:0 0 19px 19px;
+  background:#050607;
+  box-shadow:0 2px 4px rgba(0,0,0,.35);
+}
+.screen{
+  height:612px;
+  border-radius:39px;
+  background:linear-gradient(160deg,#151b24 0%,#0b0f14 45%,#07090c 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),inset 0 -30px 60px rgba(0,0,0,.18);
+}
+.status{
+  height:42px;
+  padding:12px 17px 5px;
+  color:#7f8995;
+  font-size:10px;
+  position:relative;
+  z-index:8;
+}
+.status strong{font-size:12px;letter-spacing:-.02em}
+.slides{
+  inset:42px 0 52px;
+  padding:0 1px;
+}
+.slide{
+  padding:18px 18px 14px;
+}
+.slide h3{
+  font-size:25px;
+  letter-spacing:-.055em;
+  line-height:1.02;
+  margin:13px 0 6px;
+}
+.slide p{font-size:10px;color:#89929e;line-height:1.5}
+.slide .mini{font-size:8px;letter-spacing:.16em}
+.chat{margin-top:21px}
+.msg{
+  max-width:92%;
+  padding:11px 12px 9px;
+  border-radius:17px;
+  margin:8px 0;
+  font-size:11px;
+  line-height:1.42;
+  position:relative;
+  box-shadow:0 7px 22px rgba(0,0,0,.12);
+}
+.msg.me{
+  background:linear-gradient(145deg,#f2d68b,#c89941);
+  border-bottom-right-radius:6px;
+}
+.msg.me:after{
+  content:"17:42  ✓✓";
+  display:block;
+  margin-top:5px;
+  font-size:8px;
+  color:rgba(10,12,14,.55);
+  text-align:right;
+}
+.msg.ai{
+  background:linear-gradient(145deg,#1b222c,#151b23);
+  border:1px solid rgba(255,255,255,.08);
+  border-bottom-left-radius:6px;
+}
+.msg.ai:after{
+  content:"17:42";
+  display:block;
+  margin-top:5px;
+  font-size:8px;
+  color:#6e7885;
+  text-align:right;
+}
+.chat-status{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  width:max-content;
+  max-width:90%;
+  padding:7px 10px;
+  margin:8px 0 11px 2px;
+  border-radius:999px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.06);
+  color:#7c8793;
+  font-size:9px;
+}
+.chat-status i{
+  display:inline-flex;
+  gap:2px;
+}
+.chat-status i b{
+  width:3px;height:3px;border-radius:50%;background:#d9bd78;
+  animation:typing 1.2s infinite ease-in-out;
+}
+.chat-status i b:nth-child(2){animation-delay:.15s}.chat-status i b:nth-child(3){animation-delay:.3s}
+.saved{
+  margin-top:11px;
+  padding:14px;
+  border-radius:18px;
+  border:1px solid rgba(224,186,99,.34);
+  background:linear-gradient(145deg,rgba(224,186,99,.11),rgba(224,186,99,.045));
+  box-shadow:0 16px 38px rgba(0,0,0,.18);
+}
+.saved .label{font-size:7px;letter-spacing:.15em}
+.saved strong{font-size:15px;margin-top:6px;letter-spacing:-.025em}
+.saved span{font-size:9px}
+.saved-row{
+  display:flex;align-items:center;justify-content:space-between;gap:9px;margin-bottom:10px;
+}
+.event-icon{
+  width:34px;height:34px;border-radius:11px;display:grid;place-items:center;
+  background:rgba(240,211,142,.13);color:#f0d48c;border:1px solid rgba(240,211,142,.16);
+  font-size:15px;
+}
+.event-copy{flex:1}
+.event-check{
+  width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
+  color:#0d1011;background:#e1c26f;font-size:12px;font-weight:900;
+}
+.phone-calendar{
+  margin-top:21px;padding:13px;border:1px solid rgba(255,255,255,.08);border-radius:19px;
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+  box-shadow:0 15px 40px rgba(0,0,0,.14);
+}
+.calendar-head{font-size:10px}.calendar-grid{gap:4px;margin-top:12px}
+.calendar-grid i{padding:7px 0;font-size:8px;border:1px solid transparent}
+.calendar-grid i.active{box-shadow:0 0 0 1px rgba(240,211,142,.24),0 8px 20px rgba(224,186,99,.10)}
+.agenda-line{margin-top:11px;border-left-width:2px;border-radius:0 9px 9px 0;padding:10px;font-size:9px}
+.finance-card{
+  margin-top:21px;padding:15px;border-radius:20px;
+  background:linear-gradient(145deg,#171d25,#0e1218);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 18px 42px rgba(0,0,0,.20);
+}
+.finance-top{display:flex;justify-content:space-between;align-items:center;color:#747e89;font-size:9px}
+.finance-top b{color:#e9d18f;font-size:9px}
+.finance-amount{font:800 33px/1 var(--display);letter-spacing:-.065em;margin:12px 0 13px}
+.finance-bar{height:7px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden}
+.finance-bar i{display:block;width:68%;height:100%;background:linear-gradient(90deg,#c9993f,#f2d58a);border-radius:inherit}
+.finance-list{margin-top:11px;display:grid;gap:0}
+.finance-row{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-top:1px solid rgba(255,255,255,.06);font-size:9px}
+.finance-row span{color:#7b8591}.finance-row b{color:#dfe3e7}
+.phone-bottom{
+  position:absolute;z-index:10;left:10px;right:10px;bottom:9px;height:43px;
+  display:grid;grid-template-columns:repeat(4,1fr);align-items:center;
+  padding:5px;border:1px solid rgba(255,255,255,.07);border-radius:15px;
+  background:rgba(12,16,21,.80);backdrop-filter:blur(18px);
+  box-shadow:0 8px 28px rgba(0,0,0,.24);
+}
+.phone-bottom span{
+  display:grid;place-items:center;height:31px;border-radius:10px;color:#65707d;font-size:12px;
+}
+.phone-bottom span.active{color:#ecd28e;background:rgba(224,186,99,.10)}
+.mobile-home{
+  position:absolute;z-index:11;left:50%;bottom:4px;transform:translateX(-50%);
+  width:80px;height:4px;border-radius:99px;background:rgba(255,255,255,.62);
+}
+@keyframes typing{0%,80%,100%{opacity:.2;transform:translateY(0)}40%{opacity:1;transform:translateY(-2px)}}
+
+@media(max-width:720px){
+  .hero-stage{min-height:625px}
+  .device{width:min(314px,86vw)}
+  .screen{height:555px;border-radius:35px}
+  .slides{inset:42px 0 51px}
+  .slide{padding:17px 16px 12px}
+  .slide h3{font-size:23px}
+  .float-a{right:-1px;top:4%}
+  .float-b{left:-1px;bottom:15%}
+  .float-c{right:2px;bottom:5%}
+}
+@media(max-width:430px){
+  .hero-stage{min-height:590px}
+  .orbit{width:390px;height:390px}
+  .orbit-small{width:305px;height:305px}
+  .device{width:296px}
+  .screen{height:535px}
+  .slide h3{font-size:22px}
+  .float-card{padding:9px 10px}
+  .float-card strong{font-size:9px}
+}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"FinClaro","url":"https://finclaro.es/","description":"Asistente personal por WhatsApp para organizar citas, tareas y recordatorios.","inLanguage":"es-ES","publisher":{"@type":"Organization","name":"FinClaro","url":"https://finclaro.es/"}}
@@ -255,16 +459,24 @@ footer a{text-decoration:none;color:#9199a3}
         <div class="device">
           <div class="notch"></div>
           <div class="screen">
-            <div class="status"><span>9:41</span><strong>FinClaro</strong><span>•••</span></div>
+            <div class="status"><span>9:41</span><strong>FinClaro</strong><span>●●●</span></div>
             <div class="slides">
               <article class="slide">
                 <div class="mini">01 · WhatsApp</div>
                 <h3>Habla. FinClaro lo hace.</h3>
                 <p>Escribe como hablas. Sin comandos.</p>
                 <div class="chat">
+                  <div class="chat-date">HOY</div>
                   <div class="msg me">El viernes a las 18 tengo que llevar el coche al taller.</div>
                   <div class="msg ai">Hecho. Lo he apuntado y te avisaré antes.</div>
-                  <div class="saved"><span class="label">Evento guardado</span><strong>Llevar el coche al taller</strong><span>Viernes · 18:00 · Taller</span></div>
+                  <div class="chat-status"><i><b></b><b></b><b></b></i> FinClaro está organizándolo</div>
+                  <div class="saved">
+                    <div class="saved-row">
+                      <span class="event-icon">◷</span>
+                      <span class="event-copy"><span class="label">Evento guardado</span><strong>Llevar el coche al taller</strong><span>Viernes · 18:00 · Taller</span></span>
+                      <span class="event-check">✓</span>
+                    </div>
+                  </div>
                 </div>
               </article>
 
@@ -287,16 +499,27 @@ footer a{text-decoration:none;color:#9199a3}
                 <div class="mini">03 · Evolución</div>
                 <h3>Y esto es solo el principio.</h3>
                 <p>FinClaro evolucionará contigo.</p>
-                <div class="family-list">
-                  <div class="mini">Finanzas</div>
-                  <div class="balance mono">1.284,50 €</div>
-                  <div class="progress"><i></i></div>
-                  <div class="mini" style="margin-top:19px">Familia</div>
+                <div class="finance-card">
+                  <div class="finance-top"><span>DISPONIBLE ESTE MES</span><b>+7,4%</b></div>
+                  <div class="finance-amount mono">1.284,50 €</div>
+                  <div class="finance-bar"><i></i></div>
+                  <div class="finance-list">
+                    <div class="finance-row"><span>Casa</span><b>−420,00 €</b></div>
+                    <div class="finance-row"><span>Transporte</span><b>−116,50 €</b></div>
+                    <div class="finance-row"><span>Libre</span><b>748,00 €</b></div>
+                  </div>
+                </div>
+                <div class="family-list" style="margin-top:10px;padding:11px">
+                  <div class="mini">Familia</div>
                   <div class="person"><span class="avatar">TÚ</span> Tu cita · 18:00</div>
                   <div class="person"><span class="avatar">F</span> Reunión familiar · 20:30</div>
                 </div>
               </article>
             </div>
+            <div class="phone-bottom" aria-hidden="true">
+              <span class="active">⌂</span><span>◷</span><span>✓</span><span>☻</span>
+            </div>
+            <div class="mobile-home" aria-hidden="true"></div>
           </div>
         </div>
       </div>
