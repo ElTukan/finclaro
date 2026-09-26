@@ -74,7 +74,7 @@
     .status-dot { width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 4px rgba(217, 243, 122, .12); }
     h1, h2, h3, p { text-wrap: pretty; }
     .hero h1 { max-width: 650px; margin: 24px 0 20px; font: 700 clamp(48px, 6vw, 76px)/.99 var(--display); letter-spacing: -.065em; }
-    .hero h1 span { color: var(--lime); }
+    .hero h1 .hero-line-accent { color: var(--lime); }
     .hero-lead { max-width: 530px; margin: 0; color: #d3dfd8; font-size: 17px; line-height: 1.7; }
     .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
     .btn { min-height: 51px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 19px; border: 1px solid transparent; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; transition: transform .2s var(--ease), box-shadow .2s, background .2s; }
@@ -368,7 +368,7 @@
     .hero .eyebrow { border-color: rgba(224, 186, 99, .26); background: rgba(224, 186, 99, .055); color: #ead49c; }
     .status-dot { background: #e6c46f; box-shadow: 0 0 0 4px rgba(224, 186, 99, .12); }
     .hero h1 { margin: 18px 0 15px; font-size: clamp(45px, 5.25vw, 67px); line-height: .96; letter-spacing: -.065em; }
-    .hero h1 span { color: #e8c873; }
+    .hero h1 .hero-line-accent { color: #e8c873; }
     .hero-lead { max-width: 520px; color: #b7bdc5; font-size: 16px; line-height: 1.58; }
     .hero-actions { gap: 10px; margin-top: 20px; }
     .btn-primary { background: linear-gradient(135deg, #f4d580, #c69a45); color: #101114; box-shadow: 0 9px 27px rgba(224, 186, 99, .16); }
@@ -527,6 +527,94 @@
       .phone-tabbar span { height: 20px; }
       .home-indicator { bottom: 3px; }
     }
+
+    /* Composición editorial inspirada en la referencia: titular a la izquierda, producto al frente. */
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background-image: linear-gradient(rgba(234, 238, 244, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(234, 238, 244, .045) 1px, transparent 1px);
+      background-size: 70px 70px;
+      content: "";
+      mask-image: radial-gradient(ellipse at 51% 48%, #000 0%, transparent 76%);
+      opacity: .32;
+      pointer-events: none;
+    }
+    .phone-arrival { opacity: 0; animation: hero-phone-enter 1.35s .3s cubic-bezier(.18, .82, .22, 1) both; }
+    html.motion-ready .phone-arrival.is-visible { animation: hero-phone-enter 1.35s .12s cubic-bezier(.18, .82, .22, 1) both; }
+    .hero .phone-aura { background: radial-gradient(ellipse, rgba(232, 200, 115, .23), transparent 68%); }
+    .hero .float-note { border-color: rgba(232, 200, 115, .23); box-shadow: 0 18px 46px rgba(0, 0, 0, .4), 0 0 28px rgba(224, 186, 99, .055); }
+    .hero .btn-primary { background: linear-gradient(115deg, #f7db8a, #d2a33f); box-shadow: 0 12px 34px rgba(224, 186, 99, .23); }
+    .hero .btn-primary:hover { background: #ffe5a2; box-shadow: 0 16px 40px rgba(224, 186, 99, .3); }
+
+    @media (min-width: 681px) {
+      .site-header { padding: 8px 0; border: 0; background: transparent; backdrop-filter: none; }
+      .site-header .nav { width: min(1128px, calc(100% - 48px)); min-height: 60px; padding-inline: 18px; border: 1px solid rgba(255, 255, 255, .1); border-radius: 19px; background: rgba(12, 14, 17, .82); box-shadow: 0 12px 44px rgba(0, 0, 0, .28); backdrop-filter: blur(18px); }
+      .hero-grid { width: min(1400px, calc(100% - 64px)); margin-inline: auto; }
+      .hero-copy { max-width: 675px; }
+      .hero h1 { max-width: 650px; margin: 20px 0 17px; font-size: clamp(62px, 5.6vw, 88px); line-height: .9; letter-spacing: -.07em; }
+      .hero h1 .hero-line { display: block; width: max-content; max-width: 100%; opacity: 0; filter: blur(12px); animation: headline-line-enter .9s cubic-bezier(.16, .85, .22, 1) both; }
+      .hero h1 .hero-line:nth-child(1) { animation-delay: .16s; }
+      .hero h1 .hero-line:nth-child(2) { animation-delay: .3s; }
+      .hero h1 .hero-line:nth-child(3) { animation-delay: .44s; }
+      .hero h1 .hero-line:nth-child(4) { animation-delay: .58s; }
+      .hero h1 .hero-line:nth-child(5) { animation-delay: .72s; }
+      .hero-copy > :nth-child(1) { animation-delay: .08s; }
+      .hero-copy > :nth-child(2) { opacity: 1; animation: none; }
+      .hero-copy > :nth-child(3) { animation-delay: .98s; }
+      .hero-copy > :nth-child(4) { animation-delay: 1.12s; }
+      .hero-copy > :nth-child(5) { animation-delay: 1.26s; }
+      .hero-lead { max-width: 560px; }
+      .hero-visual { min-height: 560px; }
+      .phone { width: 276px; height: 525px; }
+      .phone-orbit { width: 450px; height: 450px; }
+      .phone-aura { width: 330px; height: 410px; }
+      .phone-shadow { width: 268px; bottom: 28px; }
+    }
+    @media (min-width: 1500px) and (min-height: 800px) {
+      .hero h1 { font-size: clamp(92px, 5.2vw, 108px); }
+      .hero-visual { min-height: 610px; }
+      .phone { width: 300px; height: 570px; }
+      .phone-orbit { width: 490px; height: 490px; }
+      .phone-aura { width: 365px; height: 450px; }
+      .phone-shadow { width: 292px; bottom: 31px; }
+    }
+    @media (min-width: 681px) and (max-width: 1000px) {
+      .site-header .nav { width: calc(100% - 32px); padding-inline: 12px; }
+      .hero-grid { gap: clamp(22px, 3vw, 30px); }
+      .hero h1 { font-size: clamp(44px, 6.2vw, 62px); line-height: .92; }
+      .hero-lead { font-size: 13px; }
+      .hero-actions { gap: 8px; margin-top: 14px; }
+      .hero-actions .btn { padding-inline: 11px; font-size: 12px; }
+      .hero-note { display: none; }
+      .hero-visual { min-height: 430px; }
+      .phone { width: 210px; height: 400px; }
+      .phone-orbit { width: 330px; height: 330px; }
+      .phone-aura { width: 225px; height: 295px; }
+      .phone-shadow { width: 200px; bottom: 22px; }
+      .float-note { min-width: 108px; padding: 8px 9px; }
+      .float-note strong { font-size: 8px; }
+    }
+    @media (max-width: 680px) {
+      .hero::after { background-size: 48px 48px; opacity: .17; }
+      .hero h1 .hero-line { display: inline; width: auto; opacity: 1; filter: none; animation: none; }
+      .hero h1 .hero-line-accent { color: #e8c873; }
+      .hero .phone-arrival { animation-duration: 1.05s; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero h1 .hero-line { opacity: 1; filter: none; animation: none !important; transform: none !important; }
+      .phone-arrival { opacity: 1; animation: none !important; filter: none; transform: none; }
+    }
+    @keyframes headline-line-enter {
+      0% { opacity: 0; filter: blur(12px); transform: translate3d(-74px, 22px, 0) skewY(4deg); text-shadow: 0 0 36px rgba(232, 200, 115, 0); }
+      68% { opacity: 1; filter: blur(0); transform: translate3d(7px, -2px, 0) skewY(-.5deg); text-shadow: 0 0 34px rgba(232, 200, 115, .28); }
+      100% { opacity: 1; filter: none; transform: translate3d(0, 0, 0) skewY(0); text-shadow: none; }
+    }
+    @keyframes hero-phone-enter {
+      0% { opacity: 0; filter: blur(12px); transform: translate3d(125px, 52px, -170px) rotateY(24deg) rotateZ(7deg) scale(.78); }
+      72% { opacity: 1; filter: blur(0); transform: translate3d(-8px, -5px, 0) rotateY(-2deg) rotateZ(-1deg) scale(1.025); }
+      100% { opacity: 1; filter: none; transform: translate3d(0, 0, 0) rotateY(0) rotateZ(0) scale(1); }
+    }
   </style>
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"WebSite","name":"FinClaro","url":"https://finclaro.es/","description":"Asistente personal en desarrollo para organizar citas, tareas y recordatorios desde WhatsApp.","inLanguage":"es-ES","publisher":{"@type":"Organization","name":"FinClaro","url":"https://finclaro.es/"}}
@@ -554,8 +642,8 @@
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Asistente personal · En desarrollo</p>
-          <h1 id="hero-title">Tu día, claro.<br><span>Y lo importante, a tiempo.</span></h1>
-          <p class="hero-lead">Estamos creando un asistente personal al que le escribes por WhatsApp. FinClaro está pensado para convertir un mensaje cotidiano en una cita, una tarea o un recordatorio fácil de encontrar.</p>
+          <h1 id="hero-title"><span class="hero-line">Tu vida,</span> <span class="hero-line">sin tener</span> <span class="hero-line">que</span> <span class="hero-line hero-line-accent">acordarte</span> <span class="hero-line hero-line-accent">de todo.</span></h1>
+          <p class="hero-lead">Habla con FinClaro por WhatsApp. Estamos creando una forma sencilla de convertir tus mensajes en citas, tareas y recordatorios que tengas siempre a mano.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contacto">Quiero probar la beta <span aria-hidden="true">↗</span></a>
             <a class="btn btn-secondary" href="#como-funciona">Ver cómo funciona <span aria-hidden="true">↓</span></a>
