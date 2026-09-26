@@ -1,848 +1,127 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FinClaro | Finanzas personales en España, claras y prácticas</title>
-<meta name="description" content="Finanzas personales explicadas de forma sencilla: ahorro, hipotecas, nómina, impuestos, cuentas e inversión. Guías, ejemplos y calculadoras gratuitas.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FinClaro | Asistente personal por WhatsApp</title>
+<meta name="description" content="FinClaro es tu asistente personal por WhatsApp. Organiza citas, tareas y recordatorios con un mensaje y recibe avisos cuando los necesites.">
 <link rel="canonical" href="https://finclaro.es/">
-<meta property="og:type" content="website"><meta property="og:title" content="FinClaro | Finanzas personales en España"><meta property="og:description" content="Guías claras, ejemplos y calculadoras gratuitas para entender mejor tu dinero."><meta property="og:url" content="https://finclaro.es/"><meta property="og:image" content="https://finclaro.es/finclaro-og.svg"><meta property="og:image:alt" content="FinClaro — finanzas personales"><meta property="og:site_name" content="FinClaro"><meta property="og:locale" content="es_ES"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="FinClaro | Finanzas personales en España"><meta name="twitter:description" content="Guías claras, ejemplos y calculadoras gratuitas para entender mejor tu dinero."><meta name="twitter:image" content="https://finclaro.es/finclaro-og.svg">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css?v=20260923-glass"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@500;600;700;800&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FinClaro | Asistente personal por WhatsApp">
+<meta property="og:description" content="Dile a FinClaro lo que tienes que hacer. Organiza citas, tareas y recordatorios por WhatsApp.">
+<meta property="og:url" content="https://finclaro.es/">
+<meta property="og:image" content="https://finclaro.es/finclaro-og.svg">
+<meta property="og:image:alt" content="FinClaro, asistente personal por WhatsApp">
+<meta property="og:site_name" content="FinClaro">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FinClaro | Asistente personal por WhatsApp">
+<meta name="twitter:description" content="Organiza citas, tareas y recordatorios por WhatsApp con FinClaro.">
+<meta name="twitter:image" content="https://finclaro.es/finclaro-og.svg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#14151b;--paper:#faf8f3;--paper-soft:#f1ede1;--line:#e5e0d1;--muted:#756f5f;--gold:#b3872f;--gold-deep:#8a6720;--gold-soft:#f1e4c3;--navy:#12141c;--white:#fff;--radius:18px;--shadow:0 22px 54px rgba(24,18,4,.10);--serif:"Gelasio",Georgia,serif;--mono:"Ubuntu Mono",ui-monospace,monospace}
-.home{background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
-.home *{box-sizing:border-box}.home .container{max-width:1160px;margin:0 auto;padding:0 24px}
-.home .site-header{position:sticky;top:0;z-index:30;background:rgba(250,248,243,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:box-shadow .25s}
-.home .site-header.scrolled{box-shadow:0 8px 26px rgba(20,15,5,.06)}
-.home .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.home .brand{font-family:var(--serif);font-size:26px;font-weight:700;letter-spacing:-.03em;text-decoration:none;color:var(--ink)}
-.home .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-left:6px;vertical-align:middle}
-.home .navlinks{display:flex;gap:22px;flex-wrap:wrap}.home .navlinks a{font-size:14px;font-weight:650;color:var(--muted);text-decoration:none;position:relative;padding:4px 0}.home .navlinks a:hover{color:var(--ink)}.home .navlinks a:after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--gold);transition:right .25s ease}.home .navlinks a:hover:after{right:0}
-.home .hero{background:radial-gradient(1100px 560px at 12% -10%,#242838 0%,var(--navy) 55%),var(--navy);color:#fff;padding:74px 0 82px;position:relative;overflow:hidden}
-.home .hero-orbs{position:absolute;inset:0;pointer-events:none}
-.home .orb{position:absolute;border-radius:50%;filter:blur(2px);opacity:.35;animation:float 15s ease-in-out infinite}
-.home .orb-a{width:380px;height:380px;right:-140px;top:-160px;background:radial-gradient(circle,var(--gold) 0,rgba(179,135,47,0) 70%)}
-.home .orb-b{width:260px;height:260px;left:-110px;bottom:-120px;background:radial-gradient(circle,#3d4a6b 0,rgba(61,74,107,0) 70%);animation-delay:-7s}
-@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(-16px,18px)}}
-.home .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
-.home .eyebrow{font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:#8f97a8}.home .hero .eyebrow{color:var(--gold-soft)}
-.home .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(36px,4.8vw,58px);line-height:1.05;letter-spacing:-.015em;max-width:560px;margin:14px 0 20px}
-.home .hero p:not(.eyebrow){font-size:17px;line-height:1.6;color:#c8cbd8;max-width:520px}
-.home .buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.home .button{display:inline-flex;align-items:center;padding:12px 19px;border-radius:11px;text-decoration:none;font-weight:750;border:1px solid transparent;transition:transform .18s,box-shadow .18s,background .18s}.home .button.light{background:var(--gold);color:var(--navy);box-shadow:0 10px 26px rgba(179,135,47,.28)}.home .button.light:hover{transform:translateY(-2px)}.home .button.outline{border-color:#454b5c;color:#fff}.home .button.outline:hover{background:rgba(255,255,255,.07)}
-.home .proof-strip{display:flex;gap:26px;margin-top:36px;flex-wrap:wrap}.home .proof-strip strong{display:block;font-family:var(--mono);font-size:19px;color:var(--gold-soft)}.home .proof-strip span{display:block;font-size:12px;color:#9aa1b2;margin-top:2px}
-.home .hero-tool{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(16px);border-radius:22px;padding:22px;box-shadow:0 30px 70px rgba(0,0,0,.35)}
-.home .hero-tool-tabs{display:flex;gap:6px;background:rgba(0,0,0,.22);border-radius:12px;padding:4px;margin-bottom:18px}
-.home .ht-tab{flex:1;border:0;background:transparent;color:#aeb4c4;font-weight:700;font-size:13px;padding:9px 8px;border-radius:9px;cursor:pointer;transition:.18s}.home .ht-tab.active{background:var(--gold);color:var(--navy)}
-.home .ht-panel{display:none}.home .ht-panel.active{display:block;animation:fadeUp .35s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.home .ht-panel label{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;color:#c9cdd8;margin:14px 0 6px}.home .ht-panel label:first-child{margin-top:0}
-.home .ht-val{font-family:var(--mono);color:var(--gold-soft)}
-.home .ht-panel input[type=range]{width:100%;accent-color:var(--gold);height:4px}
-.home .ht-result{margin-top:18px;background:rgba(0,0,0,.25);border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}.home .ht-result span{font-size:12px;color:#9aa1b2}.home .ht-result strong{font-family:var(--mono);font-size:22px;color:#fff}
-.home .ht-more{display:block;text-align:center;margin-top:14px;font-size:12.5px;font-weight:750;color:var(--gold-soft);text-decoration:none}.home .ht-more:hover{color:#fff}
-.home .section{padding:74px 0}.home .section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:26px}.home .section h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,3.6vw,40px);line-height:1.08;letter-spacing:-.015em;margin:8px 0 0;color:var(--ink)}.home .section-head>div:last-child{max-width:520px;color:var(--muted)}
-.home .topics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.home .topic{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px;text-decoration:none;min-height:176px;position:relative;opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease,box-shadow .22s ease,border-color .22s ease}.home .topic.in{opacity:1;transform:translateY(0)}.home .topic:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold-soft)}.home .topic .num{font-family:var(--mono);font-size:11px;color:var(--gold-deep);font-weight:700;letter-spacing:.08em}.home .topic .ico{display:none}.home .topic h3{font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.12;letter-spacing:-.01em;margin:16px 0 7px;color:var(--ink)}.home .topic p{font-size:14px;line-height:1.5;color:var(--muted);margin:0;max-width:290px}.home .topic .arrow{position:absolute;right:22px;top:22px;color:var(--muted);font-size:17px;transition:transform .2s,color .2s}.home .topic:hover .arrow{transform:translate(3px,-3px);color:var(--gold-deep)}
-.home .quote{font-family:var(--serif);font-weight:500;border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--paper-soft),transparent);padding:22px 24px;font-size:22px;line-height:1.45;max-width:860px;color:var(--ink)}
-.home .tools-grid{display:grid;grid-template-columns:1.45fr .85fr;gap:16px}.home .tool-feature{border-radius:22px;background:var(--navy);color:#fff;padding:32px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.home .tool-feature:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-80px;bottom:-100px;background:radial-gradient(circle,var(--gold) 0,rgba(179,135,47,0) 70%);opacity:.25}.home .tool-feature h3{font-family:var(--serif);font-weight:600;font-size:33px;line-height:1.06;letter-spacing:-.015em;margin:14px 0;position:relative;z-index:1}.home .tool-feature p{color:#c3c8d4;max-width:520px;position:relative;z-index:1}.home .tool-side{display:grid;gap:16px}.home .tool-link{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:22px;text-decoration:none;transition:.2s}.home .tool-link:hover{border-color:var(--gold-soft);box-shadow:var(--shadow)}.home .tool-link strong{font-size:11px;letter-spacing:.1em;color:var(--gold-deep)}.home .tool-link h3{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.1;letter-spacing:-.01em;margin:9px 0;color:var(--ink)}.home .tool-link span{font-size:13px;color:var(--muted)}
-.home .quick{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:28px}.home .quick h3{font-family:var(--serif);font-weight:600;font-size:29px;line-height:1.08;letter-spacing:-.01em;margin:8px 0;color:var(--ink)}.home .quick p{color:var(--muted);max-width:580px}.home .quick-form{border:1px solid var(--line);border-radius:16px;padding:18px;background:var(--paper-soft)}.home .quick-form label{display:block;font-size:12px;font-weight:700;color:#5d5a4f;margin-bottom:5px}.home .quick-form input{width:100%;padding:10px 11px;margin-bottom:12px;border:1px solid var(--line);border-radius:9px;font:inherit;background:#fff}.home .quick-form input:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 3px rgba(179,135,47,.15)}.home .quick-form button{width:100%;padding:11px;border:0;border-radius:10px;background:var(--navy);color:#fff;font-weight:750;cursor:pointer;transition:background .2s}.home .quick-form button:hover{background:var(--gold-deep)}.home .quick-result{margin-top:12px;font-family:var(--mono);font-size:24px;font-weight:700;color:var(--ink)}
-.home .content-shell{background:var(--white);border:1px solid var(--line);border-radius:22px;overflow:hidden}.home .toolbar{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:center;justify-content:space-between;background:var(--paper-soft)}.home .search{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:12px;padding:9px 12px;min-width:300px;background:#fff}.home .search input{border:0;outline:0;background:transparent;font:inherit;width:100%}.home .filters{display:flex;flex-wrap:wrap;gap:7px}.home .filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;color:#5f5b50;cursor:pointer;transition:.18s}.home .filter.active,.home .filter:hover{background:var(--navy);color:#fff;border-color:var(--navy)}.home .count{font-size:12px;color:var(--muted);white-space:nowrap}.home .article-grid{display:grid;grid-template-columns:repeat(2,1fr)}.home .article{padding:22px;border-bottom:1px solid var(--line);text-decoration:none;min-height:150px;transition:.2s}.home .article:nth-child(odd){border-right:1px solid var(--line)}.home .article:hover{background:var(--paper-soft)}.home .article .tag{display:inline-flex;padding:4px 9px;border-radius:999px;background:var(--gold-soft);color:var(--gold-deep);font-size:10px;font-weight:750;letter-spacing:.03em}.home .article .n{display:block;font-family:var(--mono);font-size:10px;color:#a39c8a;margin-bottom:9px;font-weight:700}.home .article h3{font-family:var(--serif);font-weight:600;font-size:19px;line-height:1.18;letter-spacing:-.01em;margin:10px 0 7px;color:var(--ink)}.home .article p{font-size:13px;color:var(--muted);margin:0}.home .read{display:block;font-size:12px;font-weight:750;color:var(--gold-deep);margin-top:15px}
-.home .card .tag{background:var(--gold-soft);color:var(--gold-deep)}.home .card:hover{border-color:var(--gold-soft)}
-.home footer{background:var(--navy);color:#a9aebb;padding:54px 0;margin-top:14px}.home footer strong{font-family:var(--serif);color:#fff;font-size:21px;font-weight:600}.home footer a{color:#d7dae2;text-decoration:none}.home footer a:hover{color:var(--gold-soft);text-decoration:underline}.home .footergrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:30px}.home .ft{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft);font-weight:750}.home .footergrid p{line-height:1.8}
-@media(max-width:960px){.home .hero-grid{grid-template-columns:1fr}.home .topics{grid-template-columns:repeat(2,1fr)}.home .tools-grid,.home .quick{grid-template-columns:1fr}.home .search{min-width:220px}.home .footergrid{grid-template-columns:1fr 1fr}}
-@media(max-width:650px){.home .container{padding:0 18px}.home .nav{align-items:flex-start;flex-direction:column;padding:16px 0}.home .navlinks{gap:11px}.home .hero{padding:58px 0 54px}.home .hero h1{font-size:36px}.home .topics,.home .article-grid{grid-template-columns:1fr}.home .article:nth-child(odd){border-right:0}.home .section{padding:52px 0}.home .section-head{align-items:flex-start;flex-direction:column}.home .toolbar{align-items:stretch;flex-direction:column}.home .search{min-width:0}.home .tool-feature{min-height:260px;padding:24px}.home .tool-feature h3{font-size:28px}.home .quick{padding:20px}.home .footergrid{grid-template-columns:1fr}.home .proof-strip{gap:18px}}
-
-/* Pantalla de bienvenida — teaser de lo que viene */
-.home .intro-teaser{min-height:100svh;min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;color:#fff;background:radial-gradient(1300px 700px at 50% -25%,#232a40 0%,var(--navy) 60%),var(--navy)}
-.home .teaser-shapes{position:absolute;inset:0;pointer-events:none}
-.home .tshape{position:absolute;border-radius:26px;box-shadow:0 30px 70px rgba(0,0,0,.4);animation:tfloat 8s ease-in-out infinite}
-.home .ts-a{width:150px;height:150px;right:16%;top:16%;background:linear-gradient(135deg,rgba(255,255,255,.4),transparent 45%),linear-gradient(135deg,#e9cb87,#8a6720);transform:rotate(-10deg)}
-.home .ts-b{width:112px;height:112px;right:30%;top:46%;background:linear-gradient(135deg,rgba(255,255,255,.4),transparent 45%),linear-gradient(135deg,#7fd9c4,#1f6f54);transform:rotate(12deg);animation-delay:-2.6s}
-.home .ts-c{width:92px;height:92px;right:9%;top:58%;background:linear-gradient(135deg,rgba(255,255,255,.4),transparent 45%),linear-gradient(135deg,#a9b8ff,#3d4a6b);transform:rotate(-16deg);animation-delay:-5.2s}
-@keyframes tfloat{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-24px) rotate(var(--r,0deg))}}
-.home .ts-a{--r:-10deg}.home .ts-b{--r:12deg}.home .ts-c{--r:-16deg}
-.home .teaser-in{position:relative;z-index:1;max-width:640px}
-.home .teaser-in .eyebrow{color:var(--gold-soft)}
-.home .teaser-h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,6.4vw,78px);line-height:1.03;letter-spacing:-.02em;margin:16px 0 20px}
-.home .teaser-p{font-size:18px;line-height:1.6;color:#c8cbd8;max-width:520px}
-.home .scroll-cue{display:inline-flex;flex-direction:column;align-items:center;gap:10px;margin-top:46px;color:#aeb5c1;text-decoration:none;font-size:12px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
-.home .scroll-cue:hover{color:#fff}
-.home .scroll-cue svg{animation:cueBounce 1.7s ease-in-out infinite}
-@keyframes cueBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
-@media(max-width:750px){.home .ts-a{width:100px;height:100px;right:8%;top:12%}.home .ts-b{width:78px;height:78px;right:20%;top:58%}.home .ts-c{display:none}}
-/* ===== Premium Future Hero v2 ===== */
-/* ===== Full-width iPhone Liquid Glass navigation ===== */
-.home .site-header{
-  background:linear-gradient(180deg,rgba(255,255,255,.90) 0%,rgba(255,255,255,.72) 100%)!important;
-  border:0!important;
-  border-bottom:1px solid rgba(255,255,255,.88)!important;
-  box-shadow:0 12px 34px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.98)!important;
-  -webkit-backdrop-filter:saturate(190%) blur(28px)!important;
-  backdrop-filter:saturate(190%) blur(28px)!important;
-  padding:8px 0!important;
-}
-.home .site-header:after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(212,175,90,.28),transparent);
-  pointer-events:none;
-}
-.home .site-header .nav{
-  width:min(1160px,calc(100% - 40px))!important;
-  min-height:58px!important;
-  padding:0!important;
-  border-radius:0!important;
-  background:transparent!important;
-  border:0!important;
-  box-shadow:none!important;
-  position:relative!important;
-}
-.home .site-header .nav:before{display:none!important}
-.home .site-header .brand,
-.home .site-header .navlinks,
-.home .site-header .nav-cta{position:relative;z-index:2}
-.home .site-header .brand{color:#101010!important;text-shadow:0 1px 0 rgba(255,255,255,.65)}
-.home .site-header .navlinks a{color:#171717!important}
-.home .site-header .navlinks a:hover{color:#000!important}
-.home .site-header .nav-cta{
-  border-radius:16px!important;
-  background:rgba(255,255,255,.56)!important;
-  border:1px solid rgba(255,255,255,.90)!important;
-  box-shadow:0 8px 22px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.98)!important;
-}
-.home .site-header .nav-cta:hover{background:rgba(255,255,255,.74)!important}
-@media(max-width:700px){
-  .home .site-header{padding:6px 0!important}
-  .home .site-header .nav{width:calc(100% - 24px)!important}
-}
-
-/* ===== iPhone glass finish ===== */
-.home .site-header{
-  background:linear-gradient(180deg,rgba(255,255,255,.82) 0%,rgba(255,255,255,.52) 100%)!important;
-  -webkit-backdrop-filter:saturate(190%) blur(30px)!important;
-  backdrop-filter:saturate(190%) blur(30px)!important;
-  border-bottom:1px solid rgba(255,255,255,.88)!important;
-  box-shadow:0 10px 34px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.98)!important;
-}
-.home .site-header:after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(212,175,90,.28),transparent);
-  pointer-events:none;
-}
-.home .site-header .nav-cta{
-  border-radius:16px!important;
-  background:rgba(255,255,255,.52)!important;
-  border:1px solid rgba(255,255,255,.88)!important;
-  -webkit-backdrop-filter:saturate(180%) blur(16px)!important;
-  backdrop-filter:saturate(180%) blur(16px)!important;
-  box-shadow:0 8px 24px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.95)!important;
-}
-.home .site-header .nav-cta:hover{
-  background:rgba(255,255,255,.72)!important;
-  box-shadow:0 10px 28px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,1)!important;
-}
-.home .topic,
-.home .card,
-.home .tool-link,
-.home .quick,
-.home .content-shell,
-.home .hero-tool,
-.home .quote{
-  border-radius:26px!important;
-}
-.home .topic,
-.home .card,
-.home .tool-link,
-.home .quick,
-.home .content-shell{
-  background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.045))!important;
-  -webkit-backdrop-filter:saturate(145%) blur(18px)!important;
-  backdrop-filter:saturate(145%) blur(18px)!important;
-  border:1px solid rgba(255,255,255,.15)!important;
-  box-shadow:0 22px 60px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.06)!important;
-  overflow:hidden;
-}
-.home .topic:before,
-.home .card:before,
-.home .tool-link:before,
-.home .quick:before,
-.home .content-shell:before{
-  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-  background:linear-gradient(135deg,rgba(255,255,255,.10),transparent 28%,transparent 72%,rgba(212,175,90,.035));
-}
-.home .topic:hover,
-.home .card:hover,
-.home .tool-link:hover{
-  border-color:rgba(212,175,90,.42)!important;
-  transform:translateY(-5px)!important;
-  box-shadow:0 28px 70px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.09)!important;
-}
-.home .quick-form,
-.home .search,
-.home .filter{
-  border-radius:16px!important;
-  background:rgba(255,255,255,.055)!important;
-  -webkit-backdrop-filter:blur(14px)!important;
-  backdrop-filter:blur(14px)!important;
-  border-color:rgba(255,255,255,.14)!important;
-}
-.home .quick-form input{
-  border-radius:13px!important;
-  background:rgba(255,255,255,.06)!important;
-  border-color:rgba(255,255,255,.12)!important;
-}
-.home .tool-feature{
-  border-radius:26px!important;
-  box-shadow:0 26px 70px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.06)!important;
-}
-.home .notification,
-.home .chat-card,
-.home .calendar-card,
-.home .appointment-chip{
-  border-radius:22px!important;
-  -webkit-backdrop-filter:saturate(150%) blur(18px)!important;
-  backdrop-filter:saturate(150%) blur(18px)!important;
-  box-shadow:0 22px 55px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.10)!important;
-}
-.home .notification{
-  background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.055))!important;
-}
-.home .chat-card{
-  background:linear-gradient(145deg,rgba(22,22,22,.88),rgba(12,12,12,.76))!important;
-}
-
-/* ===== Navigation visibility fix ===== */
-.home .site-header{
-  background:#fff!important;
-  background-image:none!important;
-  color:#111!important;
-  opacity:1!important;
-}
-.home .site-header .brand,
-.home .site-header .navlinks a{
-  color:#111!important;
-}
-.home .site-header .navlinks a:after{background:var(--lux-gold)!important}
-.home .site-header .nav-cta{
-  background:#fff!important;
-  color:#111!important;
-}
-.home .site-header .nav-cta:hover{background:#faf8f1!important;color:#000!important}
-
-/* ===== Light navigation refinement ===== */
-.home .site-header{
-  background:rgba(255,255,255,.97);
-  border-bottom:1px solid rgba(10,10,10,.10);
-  box-shadow:0 8px 28px rgba(0,0,0,.06);
-}
-.home .site-header .brand{color:#0a0a0a}
-.home .site-header .dot{background:var(--lux-gold);box-shadow:0 0 14px rgba(212,175,90,.35)}
-.home .site-header .navlinks a{color:#242424}
-.home .site-header .navlinks a:hover{color:#000}
-.home .site-header .navlinks a:after{background:var(--lux-gold)}
-.home .site-header .nav-cta{
-  color:#171717;
-  border-color:rgba(20,20,20,.20);
-  background:#fff;
-  box-shadow:inset 0 0 0 1px rgba(212,175,90,.10),0 5px 18px rgba(0,0,0,.05);
-}
-.home .site-header .nav-cta:hover{
-  color:#000;
-  background:#faf8f1;
-  border-color:rgba(212,175,90,.65);
-}
-
-.home .site-header .nav{min-height:74px}
-.home .nav-cta{display:inline-flex;align-items:center;gap:9px;padding:10px 15px;border:1px solid rgba(212,175,90,.48);border-radius:12px;color:var(--lux-gold-bright);text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.02em;box-shadow:inset 0 0 0 1px rgba(212,175,90,.06),0 0 28px rgba(212,175,90,.06);transition:.25s}
-.home .nav-cta span{font-size:15px}.home .nav-cta:hover{background:rgba(212,175,90,.1);border-color:var(--lux-gold-bright);transform:translateY(-1px)}
-.home .future-layout{width:min(1380px,calc(100% - 64px));max-width:none;margin:0 auto;padding:0;display:grid;grid-template-columns:minmax(460px,.86fr) minmax(600px,1.14fr);gap:44px;align-items:center;min-height:calc(100svh - 74px);position:relative;z-index:5}
-.home .future-copy{padding:28px 0 38px;position:relative;z-index:8}
-.home .future-copy .teaser-h1{max-width:660px;font-size:clamp(54px,5.75vw,88px);line-height:.92;margin:20px 0 25px;letter-spacing:-.06em}
-.home .future-copy .teaser-p{font-size:17px;line-height:1.65;max-width:560px;color:#b7b7b1}
-.home .future-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:34px;max-width:620px}
-.home .future-proof span{padding:0 18px 0 0;border-right:1px solid rgba(255,255,255,.10);display:grid;gap:3px}
-.home .future-proof span+span{padding-left:18px}.home .future-proof span:last-child{border-right:0}
-.home .future-proof b{font:700 10px var(--mono);color:var(--lux-gold-bright);letter-spacing:.1em}
-.home .future-proof strong{font-size:12px;color:#eee;font-weight:750}.home .future-proof small{font-size:10px;color:#686864;line-height:1.35}
-.home .future-demo{height:690px;position:relative;min-width:0;display:flex;align-items:center;justify-content:center;perspective:1500px;overflow:visible}
-.home .demo-halo{position:absolute;border-radius:50%;pointer-events:none}
-.home .demo-halo-a{width:620px;height:620px;background:radial-gradient(circle,rgba(212,175,90,.13) 0%,rgba(212,175,90,.04) 35%,transparent 68%);filter:blur(2px);animation:haloBreath 5s ease-in-out infinite}
-.home .demo-halo-b{width:470px;height:470px;border:1px solid rgba(212,175,90,.12);box-shadow:0 0 80px rgba(212,175,90,.08),inset 0 0 60px rgba(212,175,90,.03);animation:haloRotate 18s linear infinite}
-@keyframes haloBreath{50%{transform:scale(1.08);opacity:.72}}@keyframes haloRotate{to{transform:rotate(360deg)}}
-.home .demo-orbit{position:absolute;width:560px;height:560px;border-radius:50%;border:1px solid rgba(255,255,255,.08);transform:rotate(12deg) scaleY(.6);box-shadow:0 0 0 1px rgba(212,175,90,.035);animation:orbitDrift 9s ease-in-out infinite}
-.home .demo-orbit:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--lux-gold-bright);box-shadow:0 0 20px rgba(212,175,90,.85);left:10%;top:13%}
-@keyframes orbitDrift{50%{transform:rotate(-8deg) scaleY(.6) translateY(-6px)}}
-.home .demo-label{position:absolute;top:74px;right:4%;display:flex;align-items:center;gap:10px;color:#6b6b66;font:700 9px var(--mono);letter-spacing:.2em}
-.home .demo-label i{display:block;width:32px;height:1px;background:rgba(212,175,90,.45)}
-.home .story-progress{position:absolute;top:99px;right:4%;display:flex;gap:6px;z-index:9}
-.home .story-progress i{width:42px;height:2px;background:rgba(255,255,255,.15);overflow:hidden}
-.home .story-progress i:after{content:"";display:block;width:0;height:100%;background:var(--lux-gold-bright)}
-.home .story-progress i:nth-child(1):after{animation:progressOne 13.5s linear infinite}.home .story-progress i:nth-child(2):after{animation:progressTwo 13.5s linear infinite}.home .story-progress i:nth-child(3):after{animation:progressThree 13.5s linear infinite}
-@keyframes progressOne{0%,30%{width:100%}30.1%,100%{width:0}}@keyframes progressTwo{0%,33%{width:0}33.1%,63%{width:100%}63.1%,100%{width:0}}@keyframes progressThree{0%,66%{width:0}66.1%,96%{width:100%}96.1%,100%{width:0}}
-.home .story-slides{position:relative;width:100%;height:100%;z-index:8}
-.home .story-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:15px;opacity:0;pointer-events:none;will-change:transform,opacity;animation:storyPremium 13.5s cubic-bezier(.2,.65,.2,1) infinite}
-.home .story-slide.story-itv{animation-delay:0s}.home .story-slide.story-health{animation-delay:4.5s}.home .story-slide.story-bot{animation-delay:9s}
-@keyframes storyPremium{
-0%{opacity:0;transform:translateX(-110px) scale(.96)}
-5%,28%{opacity:1;transform:translateX(0) scale(1)}
-33%,36%{opacity:0;transform:translateX(150px) scale(.96)}
-100%{opacity:0;transform:translateX(-110px) scale(.96)}
-}
-.home .phone-wrap{position:relative;transform:rotate(-4deg);transition:transform .4s}
-.home .story-health .phone-wrap{transform:rotate(3deg) translateY(2px)}.home .phone-shadow{position:absolute;left:9%;right:9%;bottom:-28px;height:55px;border-radius:50%;background:rgba(0,0,0,.8);filter:blur(18px);opacity:.9}
-.home .phone{width:300px;height:574px;border:1.5px solid rgba(255,255,255,.5);border-radius:45px;background:linear-gradient(155deg,#242424 0%,#080808 45%,#141414 100%);box-shadow:0 45px 110px rgba(0,0,0,.8),0 0 0 7px rgba(255,255,255,.025),0 0 0 1px rgba(212,175,90,.12),inset 0 1px 0 rgba(255,255,255,.16);padding:25px 18px 18px;position:relative;overflow:hidden}
-.home .phone:after{content:"";position:absolute;inset:0;border-radius:43px;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.12),transparent 18%,transparent 70%,rgba(212,175,90,.09));mix-blend-mode:screen}
-.home .phone-top{display:flex;justify-content:space-between;color:#f2f2ee;font:700 9px var(--mono);padding:4px 9px 0;position:relative;z-index:3}
-.home .phone-island{position:absolute;top:10px;left:50%;width:96px;height:21px;transform:translateX(-50%);background:#050505;border-radius:20px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);z-index:4}
-.home .phone-date{font:700 8px var(--mono);letter-spacing:.15em;color:#666660;margin:36px 8px 18px}
-.home .notification{position:relative;z-index:3;margin:0 4px;padding:18px;border-radius:21px;background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.045));border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 45px rgba(0,0,0,.4)}
-.home .notif-head{display:flex;align-items:center;gap:10px}.home .notif-head>div:nth-child(2){display:flex;flex-direction:column;gap:2px;flex:1}.home .notification strong{font-size:12px;color:#fff}.home .notification small{color:#777;font-size:8px;margin-left:auto}
-.home .notif-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:var(--lux-gold);color:#080808;font-size:17px}
-.home .notification h3{margin:23px 0 0;color:#fff;font:600 25px/1.02 var(--editorial-serif);letter-spacing:-.03em}
-.home .notification p{color:#aaa;font-size:10.5px;line-height:1.55;margin:12px 0 17px}
-.home .notification button{width:100%;border:0;border-radius:10px;padding:11px;background:var(--lux-gold);color:#080808;font-weight:800;font-size:10.5px;cursor:pointer}
-.home .notification button span{float:right;font-size:13px}.home .notification.health .notif-icon{background:#efefeb;color:#111}
-.home .appointment-chip{margin:14px 4px 0;padding:12px;border-radius:14px;background:#0d0d0d;border:1px solid rgba(255,255,255,.10);display:grid;grid-template-columns:1fr 1fr;gap:4px}
-.home .appointment-chip span{grid-column:1/-1;color:#73736e;font:700 7px var(--mono);letter-spacing:.14em}.home .appointment-chip strong{font-size:10px;color:#f0f0ec}.home .appointment-chip small{font-size:8px;color:#777;text-align:right}
-.home .phone-footer{position:absolute;bottom:18px;left:42px;right:42px;display:flex;justify-content:space-between;color:#50504c;font-size:13px;z-index:3}.home .phone-footer .active{color:var(--lux-gold-bright)}
-.home .story-caption{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;position:relative;z-index:9}
-.home .story-kicker{font:700 8px var(--mono);letter-spacing:.18em;color:var(--lux-gold-bright)}
-.home .story-caption strong{font-size:14px;color:#efefeb}.home .story-caption small{font-size:10px;color:#696965}
-.home .bot-stage{position:relative;display:grid;place-items:center;margin-top:6px}
-.home .bot-device{width:162px;height:162px;border-radius:40px;background:linear-gradient(145deg,#e7c968,#7f5a18);box-shadow:0 32px 85px rgba(212,175,90,.2),inset 0 1px 0 rgba(255,255,255,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transform:rotate(-5deg);animation:botFloat 3.2s ease-in-out infinite}
-.home .bot-head{width:90px;height:59px;border-radius:24px;background:#101010;border:1px solid #73736d;display:flex;align-items:center;justify-content:center;gap:17px;box-shadow:inset 0 0 18px rgba(255,255,255,.04)}
-.home .bot-eye{width:9px;height:9px;border-radius:50%;background:var(--lux-gold-bright);box-shadow:0 0 13px var(--lux-gold)}
-.home .bot-body{font:700 10px var(--mono);color:#151515;letter-spacing:.15em}
-.home .signal-dot{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--lux-gold-bright);box-shadow:0 0 12px rgba(212,175,90,.8)}.home .signal-dot.s1{top:20%;left:25%;animation:signal1 2s ease-in-out infinite}.home .signal-dot.s2{right:22%;bottom:13%;animation:signal2 2.3s -.7s ease-in-out infinite}
-@keyframes botFloat{50%{transform:translateY(-10px) rotate(3deg)}}@keyframes signal1{50%{transform:translate(18px,-10px);opacity:.35}}@keyframes signal2{50%{transform:translate(-14px,9px);opacity:.3}}
-.home .chat-card{width:315px;padding:14px;border-radius:22px;background:rgba(15,15,15,.97);border:1px solid rgba(255,255,255,.13);box-shadow:0 32px 80px rgba(0,0,0,.62)}
-.home .chat-kicker{font:700 8px var(--mono);letter-spacing:.18em;color:var(--lux-gold-bright);margin-bottom:12px}.home .chat-user,.home .chat-bot{padding:11px 12px;border-radius:14px;font-size:10.5px;line-height:1.5;margin-bottom:9px}
-.home .chat-user{background:#242424;color:#ddd;margin-left:24px}.home .chat-bot{background:rgba(212,175,90,.11);color:#eee;margin-right:20px;border:1px solid rgba(212,175,90,.16)}.home .chat-bot b{color:var(--lux-gold-bright);font-size:9px}
-.home .calendar-card{display:flex;align-items:center;gap:9px;padding:11px;border-radius:12px;background:#0b0b0b;border:1px solid rgba(255,255,255,.1);color:#eee}.home .calendar-card>span{color:var(--lux-gold-bright);font-size:18px}.home .calendar-card div{display:flex;flex-direction:column;gap:3px}.home .calendar-card b{font-size:10px}.home .calendar-card small{font-size:9px;color:#777}.home .calendar-card em{font-style:normal;margin-left:auto;color:#83d39a}
-.home .reminder-row{display:flex;align-items:center;gap:7px;font-size:9.5px;color:#aaa;padding:8px 2px 0}.home .reminder-row b{margin-left:auto;color:#83d39a}
-.home .notif-icon.car{font:800 8px var(--mono);letter-spacing:.02em}.home .reminder-row>span{width:16px;height:16px;border:1px solid rgba(212,175,90,.45);border-radius:50%;display:grid;place-items:center;color:var(--lux-gold-bright);font-size:9px}
-@media(max-width:1180px){
-  .home .future-layout{width:min(1100px,calc(100% - 44px));grid-template-columns:minmax(410px,.92fr) minmax(500px,1.08fr);gap:22px}
-  .home .future-copy .teaser-h1{font-size:clamp(50px,6vw,78px)}
-  .home .phone{width:270px;height:520px}
-  .home .chat-card{width:285px}
-}
-@media(max-width:980px){
-  .home .nav-cta{display:none}
-  .home .future-layout{width:min(740px,calc(100% - 40px));display:block;padding:78px 0 50px;min-height:auto}
-  .home .future-copy{padding:0}
-  .home .future-copy .teaser-h1{max-width:650px}
-  .home .future-demo{height:650px;margin-top:5px}
-  .home .demo-label{top:20px;right:2%}.home .story-progress{top:45px;right:2%}
-}
-@media(max-width:650px){
-  .home .future-layout{width:calc(100% - 32px);padding:68px 0 34px}
-  .home .future-copy .teaser-h1{font-size:clamp(44px,13vw,66px)}
-  .home .future-copy .teaser-p{font-size:15px}.home .future-proof{grid-template-columns:1fr;gap:12px;max-width:300px}.home .future-proof span,.home .future-proof span+span{border-right:0;border-top:1px solid rgba(255,255,255,.08);padding:11px 0 0}.home .future-proof span:first-child{border-top:0;padding-top:0}
-  .home .future-demo{height:560px}.home .phone{width:235px;height:452px;border-radius:38px}.home .notification h3{font-size:21px}.home .demo-halo-a{width:420px;height:420px}.home .demo-halo-b{width:350px;height:350px}.home .demo-orbit{width:370px;height:370px}.home .chat-card{width:270px}.home .story-caption{max-width:280px}
-}
-
-@media(prefers-reduced-motion:reduce){.home .tshape{animation:none}.home .scroll-cue svg{animation:none}}
-
-/* ===== FinClaro Black / White / Gold — 23/09/2026 ===== */
-.home{
-  --lux-black:#050505;
-  --lux-black-2:#0b0b0b;
-  --lux-card:#101010;
-  --lux-line:rgba(255,255,255,.12);
-  --lux-white:#f7f7f5;
-  --lux-muted:#a4a4a0;
-  --lux-gold:#d4af5a;
-  --lux-gold-bright:#f1d58b;
-  background:var(--lux-black);
-  color:var(--lux-white);
-}
-.home .site-header{
-  background:rgba(5,5,5,.78);
-  border-bottom:1px solid rgba(255,255,255,.08);
-  backdrop-filter:blur(18px);
-}
-.home .brand{color:#fff}
-.home .dot{background:var(--lux-gold);box-shadow:0 0 16px rgba(212,175,90,.45)}
-.home .navlinks a{color:#b9b9b5}
-.home .navlinks a:hover{color:#fff}
-.home .navlinks a:after{background:var(--lux-gold)}
-.home .intro-teaser{
-  min-height:100svh;min-height:100vh;
-  display:flex;align-items:center;position:relative;overflow:hidden;
-  color:#fff;
-  background:
-    radial-gradient(700px 500px at 78% 42%,rgba(212,175,90,.12),transparent 65%),
-    radial-gradient(900px 600px at 15% 0%,rgba(255,255,255,.055),transparent 62%),
-    #050505;
-}
-.home .intro-teaser:before{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:.32;
-  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:48px 48px;
-  mask-image:linear-gradient(to bottom,black,transparent 90%);
-}
-.home .teaser-in{position:relative;z-index:5;max-width:760px;padding-top:30px}
-.home .teaser-in .eyebrow{color:var(--lux-gold-bright);letter-spacing:.22em}
-.home .teaser-h1{
-  font-family:var(--editorial-serif);
-  font-size:clamp(48px,6.6vw,88px);
-  line-height:.94;letter-spacing:-.055em;font-weight:600;
-  margin:18px 0 24px;max-width:790px;
-  animation:luxTitle .9s cubic-bezier(.2,.7,.2,1) both;
-}
-.home .teaser-p{
-  color:#bdbdb8;font-size:18px;line-height:1.65;max-width:580px;
-  animation:luxFade .9s .14s ease both;
-}
-.home .teaser-actions{
-  display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px;
-  animation:luxFade .9s .24s ease both;
-}
-.home .teaser-actions .button.light{
-  background:var(--lux-gold);color:#070707;border:0;
-  box-shadow:0 12px 40px rgba(212,175,90,.18);
-}
-.home .teaser-actions .button.light:hover{background:var(--lux-gold-bright);transform:translateY(-2px)}
-.home .teaser-actions .button.light span{margin-left:10px;font-size:18px}
-.home .teaser-note{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#777772}
-.home .teaser-grid{position:absolute;inset:0;pointer-events:none;perspective:1200px}
-.home .tblock{
-  position:absolute;display:block;border-radius:24px;
-  transform-style:preserve-3d;
-  box-shadow:0 35px 90px rgba(0,0,0,.58);
-}
-.home .tblock:before,.home .tblock:after,.home .tblock i{
-  content:"";position:absolute;display:block;border-radius:inherit;
-}
-.home .tblock-1{width:205px;height:205px;right:15%;top:23%;transform:rotateX(58deg) rotateZ(-28deg);background:linear-gradient(145deg,#f2d994,#8f6b24);animation:luxFloat1 8s ease-in-out infinite}
-.home .tblock-1:after{inset:18px;background:linear-gradient(145deg,#17130a,#0a0907);transform:translateZ(22px)}
-.home .tblock-2{width:145px;height:145px;right:31%;top:48%;transform:rotateX(58deg) rotateZ(19deg);background:linear-gradient(145deg,#d9d9d5,#555550);animation:luxFloat2 7s -2s ease-in-out infinite}
-.home .tblock-2:after{inset:14px;background:#121212;transform:translateZ(18px)}
-.home .tblock-3{width:125px;height:125px;right:7%;top:55%;transform:rotateX(58deg) rotateZ(-14deg);background:linear-gradient(145deg,#fff4cf,#9d762a);animation:luxFloat3 9s -4s ease-in-out infinite}
-.home .tblock-3:after{inset:13px;background:#0b0b0b;transform:translateZ(16px)}
-.home .tblock-4{width:72px;height:72px;right:43%;top:25%;border-radius:18px;background:linear-gradient(145deg,#fff,#b8b8b2);transform:rotateX(58deg) rotateZ(-15deg);opacity:.7;animation:luxFloat4 6s -1s ease-in-out infinite}
-.home .tblock-4:after{inset:9px;background:#171717;transform:translateZ(12px)}
-.home .teaser-glow{
-  position:absolute;width:500px;height:500px;right:8%;top:17%;
-  border-radius:50%;background:radial-gradient(circle,rgba(212,175,90,.16),transparent 66%);
-  filter:blur(12px);animation:luxPulse 5s ease-in-out infinite;
-}
-@keyframes luxTitle{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
-@keyframes luxFade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes luxFloat1{0%,100%{margin-top:0;transform:rotateX(58deg) rotateZ(-28deg)}50%{margin-top:-22px;transform:rotateX(58deg) rotateZ(-25deg)}}
-@keyframes luxFloat2{0%,100%{margin-top:0;transform:rotateX(58deg) rotateZ(19deg)}50%{margin-top:18px;transform:rotateX(58deg) rotateZ(23deg)}}
-@keyframes luxFloat3{0%,100%{margin-top:0;transform:rotateX(58deg) rotateZ(-14deg)}50%{margin-top:-15px;transform:rotateX(58deg) rotateZ(-10deg)}}
-@keyframes luxFloat4{0%,100%{margin-top:0;transform:rotateX(58deg) rotateZ(-15deg)}50%{margin-top:20px;transform:rotateX(58deg) rotateZ(-8deg)}}
-@keyframes luxPulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.08)}}
-
-.home .hero{
-  background:
-    radial-gradient(650px 500px at 82% 45%,rgba(212,175,90,.09),transparent 65%),
-    #090909;
-  border-top:1px solid rgba(255,255,255,.08);
-}
-.home .hero h1,.home .section h2,.home .topic h3,.home .tool-feature h3,.home .tool-link h3,.home .quick h3,.home .article h3{
-  color:#fff;
-}
-.home .hero p:not(.eyebrow),.home .section-head>div:last-child,.home .topic p,.home .article p,.home .tool-link span,.home .quick p{
-  color:#a9a9a4;
-}
-.home .hero .eyebrow,.home .eyebrow{color:var(--lux-gold-bright)}
-.home .hero .button.light{background:var(--lux-gold);color:#080808}
-.home .hero .button.outline{border-color:rgba(255,255,255,.18);color:#fff}
-.home .hero .button.outline:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.32)}
-.home .hero-tool{
-  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.13);
-  box-shadow:0 35px 90px rgba(0,0,0,.55);
-}
-.home .ht-tab{color:#aaa}
-.home .ht-tab.active{background:var(--lux-gold);color:#090909}
-.home .ht-panel input[type=range]{accent-color:var(--lux-gold)}
-.home .ht-result{background:rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.07)}
-.home .ht-result strong,.home .ht-val{color:var(--lux-gold-bright)}
-.home .ht-more{color:var(--lux-gold-bright)}
-.home .section{background:#090909;border-top-color:rgba(255,255,255,.08)}
-.home .topics{
-  border-top:1px solid rgba(255,255,255,.12);
-  border-left:1px solid rgba(255,255,255,.12);
-}
-.home .topic,.home .topic:nth-child(n){
-  background:#0b0b0b;color:#fff;border-right:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);
-}
-.home .topic:hover{background:#121212}
-.home .topic .num{color:var(--lux-gold)}
-.home .topic .arrow{color:var(--lux-gold-bright)}
-.home .grid .card,.home .card{
-  background:#0e0e0e;border-color:rgba(255,255,255,.11);color:#fff;
-}
-.home .card:hover,.home .article-card:hover,.home .mini:hover,.home .tool-link:hover{
-  border-color:rgba(212,175,90,.55)!important;box-shadow:0 18px 55px rgba(0,0,0,.4)!important;
-}
-.home .card .tag,.home .pill{background:rgba(212,175,90,.1);color:var(--lux-gold-bright)}
-.home .tools-grid{border-color:rgba(255,255,255,.12)}
-.home .tool-feature{background:#050505}
-.home .tool-link{background:#0e0e0e;border-left-color:rgba(255,255,255,.12)}
-.home .tool-link + .tool-link{border-top-color:rgba(255,255,255,.12)}
-.home .tool-link strong,.home .read{color:var(--lux-gold-bright)}
-.home .content-shell{background:#0e0e0e;border-color:rgba(255,255,255,.12)}
-.home .toolbar{background:#121212;border-bottom-color:rgba(255,255,255,.12)}
-.home .search{background:#090909;border-color:rgba(255,255,255,.14);color:#fff}
-.home .search input{color:#fff}
-.home .filter{background:#101010;border-color:rgba(255,255,255,.14);color:#aaa}
-.home .filter.active,.home .filter:hover{background:var(--lux-gold);border-color:var(--lux-gold);color:#090909}
-.home .article{border-bottom-color:rgba(255,255,255,.1)}
-.home .article:nth-child(odd){border-right-color:rgba(255,255,255,.1)}
-.home .article:hover{background:#141414}
-.home .article .tag{color:var(--lux-gold-bright)}
-.home .quick{background:#101010;border-color:rgba(255,255,255,.12)}
-.home .quick-form{background:#080808;border-color:rgba(255,255,255,.12)}
-.home .quick-form label{color:#aaa}
-.home .quick-form input{background:#111;color:#fff;border-color:rgba(255,255,255,.13)}
-.home .quick-form button{background:var(--lux-gold);color:#080808}
-.home .quick-result{color:#fff}
-.home footer{background:#030303;border-top:1px solid rgba(255,255,255,.1)}
-.home footer a{color:#ddd}
-.home footer strong{color:#fff}
-.home .reveal{opacity:0;transform:translateY(34px) scale(.985);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1)}
-.home .reveal.in{opacity:1;transform:none}
-.home .topic{opacity:0;transform:translateY(34px)}
-.home .topic.in{opacity:1;transform:none}
-.home .hero-copy{animation:luxFade .85s .12s ease both}
-.home .hero-tool{animation:luxFade .85s .25s ease both}
-.home .section-head h2{position:relative}
-.home .section-head h2:after{
-  content:"";display:block;width:42px;height:2px;background:var(--lux-gold);margin-top:18px;
-  box-shadow:0 0 16px rgba(212,175,90,.25);
-}
-@media(max-width:900px){
-  .home .tblock-1{right:7%;top:18%;width:145px;height:145px}
-  .home .tblock-2{right:29%;top:53%;width:105px;height:105px}
-  .home .tblock-3{right:4%;top:63%;width:88px;height:88px}
-  .home .tblock-4{display:none}
-  .home .teaser-in{padding-top:70px}
-}
-@media(max-width:650px){
-  .home .intro-teaser{min-height:92svh}
-  .home .teaser-h1{font-size:clamp(43px,13vw,62px)}
-  .home .teaser-p{font-size:16px}
-  .home .teaser-actions{align-items:flex-start;flex-direction:column}
-  .home .tblock-1{right:-6%;top:14%;width:120px;height:120px;opacity:.75}
-  .home .tblock-2{right:26%;top:63%;width:88px;height:88px;opacity:.65}
-  .home .tblock-3{right:-2%;top:68%;width:75px;height:75px;opacity:.6}
-}
-
-/* ===== Future assistant demo — animated product story ===== */
-.home .future-layout{position:relative;z-index:5;display:grid;grid-template-columns:minmax(0,.88fr) minmax(560px,1.12fr);gap:46px;align-items:center;min-height:100svh}
-.home .future-copy{padding:34px 0 24px}
-.home .future-copy .teaser-h1{max-width:680px}
-.home .future-copy .teaser-p{max-width:600px}
-.home .future-mini-stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:34px;color:#7f7f7b;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
-.home .future-mini-stats span{display:flex;align-items:center;gap:7px}
-.home .future-mini-stats b{color:var(--lux-gold-bright);font-family:var(--mono)}
-.home .future-demo{position:relative;height:650px;min-width:0;perspective:1400px;display:flex;align-items:center;justify-content:center}
-.home .demo-orbit{position:absolute;width:610px;height:610px;border-radius:50%;border:1px solid rgba(212,175,90,.16);box-shadow:0 0 100px rgba(212,175,90,.08),inset 0 0 80px rgba(212,175,90,.035);animation:demoOrbit 12s linear infinite}
-.home .demo-orbit:before,.home .demo-orbit:after{content:"";position:absolute;border-radius:50%;background:var(--lux-gold);box-shadow:0 0 18px rgba(212,175,90,.65)}
-.home .demo-orbit:before{width:6px;height:6px;left:12%;top:17%}.home .demo-orbit:after{width:4px;height:4px;right:13%;bottom:21%}
-@keyframes demoOrbit{to{transform:rotate(360deg)}}
-.home .story-slides{position:relative;width:100%;height:100%;z-index:4}
-.home .story-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:17px;opacity:0;pointer-events:none;animation:storyCycle 13.5s infinite}
-.home .story-slide.story-itv{animation-delay:0s}.home .story-slide.story-health{animation-delay:4.5s}.home .story-slide.story-bot{animation-delay:9s}
-@keyframes storyCycle{
-  0%,26%{opacity:0;transform:translateX(90px) scale(.94)}
-  4%,22%{opacity:1;transform:translateX(0) scale(1)}
-  27%,34%{opacity:0;transform:translateX(180px) scale(.94)}
-  35%,100%{opacity:0;transform:translateX(-100px) scale(.94)}
-}
-.home .story-label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--lux-gold-bright);text-transform:uppercase}
-.home .phone{width:286px;height:548px;border:2px solid #6e6e69;border-radius:42px;background:linear-gradient(155deg,#202020,#070707 48%,#141414);box-shadow:0 35px 90px rgba(0,0,0,.75),0 0 0 7px rgba(255,255,255,.025),inset 0 0 35px rgba(255,255,255,.05);padding:24px 17px 17px;position:relative;overflow:hidden}
-.home .phone:before{content:"";position:absolute;top:8px;left:50%;width:92px;height:20px;transform:translateX(-50%);background:#050505;border-radius:20px;z-index:3}
-.home .phone:after{content:"";position:absolute;inset:0;border-radius:40px;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.12),transparent 20%,transparent 70%,rgba(212,175,90,.07))}
-.home .phone-top{display:flex;justify-content:space-between;color:#f2f2ee;font:700 9px var(--mono);padding:3px 8px 0}
-.home .phone-date{font:700 9px var(--mono);letter-spacing:.13em;color:#686864;margin:32px 7px 16px}
-.home .notification{position:relative;z-index:2;margin:0 3px;padding:17px;border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.045));border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 45px rgba(0,0,0,.35)}
-.home .notification>div:nth-child(2){display:flex;align-items:center;gap:8px}.home .notification strong{font-size:12px;color:#fff}.home .notification small{color:#888;font-size:9px;margin-left:auto}
-.home .notif-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:var(--lux-gold);color:#080808;font-size:17px;float:left;margin-right:9px}
-.home .notification h3{clear:both;padding-top:24px;margin:0;color:#fff;font:600 22px/1.08 var(--editorial-serif);letter-spacing:-.02em}
-.home .notification p{color:#aaa;font-size:11px;line-height:1.55;margin:12px 0 16px}
-.home .notification button{width:100%;border:0;border-radius:10px;padding:11px;background:var(--lux-gold);color:#080808;font-weight:800;font-size:11px}
-.home .notification.health .notif-icon{background:#eee;color:#111}.home .notification.health h3{font-size:21px}
-.home .phone-bottom{position:absolute;bottom:17px;left:38px;right:38px;display:flex;justify-content:space-between;color:#666;font-size:14px}
-.home .story-caption{text-align:center;display:flex;flex-direction:column;gap:4px}.home .story-caption strong{font-size:14px;color:#f2f2ee}.home .story-caption span{font-size:11px;color:#777}
-.home .bot-device{width:150px;height:150px;border-radius:38px;background:linear-gradient(145deg,#e4c66f,#755719);box-shadow:0 25px 70px rgba(212,175,90,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:17px;transform:rotate(-5deg);animation:botFloat 3s ease-in-out infinite}
-.home .bot-head{width:82px;height:55px;border-radius:24px;background:#101010;border:2px solid #777;display:flex;align-items:center;justify-content:center;gap:17px}
-.home .bot-eye{width:9px;height:9px;border-radius:50%;background:var(--lux-gold-bright);box-shadow:0 0 12px var(--lux-gold)}
-.home .bot-body{font:700 11px var(--mono);color:#111;letter-spacing:.1em}
-@keyframes botFloat{50%{transform:translateY(-10px) rotate(3deg)}}
-.home .chat-card{width:300px;padding:14px;border-radius:22px;background:rgba(18,18,18,.96);border:1px solid rgba(255,255,255,.13);box-shadow:0 28px 70px rgba(0,0,0,.55)}
-.home .chat-user,.home .chat-bot{padding:11px 12px;border-radius:14px;font-size:11px;line-height:1.45;margin-bottom:9px}
-.home .chat-user{background:#242424;color:#ddd;margin-left:24px}.home .chat-bot{background:rgba(212,175,90,.12);color:#eee;margin-right:20px;border:1px solid rgba(212,175,90,.16)}.home .chat-bot b{color:var(--lux-gold-bright);font-size:9px}
-.home .calendar-card{display:flex;align-items:center;gap:9px;padding:11px;border-radius:12px;background:#0b0b0b;border:1px solid rgba(255,255,255,.1);color:#eee}.home .calendar-card>span{color:var(--lux-gold-bright);font-size:18px}.home .calendar-card div{display:flex;flex-direction:column;gap:3px}.home .calendar-card b{font-size:10px}.home .calendar-card small{font-size:9px;color:#777}.home .calendar-card em{font-style:normal;margin-left:auto;color:#83d39a}
-.home .reminder-row{display:flex;align-items:center;gap:7px;font-size:10px;color:#aaa;padding:8px 2px 0}.home .reminder-row b{margin-left:auto;color:#83d39a}
-@media(max-width:1050px){.home .future-layout{grid-template-columns:1fr}.home .future-copy{padding-top:85px}.home .future-demo{height:590px;margin-top:-20px}.home .demo-orbit{width:520px;height:520px}}
-@media(max-width:650px){.home .future-layout{display:block}.home .future-copy{padding-top:75px}.home .future-demo{height:600px;margin-top:0}.home .future-copy .teaser-h1{font-size:clamp(43px,13vw,62px)}.home .demo-orbit{width:410px;height:410px}.home .phone{width:245px;height:470px}.home .chat-card{width:270px}.home .future-mini-stats{gap:10px;flex-direction:column}.home .story-caption{max-width:280px}}
-
-@media(prefers-reduced-motion:reduce){
-  .home .tblock,.home .teaser-glow,.home .teaser-h1,.home .teaser-p,.home .teaser-actions,.home .hero-copy,.home .hero-tool,.home .demo-orbit,.home .bot-device{animation:none!important}
-  .home .story-slide{animation:none!important;opacity:0!important;transform:none!important}.home .story-slide.story-itv{opacity:1!important}
-  .home .reveal,.home .topic{transition:none!important;opacity:1!important;transform:none!important}
-}
-
-/* ===== Premium black navigation + hide on scroll ===== */
-.home .site-header{
-  position:sticky!important;
-  top:0!important;
-  z-index:100!important;
-  padding:0!important;
-  min-height:72px!important;
-  background:rgba(7,7,7,.82)!important;
-  border:0!important;
-  border-bottom:1px solid rgba(255,255,255,.09)!important;
-  box-shadow:0 10px 32px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.05)!important;
-  -webkit-backdrop-filter:blur(20px) saturate(140%)!important;
-  backdrop-filter:blur(20px) saturate(140%)!important;
-  transition:transform .38s cubic-bezier(.2,.7,.2,1),opacity .28s ease,box-shadow .25s ease!important;
-  will-change:transform;
-}
-.home .site-header:before{
-  content:""!important;
-  position:absolute!important;inset:0!important;pointer-events:none!important;
-  background:linear-gradient(180deg,rgba(255,255,255,.035),transparent 55%)!important;
-}
-.home .site-header:after{
-  content:""!important;
-  position:absolute!important;left:0!important;right:0!important;bottom:0!important;height:1px!important;
-  background:linear-gradient(90deg,transparent,rgba(212,175,90,.30),transparent)!important;
-}
-.home .site-header.nav-hidden{
-  transform:translateY(-110%)!important;
-  opacity:.98!important;
-  pointer-events:none!important;
-}
-.home .site-header .nav{
-  position:relative!important;
-  z-index:2!important;
-  min-height:72px!important;
-}
-.home .site-header .brand{
-  color:#fff!important;
-  text-shadow:0 1px 8px rgba(0,0,0,.35);
-}
-.home .site-header .dot{
-  background:var(--lux-gold-bright)!important;
-  box-shadow:0 0 14px rgba(212,175,90,.55)!important;
-}
-.home .site-header .navlinks a{
-  color:rgba(255,255,255,.80)!important;
-}
-.home .site-header .navlinks a:hover{
-  color:#fff!important;
-}
-.home .site-header .navlinks a:after{
-  background:var(--lux-gold-bright)!important;
-}
-.home .site-header .nav-cta{
-  background:rgba(255,255,255,.055)!important;
-  color:#fff!important;
-  border:1px solid rgba(255,255,255,.15)!important;
-  box-shadow:0 8px 24px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.08)!important;
-  -webkit-backdrop-filter:blur(14px) saturate(150%)!important;
-  backdrop-filter:blur(14px) saturate(150%)!important;
-}
-.home .site-header .nav-cta:hover{
-  background:rgba(212,175,90,.10)!important;
-  border-color:rgba(212,175,90,.46)!important;
-}
-@media(max-width:700px){
-  .home .site-header,.home .site-header .nav{min-height:64px!important}
-}
+:root{--bg:#07090d;--panel:#0d1118;--panel2:#111721;--text:#f7f5ef;--muted:#a9afba;--gold:#d4af5a;--gold2:#f0d38a;--line:rgba(255,255,255,.10);--serif:"Gelasio",Georgia,serif;--sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6}a{color:inherit}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+.header{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(7,9,13,.66);backdrop-filter:blur(22px) saturate(150%);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font:700 27px var(--serif);letter-spacing:-.04em;text-decoration:none}.brand b{color:var(--gold)}.navlinks{display:flex;gap:24px;align-items:center}.navlinks a{font-size:13px;color:#c5cad3;text-decoration:none}.navlinks a:hover{color:#fff}.navcta{padding:9px 14px;border:1px solid rgba(212,175,90,.45);border-radius:10px;color:#fff!important;background:rgba(212,175,90,.08)}
+.hero{min-height:100svh;display:grid;align-items:center;padding:120px 0 80px;position:relative;overflow:hidden;background:radial-gradient(900px 600px at 72% 42%,rgba(212,175,90,.11),transparent 65%),radial-gradient(700px 500px at 10% 10%,rgba(62,79,119,.20),transparent 65%),var(--bg)}
+.glow{position:absolute;border-radius:50%;filter:blur(1px);pointer-events:none}.g1{width:430px;height:430px;right:-160px;top:130px;background:radial-gradient(circle,rgba(212,175,90,.18),transparent 68%)}.g2{width:320px;height:320px;left:-170px;bottom:-140px;background:radial-gradient(circle,rgba(70,100,160,.16),transparent 68%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center;position:relative;z-index:1}.eyebrow{font-size:11px;letter-spacing:.20em;text-transform:uppercase;font-weight:800;color:var(--gold2)}h1{font:600 clamp(46px,6vw,78px)/1.02 var(--serif);letter-spacing:-.045em;margin:17px 0 22px;max-width:720px}h1 em{font-style:normal;color:var(--gold2)}.lead{font-size:19px;line-height:1.65;color:#c3c8d1;max-width:610px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-weight:800;border-radius:11px;padding:13px 18px;transition:.2s}.btn.primary{background:var(--gold);color:#090b0f;box-shadow:0 12px 35px rgba(212,175,90,.20)}.btn.secondary{border:1px solid var(--line);background:rgba(255,255,255,.035);color:#fff}.btn:hover{transform:translateY(-2px)}.micro{margin-top:16px;color:#737b88;font-size:12px}
+.demo{position:relative}.phone{width:min(330px,100%);margin:auto;border:8px solid #171b23;border-radius:40px;background:#030508;box-shadow:0 35px 90px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.10);overflow:hidden}.notch{width:110px;height:25px;background:#171b23;border-radius:0 0 18px 18px;margin:auto}.screen{padding:24px 18px 25px;min-height:530px;background:linear-gradient(160deg,#10151d,#080b10)}.appbar{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#8e96a4}.appbar strong{color:#fff;font-size:14px}.chat{margin-top:45px}.bubble{max-width:86%;padding:13px 14px;border-radius:17px;margin:10px 0;font-size:13px;line-height:1.45}.user{margin-left:auto;background:#d4af5a;color:#090b0f;border-bottom-right-radius:5px}.bot{background:#171d27;color:#e9ecf1;border-bottom-left-radius:5px;border:1px solid rgba(255,255,255,.06)}.event{margin-top:18px;border:1px solid rgba(212,175,90,.28);background:linear-gradient(145deg,rgba(212,175,90,.13),rgba(255,255,255,.035));border-radius:18px;padding:16px}.event small{color:var(--gold2);font-weight:800;text-transform:uppercase;letter-spacing:.09em}.event strong{display:block;margin-top:7px;font-size:16px}.event span{display:block;color:#aeb5c0;font-size:12px;margin-top:4px}.pulse{display:inline-block;width:7px;height:7px;background:var(--gold);border-radius:50%;margin-right:6px;box-shadow:0 0 0 5px rgba(212,175,90,.10)}
+.section{padding:100px 0}.light{background:#f5f2ea;color:#101217}.section h2{font:600 clamp(34px,4.5vw,54px)/1.05 var(--serif);letter-spacing:-.035em;margin:12px 0 18px}.section-intro{color:#77766f;max-width:650px;font-size:17px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}.step{padding:28px;border:1px solid #dfdacd;border-radius:22px;background:rgba(255,255,255,.52)}.num{font-size:12px;font-weight:800;color:#9a7731;letter-spacing:.15em}.step h3{font:600 26px/1.1 var(--serif);margin:17px 0 9px}.step p{color:#6f6d65;margin:0}
+.dark-section{background:var(--bg);padding:100px 0}.features{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}.feature{border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));padding:23px}.feature h3{font-size:18px;margin:12px 0 7px}.feature p{font-size:13px;color:#9ba2ae;margin:0}.icon{font-size:20px;color:var(--gold2)}
+.faq{max-width:820px;margin-top:35px}.faq details{border-top:1px solid var(--line);padding:20px 0}.faq details:last-child{border-bottom:1px solid var(--line)}.faq summary{cursor:pointer;font-weight:700;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq p{color:#aab0ba;max-width:700px;margin:12px 0 0;font-size:14px}
+.final{padding:100px 0 115px;text-align:center;background:radial-gradient(650px 350px at 50% 20%,rgba(212,175,90,.13),transparent 70%),var(--bg)}.final h2{max-width:760px;margin:10px auto 18px;font-size:clamp(38px,5vw,62px)}.final p{max-width:600px;margin:0 auto;color:#aab0ba}.final .actions{justify-content:center}
+footer{border-top:1px solid var(--line);padding:30px 0;color:#777f8b;font-size:12px}footer .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer a{text-decoration:none;color:#aeb4bf}
+@media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:45px}.demo{order:2}.phone{width:300px}.steps{grid-template-columns:1fr}.features{grid-template-columns:1fr 1fr}.navlinks a:not(.navcta){display:none}}
+@media(max-width:520px){.wrap{width:min(100% - 28px,1160px)}.nav{height:64px}.brand{font-size:24px}.navcta{font-size:12px}.hero{padding-top:105px}.lead{font-size:17px}.phone{width:270px}.screen{min-height:470px}.features{grid-template-columns:1fr}.section,.dark-section,.final{padding:76px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"FinClaro","url":"https://finclaro.es/","inLanguage":"es-ES","description":"Finanzas personales explicadas de forma sencilla."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FinClaro","url":"https://finclaro.es/","logo":"https://finclaro.es/favicon.svg"}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"FinClaro","url":"https://finclaro.es/","description":"Asistente personal por WhatsApp para organizar citas, tareas y recordatorios.","inLanguage":"es-ES","publisher":{"@type":"Organization","name":"FinClaro","url":"https://finclaro.es/"}}
+</script>
 </head>
-<body class="home">
-<header class="site-header"><div class="container nav"><a class="brand" href="/">FinClaro<span class="dot"></span></a><nav class="navlinks" aria-label="Principal"><a href="/ahorro.html">Ahorro</a><a href="/hipotecas.html">Hipotecas</a><a href="/nomina.html">Nómina</a><a href="/inversion.html">Inversión</a><a href="/cuentas.html">Cuentas</a><a href="/prestamos.html">Préstamos</a></nav><a class="nav-cta" href="#finclaroFuture">El proyecto <span>↗</span></a></div></header>
-<main id="main-content">
-<section class="intro-teaser" id="finclaroFuture">
-<div class="teaser-grid" aria-hidden="true">
-  <span class="tblock tblock-1"><i></i></span><span class="tblock tblock-2"><i></i></span><span class="tblock tblock-3"><i></i></span><span class="tblock tblock-4"><i></i></span><span class="teaser-glow"></span>
+<body>
+<header class="header"><div class="wrap nav"><a class="brand" href="/" aria-label="FinClaro inicio">FinClaro<span class="brand"><b>.</b></span></a><nav class="navlinks" aria-label="Navegación principal"><a href="#como-funciona">Cómo funciona</a><a href="#funciones">Funciones</a><a href="#preguntas">Preguntas</a><a class="navcta" href="#espera">Quiero probarlo</a></nav></div></header>
+
+<main>
+<section class="hero">
+<div class="glow g1"></div><div class="glow g2"></div>
+<div class="wrap hero-grid">
+<div>
+<div class="eyebrow">Tu asistente personal por WhatsApp</div>
+<h1>Deja de acordarte de todo.<br><em>FinClaro se encarga.</em></h1>
+<p class="lead">Dile por WhatsApp qué tienes que hacer. FinClaro entiende tu mensaje, organiza la cita o tarea y te recuerda cuándo toca.</p>
+<div class="actions"><a class="btn primary" href="#espera">Quiero probar FinClaro</a><a class="btn secondary" href="#como-funciona">Ver cómo funciona</a></div>
+<p class="micro">En desarrollo · Próximo lanzamiento beta en España</p>
 </div>
-<div class="container future-layout">
-  <div class="future-copy">
-    <span class="eyebrow">TU VIDA. MÁS SIMPLE.</span>
-    <h1 class="teaser-h1">Estamos trabajando en un proyecto para hacerte la vida más fácil.</h1>
-    <p class="teaser-p">Un asistente que recuerda por ti lo importante: ITV, citas médicas, renovaciones y gestiones. Tú escribes qué necesitas. FinClaro lo organiza y te avisa.</p>
-    <div class="teaser-actions">
-      <a class="button light" href="#homeHero">Descubrir FinClaro <span>→</span></a>
-      <span class="teaser-note">Menos olvidos. Más tiempo para ti.</span>
-    </div>
-    <div class="future-proof">
-      <span><b>01</b><strong>Te avisa</strong><small>antes de que se te pase</small></span>
-      <span><b>02</b><strong>Lo organiza</strong><small>sin que tengas que hacerlo</small></span>
-      <span><b>03</b><strong>Se anticipa</strong><small>cuando sea importante</small></span>
-    </div>
-  </div>
-
-  <div class="future-demo" aria-label="Demostración del futuro asistente de FinClaro">
-    <div class="demo-halo demo-halo-a"></div><div class="demo-halo demo-halo-b"></div>
-    <div class="demo-orbit"></div>
-    <div class="demo-label"><span>ASÍ PODRÍA FUNCIONAR</span><i></i></div>
-    <div class="story-progress" aria-hidden="true"><i></i><i></i><i></i></div>
-    <div class="story-slides">
-      <article class="story-slide story-itv">
-        <div class="phone-wrap"><span class="phone-shadow"></span><div class="phone">
-          <div class="phone-top"><span>9:41</span><span>● ● ●</span></div>
-          <div class="phone-island"></div><div class="phone-date">HOY · FINCLARO</div>
-          <div class="notification">
-            <div class="notif-head"><div class="notif-icon car">ITV</div><div><strong>ITV</strong><small>Ahora</small></div></div>
-            <h3>Tu ITV vence en 30 días</h3>
-            <p>Te avisaremos 7 días antes y el mismo día para que no tengas que acordarte.</p>
-            <button>Ver detalles <span>↗</span></button>
-          </div>
-          <div class="phone-footer"><span>⌂</span><span class="active">◉</span><span>□</span></div>
-        </div></div>
-        <div class="story-caption"><span class="story-kicker">01 · AVISO AUTOMÁTICO</span><strong>No tienes que acordarte.</strong><small>FinClaro lo hace por ti.</small></div>
-      </article>
-
-      <article class="story-slide story-health">
-        <div class="phone-wrap"><span class="phone-shadow"></span><div class="phone">
-          <div class="phone-top"><span>9:41</span><span>● ● ●</span></div>
-          <div class="phone-island"></div><div class="phone-date">MARTES · FINCLARO</div>
-          <div class="notification health">
-            <div class="notif-head"><div class="notif-icon">✚</div><div><strong>Centro de Salud</strong><small>Ahora</small></div></div>
-            <h3>Tienes una cita médica</h3>
-            <p>20 de mayo · 10:30 h<br>Centro de Salud</p>
-            <button>Añadir al calendario <span>→</span></button>
-          </div>
-          <div class="appointment-chip"><span>CALENDARIO</span><strong>20 MAY · 10:30</strong><small>Cita médica</small></div>
-          <div class="phone-footer"><span>⌂</span><span class="active">◉</span><span>□</span></div>
-        </div></div>
-        <div class="story-caption"><span class="story-kicker">02 · RECORDATORIO PERSONAL</span><strong>También tus citas.</strong><small>Un aviso justo cuando lo necesitas.</small></div>
-      </article>
-
-      <article class="story-slide story-bot">
-        <div class="bot-stage">
-          <div class="bot-device"><div class="bot-head"><span class="bot-eye"></span><span class="bot-eye"></span></div><div class="bot-body">FINCLARO</div></div>
-          <div class="signal-dot s1"></div><div class="signal-dot s2"></div>
-        </div>
-        <div class="chat-card">
-          <div class="chat-kicker">03 · TU ASISTENTE</div>
-          <div class="chat-user">“Añade una llamada con mi asesor fiscal el lunes a las 16:00.”</div>
-          <div class="chat-bot"><b>FinClaro · ahora</b><br>Listo. He actualizado tu calendario y activado tus avisos.</div>
-          <div class="calendar-card"><span>▣</span><div><b>Lunes · 16:00</b><small>Asesor fiscal</small></div><em>✓</em></div>
-          <div class="reminder-row"><span>◷</span> Aviso 1 día antes <b>✓</b></div>
-          <div class="reminder-row"><span>◷</span> Aviso el mismo día <b>✓</b></div>
-        </div>
-        <div class="story-caption"><span class="story-kicker">AUTOMÁTICO</span><strong>Tú lo pides. Nosotros lo organizamos.</strong><small>Calendario actualizado y avisos activados.</small></div>
-      </article>
-    </div>
-  </div>
+<div class="demo" aria-label="Ejemplo de conversación de FinClaro por WhatsApp">
+<div class="phone"><div class="notch"></div><div class="screen">
+<div class="appbar"><span>9:41</span><strong>FinClaro</strong><span>●●●</span></div>
+<div class="chat">
+<div class="bubble user">El viernes a las 18 tengo que llevar el coche al taller.</div>
+<div class="bubble bot">Hecho. Lo he apuntado y te avisaré antes de que tengas que ir.</div>
+<div class="event"><small><span class="pulse"></span>Evento guardado</small><strong>Llevar el coche al taller</strong><span>Viernes · 18:00 · Taller</span></div>
+<div class="bubble bot">También puedes decirme “cámbialo a las 19” o “cancélalo”.</div>
+</div></div></div>
+</div>
 </div>
 </section>
 
-<section class="hero" id="homeHero"><div class="hero-orbs" aria-hidden="true"><span class="orb orb-a"></span><span class="orb orb-b"></span></div><div class="container hero-grid">
-<div class="hero-copy"><span class="eyebrow">Finanzas personales · España</span><h1>Entender tu dinero puede ser mucho más sencillo.</h1><p>Guías prácticas, calculadoras y explicaciones claras para ahorrar mejor, entender tu nómina, comprar vivienda y tomar decisiones financieras con más información.</p><div class="buttons"><a class="button light" href="#herramientas">Ver calculadoras →</a><a class="button outline" href="#contenidos">Explorar guías</a></div><div class="proof-strip"><div><strong data-count-to="29" data-count-suffix="+">0+</strong><span>Guías claras</span></div><div><strong data-count-to="100" data-count-suffix="%">0%</strong><span>Gratis y sin registro</span></div><div><strong>2026</strong><span>Datos actualizados</span></div></div></div>
-<div class="hero-tool" id="heroTool">
-<div class="hero-tool-tabs"><button class="ht-tab active" data-tool="ahorro" type="button">Ahorro</button><button class="ht-tab" data-tool="hipoteca" type="button">Hipoteca</button><button class="ht-tab" data-tool="nomina" type="button">Nómina</button></div>
-<div class="hero-tool-body">
-<div class="ht-panel active" data-panel="ahorro">
-<label for="hAhorroM">Ahorro mensual <span class="ht-val" id="hAhorroMVal">150 €</span></label><input type="range" id="hAhorroM" min="0" max="1000" step="10" value="150">
-<label for="hAhorroY">Años <span class="ht-val" id="hAhorroYVal">5 años</span></label><input type="range" id="hAhorroY" min="1" max="30" step="1" value="5">
-<div class="ht-result"><span>Total acumulado</span><strong id="hAhorroResult">9.000 €</strong></div>
-</div>
-<div class="ht-panel" data-panel="hipoteca">
-<label for="hHipC">Capital <span class="ht-val" id="hHipCVal">150.000 €</span></label><input type="range" id="hHipC" min="30000" max="500000" step="5000" value="150000">
-<label for="hHipI">Interés (TIN) <span class="ht-val" id="hHipIVal">3,2 %</span></label><input type="range" id="hHipI" min="1" max="6" step="0.1" value="3.2">
-<label for="hHipY">Años <span class="ht-val" id="hHipYVal">25 años</span></label><input type="range" id="hHipY" min="5" max="40" step="1" value="25">
-<div class="ht-result"><span>Cuota mensual estimada</span><strong id="hHipResult">728 €</strong></div>
-</div>
-<div class="ht-panel" data-panel="nomina">
-<label for="hNomB">Sueldo bruto anual <span class="ht-val" id="hNomBVal">28.000 €</span></label><input type="range" id="hNomB" min="12000" max="90000" step="500" value="28000">
-<label for="hNomP">Nº de pagas <span class="ht-val" id="hNomPVal">14</span></label><input type="range" id="hNomP" min="12" max="14" step="2" value="14">
-<div class="ht-result"><span>Neto mensual estimado</span><strong id="hNomResult">1.820 €</strong></div>
+<section class="section light" id="como-funciona">
+<div class="wrap">
+<div class="eyebrow">Así de sencillo</div>
+<h2>Un asistente que entiende lo que le dices.</h2>
+<p class="section-intro">No necesitas aprender a usar otra aplicación. Escribe como hablas y FinClaro convierte tus mensajes en acciones organizadas.</p>
+<div class="steps">
+<article class="step"><div class="num">01 · ESCRIBE</div><h3>Cuéntaselo</h3><p>“El martes tengo médico a las 17” o “el viernes llevo el coche al taller”.</p></article>
+<article class="step"><div class="num">02 · ORGANIZA</div><h3>FinClaro lo entiende</h3><p>Identifica qué tienes que hacer, cuándo, dónde y qué recordatorio necesitas.</p></article>
+<article class="step"><div class="num">03 · TE AVISA</div><h3>No tienes que acordarte</h3><p>Cuando llegue el momento, FinClaro te recuerda lo que tienes pendiente.</p></article>
 </div>
 </div>
-<a class="ht-more" id="htMoreLink" href="/calculadora-ahorro-mensual.html">Calculadora completa →</a>
+</section>
+
+<section class="dark-section" id="funciones">
+<div class="wrap">
+<div class="eyebrow">Una sola misión</div>
+<h2>Que no se te escape lo importante.</h2>
+<p class="section-intro" style="color:#9ba2ae">FinClaro está pensado para quitarte de la cabeza las pequeñas cosas que ocupan espacio todos los días.</p>
+<div class="features">
+<article class="feature"><div class="icon">◷</div><h3>Citas</h3><p>Médico, ITV, taller, reuniones, universidad o cualquier compromiso.</p></article>
+<article class="feature"><div class="icon">✓</div><h3>Tareas</h3><p>Guarda lo que tienes que hacer sin convertirlo en una lista complicada.</p></article>
+<article class="feature"><div class="icon">↗</div><h3>Recordatorios</h3><p>Recibe avisos para llegar a tiempo y no depender de tu memoria.</p></article>
+<article class="feature"><div class="icon">⌂</div><h3>Familia</h3><p>La siguiente evolución: organizar también compromisos y recordatorios compartidos.</p></article>
 </div>
-</div></section>
+</div>
+</section>
 
-<section class="section"><div class="container"><div class="section-head"><div><h2>Empieza por lo que quieres resolver.</h2></div><div>Seis áreas para encontrar rápidamente la información que buscas.</div></div>
-<div class="topics">
-<a class="topic" href="/ahorro.html"><span class="arrow">↗</span><h3>Ahorrar y organizar</h3><p>Presupuesto, ahorro mensual, fondo de emergencia y objetivos.</p></a>
-<a class="topic" href="/hipotecas.html"><span class="arrow">↗</span><h3>Vivienda e hipotecas</h3><p>Cuotas, intereses, financiación y compra de vivienda.</p></a>
-<a class="topic" href="/nomina.html"><span class="arrow">↗</span><h3>Nómina e impuestos</h3><p>Bruto, neto, IRPF y retenciones explicados.</p></a>
-<a class="topic" href="/inversion.html"><span class="arrow">↗</span><h3>Inversión</h3><p>Interés compuesto, DCA, rentabilidad y riesgo.</p></a>
-<a class="topic" href="/cuentas.html"><span class="arrow">↗</span><h3>Cuentas y bancos</h3><p>Cuentas, ahorro, depósitos y transferencias.</p></a>
-<a class="topic" href="/prestamos.html"><span class="arrow">↗</span><h3>Préstamos</h3><p>TIN, TAE, cuotas, comisiones y financiación.</p></a>
-</div></div></section>
+<section class="section light" id="preguntas">
+<div class="wrap">
+<div class="eyebrow">Preguntas frecuentes</div>
+<h2>Lo esencial sobre FinClaro.</h2>
+<div class="faq">
+<details><summary>¿Qué es FinClaro?</summary><p>FinClaro es un asistente personal que permite organizar citas, tareas y recordatorios mediante mensajes en lenguaje natural. Su primera experiencia está pensada alrededor de WhatsApp.</p></details>
+<details><summary>¿Tengo que aprender comandos?</summary><p>No. La idea es que puedas escribir como lo harías con una persona: “El jueves a las 19 tengo dentista” o “cambia el taller a las 20”.</p></details>
+<details><summary>¿FinClaro funciona ya?</summary><p>El producto está en desarrollo. Estamos preparando una beta inicial para usuarios en España.</p></details>
+<details><summary>¿Podré utilizarlo con mi familia?</summary><p>La hoja de ruta contempla funciones para parejas y familias, con eventos compartidos y permisos para cada miembro.</p></details>
+</div>
+</div>
+</section>
 
-<section class="section"><div class="container"><div class="section-head"><div><h2>Lo que está pasando esta semana.</h2></div><div>Actualizaciones útiles para búsquedas que cambian con el calendario económico.</div></div><div class="grid"><a class="card" href="/euribor-septiembre-2026.html"><span class="tag">HIPOTECAS · SEPTIEMBRE 2026</span><h3>Euríbor septiembre 2026: valor y media</h3><p>Último dato disponible, media provisional y efecto orientativo en tu cuota.</p></a><a class="card" href="/cuando-se-cobra-el-paro-octubre-2026.html"><span class="tag">SEPE · OCTUBRE 2026</span><h3>¿Cuándo se cobra el paro en octubre de 2026?</h3><p>Fecha de referencia, calendario y primer día hábil.</p></a><a class="card" href="/alquiler-se-actualiza-octubre-2026-cuanto-puede-subir.html"><span class="tag">ALQUILER · OCTUBRE 2026</span><h3>¿Cuánto puede subir el alquiler en octubre?</h3><p>IRAV, IPC y ejemplo con 1.000 €.</p></a><a class="card" href="/cuando-se-cobra-la-pension-octubre-2026.html"><span class="tag">PENSIONES · OCTUBRE 2026</span><h3>¿Cuándo se cobra la pensión de octubre?</h3><p>Fecha oficial y adelantos bancarios.</p></a><a class="card" href="/impuestos-autonomos-octubre-2026-modelo-130-303.html"><span class="tag">AUTÓNOMOS · OCTUBRE 2026</span><h3>Modelos 130 y 303: fecha límite</h3><p>Calendario fiscal del tercer trimestre.</p></a><a class="card" href="/bce-sube-tipos-septiembre-2026-que-cambia.html"><span class="tag">BCE · SEPTIEMBRE 2026</span><h3>El BCE sube tipos: qué cambia</h3><p>Hipotecas, préstamos y ahorro explicado.</p></a></div></div></section><section class="section" id="herramientas"><div class="container"><div class="section-head"><div><h2>Calcula antes de decidir.</h2></div><div>Convierte una duda financiera en una cifra que puedas entender.</div></div>
-<div class="tools-grid"><div class="tool-feature"><div><span class="tag" style="background:#252a33;color:#d9dde5;padding:5px 9px;border-radius:7px;font-size:10px;font-weight:850">DESTACADA</span><h3>Descubre cuánto puede crecer tu ahorro.</h3><p>Simula capital inicial, aportación mensual, años y una rentabilidad hipotética.</p></div><a class="button light" href="/calculadora-interes-compuesto.html">Abrir calculadora →</a></div><div class="tool-side"><a class="tool-link" href="/calculadora-hipoteca.html"><strong>HIPOTECA</strong><h3>Calcula tu cuota</h3><span>Capital · interés · plazo →</span></a><a class="tool-link" href="/calculadora-sueldo-neto-2026.html"><strong>NÓMINA</strong><h3>Estima tu sueldo neto</h3><span>Bruto · retenciones · neto →</span></a></div></div></div></section>
-
-<section class="section"><div class="container"><div class="quick"><div><h3>Ahorro mensual</h3><p>¿Cuánto acumularías apartando una cantidad fija cada mes? Esta simulación no incluye rentabilidad.</p></div><div class="quick-form"><label for="quickMonthly">Ahorro mensual (€)</label><input id="quickMonthly" type="number" min="0" value="150"><label for="quickYears">Años</label><input id="quickYears" type="number" min="1" value="5"><button id="quickBtn">Calcular ahorro</button><div class="quick-result" id="quickResult">9.000 €</div></div></div></div></section>
-
-<section class="section" id="contenidos"><div class="container"><div class="section-head"><div><h2>Finanzas personales sin jerga.</h2></div><div>Busca una pregunta, filtra por tema y abre directamente la guía que necesitas.</div></div>
-<div class="content-shell"><div class="toolbar"><div class="filters"><button class="filter active" data-filter="todos">Todo</button><button class="filter" data-filter="Ahorro">Ahorro</button><button class="filter" data-filter="Hipotecas">Hipotecas</button><button class="filter" data-filter="Nómina e impuestos">Nómina</button><button class="filter" data-filter="Inversión">Inversión</button><button class="filter" data-filter="Cuentas y bancos">Cuentas</button><button class="filter" data-filter="Préstamos y financiación">Préstamos</button></div><div class="search"><span>⌕</span><input id="search" type="search" placeholder="Buscar en FinClaro…" aria-label="Buscar en FinClaro"></div><div class="count" id="count">29 contenidos</div></div>
-<div class="article-grid" id="articleGrid">
-<a class="article" data-category="Ahorro" data-search="cómo ahorrar dinero cada mes: 12 pasos para empezar controla gastos y automatiza el ahorro." href="/como-ahorrar-dinero-cada-mes-12-pasos.html"><span class="n">01</span><span class="tag">Ahorro</span><h3>Cómo ahorrar dinero cada mes: 12 pasos para empezar</h3><p>Controla gastos y automatiza el ahorro.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Ahorro" data-search="fondo de emergencia: cuántos meses necesitas calcula una reserva adaptada a tus gastos." href="/fondo-de-emergencia-cuantos-meses-gastos-deberias-tener.html"><span class="n">02</span><span class="tag">Ahorro</span><h3>Fondo de emergencia: cuántos meses necesitas</h3><p>Calcula una reserva adaptada a tus gastos.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Ahorro" data-search="cómo hacer un presupuesto mensual desde cero organiza ingresos, gastos y objetivos." href="/como-hacer-un-presupuesto-mensual-desde-cero.html"><span class="n">03</span><span class="tag">Ahorro</span><h3>Cómo hacer un presupuesto mensual desde cero</h3><p>Organiza ingresos, gastos y objetivos.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Ahorro" data-search="regla 50/30/20: qué es y cómo adaptarla una referencia sencilla para ordenar ingresos." href="/regla-50-30-20-como-organizar-tus-ingresos.html"><span class="n">04</span><span class="tag">Ahorro</span><h3>Regla 50/30/20: qué es y cómo adaptarla</h3><p>Una referencia sencilla para ordenar ingresos.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Hipotecas" data-search="cómo calcular una hipoteca: cuota e intereses entiende cuota, capital e intereses." href="/como-calcular-una-hipoteca-cuota-intereses-y-amortizacion.html"><span class="n">05</span><span class="tag">Hipotecas</span><h3>Cómo calcular una hipoteca: cuota e intereses</h3><p>Entiende cuota, capital e intereses.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Hipotecas" data-search="¿cuánto necesito ahorrar para comprar una vivienda? separa entrada, financiación y gastos." href="/cuanto-necesito-ahorrar-para-comprar-una-vivienda-guia.html"><span class="n">06</span><span class="tag">Hipotecas</span><h3>¿Cuánto necesito ahorrar para comprar una vivienda?</h3><p>Separa entrada, financiación y gastos.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Hipotecas" data-search="amortizar hipoteca o invertir compara deuda, inversión, riesgo y liquidez." href="/amortizar-hipoteca-o-invertir-como-comparar-ambas-opciones.html"><span class="n">07</span><span class="tag">Hipotecas</span><h3>Amortizar hipoteca o invertir</h3><p>Compara deuda, inversión, riesgo y liquidez.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Nómina e impuestos" data-search="sueldo bruto y sueldo neto qué significa cada cifra de tu nómina." href="/sueldo-bruto-y-sueldo-neto-diferencias-y-como-calcularlos.html"><span class="n">08</span><span class="tag">Nómina e impuestos</span><h3>Sueldo bruto y sueldo neto</h3><p>Qué significa cada cifra de tu nómina.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Nómina e impuestos" data-search="qué es el irpf y cómo afecta a tu nómina retenciones, impuesto y salario neto." href="/que-es-el-irpf-y-como-afecta-a-tu-nomina.html"><span class="n">09</span><span class="tag">Nómina e impuestos</span><h3>Qué es el IRPF y cómo afecta a tu nómina</h3><p>Retenciones, impuesto y salario neto.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Nómina e impuestos" data-search="¿cuánto irpf me tienen que retener? cómo comprobar la retención." href="/cuanto-irpf-me-tienen-que-retener.html"><span class="n">10</span><span class="tag">Nómina e impuestos</span><h3>¿Cuánto IRPF me tienen que retener?</h3><p>Cómo comprobar la retención.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Inversión" data-search="interés compuesto: qué es y cómo calcularlo capitalización, tiempo y aportaciones." href="/interes-compuesto-que-es-como-funciona-y-como-calcularlo.html"><span class="n">11</span><span class="tag">Inversión</span><h3>Interés compuesto: qué es y cómo calcularlo</h3><p>Capitalización, tiempo y aportaciones.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Inversión" data-search="dca: qué es y cómo funciona aportaciones periódicas y sus límites." href="/dca-que-es-y-como-funciona.html"><span class="n">12</span><span class="tag">Inversión</span><h3>DCA: qué es y cómo funciona</h3><p>Aportaciones periódicas y sus límites.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Cuentas y bancos" data-search="cuenta corriente, ahorro y depósito liquidez, remuneración y protección." href="/cuenta-corriente-cuenta-de-ahorro-y-deposito-diferencias-y-usos.html"><span class="n">13</span><span class="tag">Cuentas y bancos</span><h3>Cuenta corriente, ahorro y depósito</h3><p>Liquidez, remuneración y protección.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Cuentas y bancos" data-search="cómo elegir una cuenta bancaria comisiones, requisitos y remuneración." href="/cuenta-y-ahorro.html"><span class="n">14</span><span class="tag">Cuentas y bancos</span><h3>Cómo elegir una cuenta bancaria</h3><p>Comisiones, requisitos y remuneración.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Cuentas y bancos" data-search="qué es el iban, bic y swift códigos bancarios y transferencias." href="/que-es-el-iban-el-bic-y-el-swift.html"><span class="n">15</span><span class="tag">Cuentas y bancos</span><h3>Qué es el IBAN, BIC y SWIFT</h3><p>Códigos bancarios y transferencias.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Préstamos y financiación" data-search="qué es el tin y qué es la tae diferencias y comparación de ofertas." href="/que-es-el-tin-y-que-es-la-tae-diferencias-con-ejemplos.html"><span class="n">16</span><span class="tag">Préstamos y financiación</span><h3>Qué es el TIN y qué es la TAE</h3><p>Diferencias y comparación de ofertas.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Préstamos y financiación" data-search="tae vs tin antes de contratar qué revisar antes de firmar." href="/tae-vs-tin-que-debes-mirar-antes-de-contratar-un-prestamo.html"><span class="n">17</span><span class="tag">Préstamos y financiación</span><h3>TAE vs TIN antes de contratar</h3><p>Qué revisar antes de firmar.</p><span class="read">Leer guía →</span></a>
-<a class="article" data-category="Nómina e impuestos" data-search="2000 euros brutos al mes cuánto es neto 2026 sueldo neto 2000 brutos 12 14 pagas." href="/2000-euros-brutos-cuanto-es-neto-2026.html"><span class="n">18</span><span class="tag">Nómina</span><h3>2.000 € brutos al mes: ¿cuánto es neto en 2026?</h3><p>Ejemplo y cálculo con 12 y 14 pagas.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Nómina e impuestos" data-search="30000 euros brutos al año cuánto es neto 2026 sueldo neto 30000 brutos 12 14 pagas." href="/30000-euros-brutos-cuanto-es-neto-2026.html"><span class="n">19</span><span class="tag">Nómina</span><h3>30.000 € brutos al año: ¿cuánto es neto en 2026?</h3><p>Ejemplo y cálculo del salario neto.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Nómina e impuestos" data-search="cuándo se cobra la pensión septiembre 2026 fechas por banco." href="/cuando-se-cobra-la-pension-septiembre-2026.html"><span class="n">20</span><span class="tag">Prestaciones</span><h3>¿Cuándo se cobra la pensión de septiembre de 2026?</h3><p>Fechas oficiales y adelantos bancarios.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Hipotecas" data-search="alquiler octubre 2026 cuánto puede subir renta irav agosto 2026 ipc contrato." href="/alquiler-se-actualiza-octubre-2026-cuanto-puede-subir.html"><span class="n">21</span><span class="tag">Hipotecas</span><h3>Alquiler octubre 2026: ¿cuánto puede subir la renta?</h3><p>IRAV, IPC y fecha del contrato.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Nómina e impuestos" data-search="cuándo se cobra la pensión octubre 2026 fecha oficial banco septiembre 22 25." href="/cuando-se-cobra-la-pension-octubre-2026.html"><span class="n">22</span><span class="tag">Prestaciones</span><h3>¿Cuándo se cobra la pensión en octubre de 2026?</h3><p>Fecha oficial y adelanto por banco.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Nómina e impuestos" data-search="paga extra pensiones noviembre 2026 cuánto se cobra 14 pagas." href="/paga-extra-pensiones-noviembre-2026-cuanto-se-cobra.html"><span class="n">23</span><span class="tag">Prestaciones</span><h3>Paga extra de pensiones noviembre 2026</h3><p>Cuándo se cobra y cuánto puede ser.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Nómina e impuestos" data-search="ingreso mínimo vital imv octubre 2026 cuándo se cobra pago." href="/cuando-se-cobra-el-imv-octubre-2026.html"><span class="n">24</span><span class="tag">Prestaciones</span><h3>¿Cuándo se cobra el IMV en octubre de 2026?</h3><p>Ventana de pago y días hábiles.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Nómina e impuestos" data-search="impuestos autónomos octubre 2026 modelo 130 modelo 303 tercer trimestre plazo 20 octubre." href="/impuestos-autonomos-octubre-2026-modelo-130-303.html"><span class="n">25</span><span class="tag">Autónomos</span><h3>Impuestos de autónomos en octubre de 2026</h3><p>Modelos 130, 303 y plazos.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Hipotecas" data-search="bce sube tipos septiembre 2026 25 puntos básicos 2,50 2,65 2,90 ahorro hipotecas." href="/bce-sube-tipos-septiembre-2026-que-cambia.html"><span class="n">26</span><span class="tag">Actualidad</span><h3>El BCE sube los tipos en septiembre de 2026</h3><p>Qué cambia para hipotecas y ahorro.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Ahorro" data-search="inflación agosto 2026 ipc 4,3 subyacente 2,9 transporte 9,5 ahorro." href="/inflacion-agosto-2026-4-3-que-significa.html"><span class="n">27</span><span class="tag">Ahorro</span><h3>Inflación en España: IPC de agosto 2026</h3><p>4,3 % y efecto sobre el presupuesto.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Ahorro" data-search="vuelta al cole 2026 coste 2484 euros por hijo público concertado privado." href="/cuanto-cuesta-vuelta-al-cole-2026.html"><span class="n">28</span><span class="tag">Ahorro</span><h3>Cuánto cuesta la vuelta al cole 2026</h3><p>Gasto por hijo y cómo repartirlo.</p><span class="read">Leer guía →</span></a><a class="article" data-category="Hipotecas" data-search="euribor octubre 2026 fecha publicación 3 noviembre 2026 previsión media mensual." href="/euribor-octubre-2026-prevision-fecha-dato.html"><span class="n">29</span><span class="tag">Hipotecas</span><h3>Euríbor octubre 2026: fecha y qué se sabe</h3><p>Cuándo se publicará el dato oficial.</p><span class="read">Leer guía →</span></a></div><div id="empty" style="display:none;padding:24px;color:#667085">No hay contenidos que coincidan con tu búsqueda.</div></div></div></section>
-
-<section class="section" id="respuestas"><div class="container"><div class="section-head"><div><h2>Respuestas concretas a preguntas sobre tu dinero.</h2></div><div>Guías pensadas para resolver dudas habituales y llevarte directamente al cálculo o explicación que necesitas.</div></div><div class="grid"><a class="card" href="/calculadora-sueldo-neto-2026.html"><span class="tag">NÓMINA</span><h3>¿Cuánto cobro de sueldo neto?</h3><p>Calcula una primera estimación desde tu salario bruto en 2026.</p></a><a class="card" href="/calculadora-hipoteca.html"><span class="tag">HIPOTECA</span><h3>¿Cuánto pagaré de hipoteca?</h3><p>Prueba capital, tipo de interés y plazo y observa la cuota.</p></a><a class="card" href="/calculadora-ahorro-mensual.html"><span class="tag">AHORRO</span><h3>¿Cuánto puedo ahorrar al mes?</h3><p>Calcula cuánto acumulas según tu aportación mensual y tus años.</p></a><a class="card" href="/cuenta-remunerada-que-es-y-como-funciona.html"><span class="tag">CUENTAS</span><h3>¿Qué es una cuenta remunerada?</h3><p>Entiende remuneración, condiciones, liquidez y costes antes de elegir.</p></a><a class="card" href="/fondo-de-emergencia-cuantos-meses-gastos-deberias-tener.html"><span class="tag">AHORRO</span><h3>¿Cuánto debería tener en mi fondo de emergencia?</h3><p>Organiza una reserva a partir de tus gastos esenciales.</p></a><a class="card" href="/cuanto-necesito-ahorrar-para-comprar-una-vivienda-guia.html"><span class="tag">VIVIENDA</span><h3>¿Cuánto necesito ahorrar para comprar una vivienda?</h3><p>Separa entrada, financiación y otros costes de la compra.</p></a><a class="card" href="/alquiler-se-actualiza-octubre-2026-cuanto-puede-subir.html"><span class="tag">ALQUILER</span><h3>¿Cuánto puede subir mi alquiler?</h3><p>Comprueba IRAV, IPC y la fecha del contrato.</p></a><a class="card" href="/cuando-se-cobra-la-pension-octubre-2026.html"><span class="tag">PRESTACIONES</span><h3>¿Cuándo se cobra la pensión en octubre?</h3><p>Consulta la ventana oficial y los adelantos bancarios.</p></a></div></div></section><section class="section"><div class="container"><div class="quote">“La mejor decisión financiera empieza por entender qué estás contratando, cuánto cuesta y qué alternativas existen.”</div></div></section>
+<section class="final" id="espera">
+<div class="wrap">
+<div class="eyebrow">FinClaro</div>
+<h2>Tu vida tiene demasiadas cosas que recordar.</h2>
+<p>Estamos construyendo una forma más sencilla de organizarlas. Únete al proyecto y sé de los primeros en probar la beta.</p>
+<div class="actions"><a class="btn primary" href="mailto:hola@finclaro.es?subject=Quiero%20probar%20FinClaro">Quiero probar la beta</a></div>
+</div>
+</section>
 </main>
-<footer><div class="container footergrid"><div><strong>FinClaro</strong><p>Finanzas personales explicadas de forma sencilla para España.</p></div><div><div class="ft">Explora</div><p><a href="/ahorro.html">Ahorro</a><br><a href="/hipotecas.html">Hipotecas</a><br><a href="/nomina.html">Nómina e impuestos</a><br><a href="/inversion.html">Inversión</a><br><a href="/cuentas.html">Cuentas</a><br><a href="/prestamos.html">Préstamos</a></p></div><div><div class="ft">FinClaro</div><p><a href="/calculadora-interes-compuesto.html">Calculadoras</a><br><a href="/sobre-finclaro.html">Sobre FinClaro</a><br><a href="/privacidad.html">Privacidad</a><br><a href="/aviso-legal.html">Aviso legal</a></p></div></div></footer>
-<script>
-// Cabecera: sombra + se oculta al bajar y reaparece al subir
-const siteHeader=document.querySelector('.site-header');
-let lastScrollY=window.scrollY;
-let scrollTicking=false;
-function updateHeader(){
-  const y=window.scrollY;
-  siteHeader.classList.toggle('scrolled',y>10);
-  if(y>lastScrollY && y>120) siteHeader.classList.add('nav-hidden');
-  else if(y<lastScrollY-4 || y<=40) siteHeader.classList.remove('nav-hidden');
-  lastScrollY=y;
-  scrollTicking=false;
-}
-window.addEventListener('scroll',()=>{
-  if(!scrollTicking){requestAnimationFrame(updateHeader);scrollTicking=true;}
-},{passive:true});
 
-// Aparición progresiva de las tarjetas de tema al entrar en pantalla
-const revealTopics=[...document.querySelectorAll('.topic')];
-if('IntersectionObserver' in window){
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.transitionDelay=((revealTopics.indexOf(e.target)%3)*70)+'ms';e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
-  revealTopics.forEach(t=>io.observe(t));
-}else{revealTopics.forEach(t=>t.classList.add('in'))}
-setTimeout(()=>revealTopics.forEach(t=>t.classList.add('in')),1500);
-
-// El hero (segunda pantalla) aparece animado al llegar desde la pantalla de bienvenida
-const revealHero=[...document.querySelectorAll('.hero-copy,.hero-tool')];
-revealHero.forEach(el=>el.classList.add('reveal'));
-if('IntersectionObserver' in window){
-  const ioHero=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){e.target.style.transitionDelay=(i*90)+'ms';e.target.classList.add('in');ioHero.unobserve(e.target)}})},{threshold:.2});
-  revealHero.forEach(el=>ioHero.observe(el));
-}else{revealHero.forEach(el=>el.classList.add('in'))}
-setTimeout(()=>revealHero.forEach(el=>el.classList.add('in')),1500);
-
-// Calculadora interactiva del hero
-const eur=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-const htTabs=[...document.querySelectorAll('.ht-tab')],htPanels=[...document.querySelectorAll('.ht-panel')],htMore=document.getElementById('htMoreLink');
-const htLinks={ahorro:'/calculadora-ahorro-mensual.html',hipoteca:'/calculadora-hipoteca.html',nomina:'/calculadora-sueldo-neto-2026.html'};
-htTabs.forEach(tab=>tab.addEventListener('click',()=>{htTabs.forEach(t=>t.classList.remove('active'));tab.classList.add('active');const name=tab.dataset.tool;htPanels.forEach(p=>p.classList.toggle('active',p.dataset.panel===name));htMore.href=htLinks[name]}));
-
-const hAM=document.getElementById('hAhorroM'),hAY=document.getElementById('hAhorroY'),hAMVal=document.getElementById('hAhorroMVal'),hAYVal=document.getElementById('hAhorroYVal'),hAResult=document.getElementById('hAhorroResult');
-function calcHeroAhorro(){const m=+hAM.value,y=+hAY.value;hAMVal.textContent=eur(m);hAYVal.textContent=y+(y===1?' año':' años');hAResult.textContent=eur(m*y*12)}
-[hAM,hAY].forEach(el=>el.addEventListener('input',calcHeroAhorro));calcHeroAhorro();
-
-const hHC=document.getElementById('hHipC'),hHI=document.getElementById('hHipI'),hHY=document.getElementById('hHipY'),hHCVal=document.getElementById('hHipCVal'),hHIVal=document.getElementById('hHipIVal'),hHYVal=document.getElementById('hHipYVal'),hHResult=document.getElementById('hHipResult');
-function calcHeroHipoteca(){const c=+hHC.value,i=+hHI.value,y=+hHY.value;hHCVal.textContent=eur(c);hHIVal.textContent=i.toFixed(1).replace('.',',')+' %';hHYVal.textContent=y+' años';const r=i/100/12,n=y*12;const cuota=r===0?c/n:c*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);hHResult.textContent=eur(cuota)}
-[hHC,hHI,hHY].forEach(el=>el.addEventListener('input',calcHeroHipoteca));calcHeroHipoteca();
-
-const hNB=document.getElementById('hNomB'),hNP=document.getElementById('hNomP'),hNBVal=document.getElementById('hNomBVal'),hNPVal=document.getElementById('hNomPVal'),hNResult=document.getElementById('hNomResult');
-function calcHeroNomina(){const b=+hNB.value,p=+hNP.value;hNBVal.textContent=eur(b);hNPVal.textContent=p;const effRate=Math.min(.42,Math.max(.08,.08+(b/100000)*.30));const neto=b*(1-effRate);hNResult.textContent=eur(neto/p)}
-[hNB,hNP].forEach(el=>el.addEventListener('input',calcHeroNomina));calcHeroNomina();
-
-const cards=[...document.querySelectorAll('.article')],search=document.getElementById('search'),count=document.getElementById('count'),empty=document.getElementById('empty');let current='todos';
-function render(){const q=(search.value||'').toLowerCase().trim();let n=0;cards.forEach(c=>{const ok=(current==='todos'||c.dataset.category===current)&&(!q||c.dataset.search.includes(q));c.style.display=ok?'block':'none';if(ok)n++});count.textContent=n+' contenido'+(n===1?'':'s');empty.style.display=n?'none':'block'}
-search.addEventListener('input',render);
-document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');current=b.dataset.filter;render()}));
-document.getElementById('quickBtn').addEventListener('click',()=>{const m=Math.max(0,Number(document.getElementById('quickMonthly').value)||0),y=Math.max(0,Number(document.getElementById('quickYears').value)||0);document.getElementById('quickResult').textContent=new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(m*y*12)});
-</script>
-<script defer src="/site.js"></script></body></html>
+<footer><div class="wrap foot"><span>© 2026 FinClaro</span><span><a href="/sobre-finclaro.html">Sobre FinClaro</a> · <a href="/privacidad.html">Privacidad</a> · <a href="/aviso-legal.html">Aviso legal</a></span></div></footer>
+</body>
+</html>
