@@ -417,6 +417,34 @@ const server = http.createServer(async (req, res) => {
       }
     }
 
+    if (req.method === "GET" && url.pathname === "/internal/reminders/status") {
+      const internalToken = process.env.FINCLARO_INTERNAL_TOKEN;
+      const providedToken = req.headers["x-finclaro-internal-token"];
+      if (!internalToken || providedToken !== internalToken) {
+        return sendJson(res, 401, { ok: false, error: "INTERNAL_TOKEN_REQUIRED" });
+      }
+
+      if (!pool) {
+        return sendJson(res, 503, { ok: false, error: "DATABASE_NOT_CONFIGURED" });
+      }
+
+      const result = await pool.query(
+        `SELECT
+           COUNT(*) FILTER (WHERE status = 'pending')::int AS pending,
+           COUNT(*) FILTER (WHERE status = 'pending' AND remind_at <= NOW())::int AS due,
+           COUNT(*) FILTER (WHERE status = 'sent')::int AS sent,
+           COUNT(*) FILTER (WHERE status = 'failed')::int AS failed,
+           COUNT(*) FILTER (WHERE status = 'cancelled')::int AS cancelled
+         FROM reminders`
+      );
+
+      return sendJson(res, 200, {
+        ok: true,
+        scheduler: "active",
+        reminders: result.rows[0]
+      });
+    }
+
     if (req.method === "POST" && url.pathname === "/assistant/execute") {
       if (process.env.FINCLARO_AI_TEST_ENDPOINT !== "true") {
         return sendJson(res, 404, { ok: false, error: "NOT_FOUND" });
