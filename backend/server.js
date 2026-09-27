@@ -6,6 +6,13 @@ import { fileURLToPath } from "node:url";
 import { parseFinClaroMessage } from "./src/ai/parser.js";
 import { handleFinClaroMessage } from "./src/services/assistant.js";
 import { startReminderScheduler } from "./src/services/reminder-scheduler.js";
+import {
+  enqueueWhatsAppMessages,
+  normalizeWhatsAppId,
+  verifyWhatsAppSignature,
+  verifyWhatsAppWebhookChallenge
+} from "./src/services/whatsapp-webhook.js";
+import { timingSafeEqual } from "node:crypto";
 
 const { Pool } = pg;
 const PORT = Number(process.env.PORT || 8080);
@@ -24,26 +31,71 @@ function sendJson(res, statusCode, payload) {
   res.writeHead(statusCode, {
     "Content-Type": "application/json; charset=utf-8",
     "Content-Length": Buffer.byteLength(body),
-    "Cache-Control": "no-store",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type, X-FinClaro-User-Id, X-FinClaro-Internal-Token, X-FinClaro-Idempotency-Key",
-    "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS"
+    "Cache-Control": "no-store"
   });
   res.end(body);
 }
 
 async function readJson(req) {
-  const chunks = [];
-  for await (const chunk of req) chunks.push(chunk);
-  if (!chunks.length) return {};
-  const raw = Buffer.concat(chunks).toString("utf8");
+  const raw = await readRawBody(req);
+  if (!raw.length) return {};
   try {
-    return JSON.parse(raw);
+    return JSON.parse(raw.toString("utf8"));
   } catch {
     const error = new Error("INVALID_JSON");
     error.statusCode = 400;
     throw error;
   }
+}
+
+async function readRawBody(req, maxBytes = 1024 * 1024) {
+  const chunks = [];
+  let size = 0;
+  for await (const chunk of req) {
+    size += chunk.length;
+    if (size > maxBytes) {
+      const error = new Error("REQUEST_BODY_TOO_LARGE");
+      error.statusCode = 413;
+      throw error;
+    }
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks);
+}
+
+function sendText(res, statusCode, value) {
+  const body = String(value);
+  res.writeHead(statusCode, {
+    "Content-Type": "text/plain; charset=utf-8",
+    "Content-Length": Buffer.byteLength(body),
+    "Cache-Control": "no-store"
+  });
+  res.end(body);
+}
+
+function internalTokenIsValid(req) {
+  const expected = process.env.FINCLARO_INTERNAL_TOKEN;
+  const provided = req.headers["x-finclaro-internal-token"];
+  if (!expected || typeof provided !== "string") return false;
+  const expectedBytes = Buffer.from(expected, "utf8");
+  const providedBytes = Buffer.from(provided, "utf8");
+  return expectedBytes.length === providedBytes.length && timingSafeEqual(expectedBytes, providedBytes);
+}
+
+function requiresInternalToken(pathname) {
+  return pathname === "/health/db" ||
+    pathname === "/users" ||
+    pathname === "/events" ||
+    pathname.startsWith("/events/") ||
+    pathname.startsWith("/internal/") ||
+    pathname.startsWith("/assistant/") ||
+    pathname === "/ai/parse";
+}
+
+function requireInternalToken(req, res) {
+  if (internalTokenIsValid(req)) return true;
+  sendJson(res, 401, { ok: false, error: "INTERNAL_TOKEN_REQUIRED" });
+  return false;
 }
 
 function getUserId(req) {
@@ -326,12 +378,45 @@ const server = http.createServer(async (req, res) => {
 
   try {
     if (req.method === "OPTIONS") {
-      res.writeHead(204, {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type, X-FinClaro-User-Id",
-        "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS"
-      });
+      res.writeHead(204);
       return res.end();
+    }
+
+    if (requiresInternalToken(url.pathname) && !requireInternalToken(req, res)) return;
+
+    if (req.method === "GET" && url.pathname === "/webhooks/whatsapp") {
+      const verification = verifyWhatsAppWebhookChallenge(url, process.env.WHATSAPP_VERIFY_TOKEN);
+      if (!verification.ok) return sendText(res, verification.status, verification.error);
+      return sendText(res, 200, verification.challenge);
+    }
+
+    if (req.method === "POST" && url.pathname === "/webhooks/whatsapp") {
+      if (!process.env.WHATSAPP_APP_SECRET) {
+        return sendJson(res, 503, { ok: false, error: "WHATSAPP_APP_SECRET_NOT_CONFIGURED" });
+      }
+      if (!process.env.WHATSAPP_PHONE_NUMBER_ID) {
+        return sendJson(res, 503, { ok: false, error: "WHATSAPP_PHONE_NUMBER_ID_NOT_CONFIGURED" });
+      }
+      if (!process.env.WHATSAPP_ACCESS_TOKEN ||
+          !/^v\d+\.\d+$/.test(process.env.WHATSAPP_GRAPH_API_VERSION || "")) {
+        return sendJson(res, 503, { ok: false, error: "WHATSAPP_SEND_CONFIGURATION_INCOMPLETE" });
+      }
+      if (!pool) return sendJson(res, 503, { ok: false, error: "DATABASE_NOT_CONFIGURED" });
+
+      const rawBody = await readRawBody(req);
+      if (!verifyWhatsAppSignature(rawBody, req.headers["x-hub-signature-256"], process.env.WHATSAPP_APP_SECRET)) {
+        return sendJson(res, 401, { ok: false, error: "INVALID_WHATSAPP_SIGNATURE" });
+      }
+
+      let payload;
+      try {
+        payload = JSON.parse(rawBody.toString("utf8"));
+      } catch {
+        return sendJson(res, 400, { ok: false, error: "INVALID_JSON" });
+      }
+
+      const queued = await enqueueWhatsAppMessages(pool, payload);
+      return sendJson(res, 200, { ok: true, queued });
     }
 
     if (req.method === "GET" && url.pathname === "/health") {
@@ -370,6 +455,30 @@ const server = http.createServer(async (req, res) => {
       const body = await readJson(req);
       const user = await createUser(body);
       return sendJson(res, 201, { ok: true, user });
+    }
+
+    if (req.method === "POST" && url.pathname === "/internal/whatsapp/contacts") {
+      if (!pool) return sendJson(res, 503, { ok: false, error: "DATABASE_NOT_CONFIGURED" });
+      const body = await readJson(req);
+      const waId = normalizeWhatsAppId(body.wa_id);
+      if (!waId || !isValidUuid(body.user_id)) {
+        return sendJson(res, 400, { ok: false, error: "VALID_WA_ID_AND_USER_ID_REQUIRED" });
+      }
+
+      const user = await pool.query("SELECT id FROM users WHERE id = $1 LIMIT 1", [body.user_id]);
+      if (!user.rows[0]) return sendJson(res, 404, { ok: false, error: "USER_NOT_FOUND" });
+
+      const inserted = await pool.query(
+        "INSERT INTO whatsapp_contacts (wa_id, user_id) VALUES ($1, $2) ON CONFLICT (wa_id) DO NOTHING RETURNING wa_id, user_id",
+        [waId, body.user_id]
+      );
+      if (inserted.rows[0]) return sendJson(res, 201, { ok: true, contact: inserted.rows[0] });
+
+      const existing = await pool.query("SELECT wa_id, user_id FROM whatsapp_contacts WHERE wa_id = $1 LIMIT 1", [waId]);
+      if (existing.rows[0]?.user_id !== body.user_id) {
+        return sendJson(res, 409, { ok: false, error: "WA_ID_ALREADY_LINKED" });
+      }
+      return sendJson(res, 200, { ok: true, contact: existing.rows[0] });
     }
 
     if (req.method === "GET" && url.pathname === "/events") {
@@ -513,11 +622,10 @@ const server = http.createServer(async (req, res) => {
       error: "NOT_FOUND"
     });
   } catch (error) {
-    console.error("API error:", error);
-    return sendJson(res, error.statusCode || 500, {
-      ok: false,
-      error: error.message || "INTERNAL_ERROR"
-    });
+    const statusCode = error.statusCode || 500;
+    const publicError = statusCode < 500 ? error.message : "INTERNAL_ERROR";
+    console.error("[api] request failed:", error.code || error.name || "Error");
+    return sendJson(res, statusCode, { ok: false, error: publicError });
   }
 });
 

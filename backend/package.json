@@ -5,7 +5,8 @@
   "description": "Backend inicial de FinClaro 1.0",
   "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "node --test"
   },
   "engines": {
     "node": ">=22"

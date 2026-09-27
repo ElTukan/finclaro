@@ -62,3 +62,30 @@ CREATE TABLE IF NOT EXISTS assistant_requests (
 
 CREATE INDEX IF NOT EXISTS idx_assistant_requests_event
   ON assistant_requests(event_id);
+
+CREATE TABLE IF NOT EXISTS whatsapp_contacts (
+  wa_id TEXT PRIMARY KEY CHECK (wa_id ~ '^[0-9]{8,15}$'),
+  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  opted_in_at TIMESTAMPTZ,
+  opted_out_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS whatsapp_inbound_messages (
+  id BIGSERIAL PRIMARY KEY,
+  wa_message_id TEXT NOT NULL UNIQUE,
+  wa_id TEXT,
+  message_type TEXT NOT NULL,
+  message_text TEXT,
+  status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending','processing','processed','ignored','failed')),
+  attempts INTEGER NOT NULL DEFAULT 0,
+  next_attempt_at TIMESTAMPTZ,
+  processing_started_at TIMESTAMPTZ,
+  last_error TEXT,
+  received_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  processed_at TIMESTAMPTZ
+);
+
+CREATE INDEX IF NOT EXISTS idx_whatsapp_inbound_queue
+  ON whatsapp_inbound_messages(status, next_attempt_at, received_at);
