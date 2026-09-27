@@ -1,3 +1,5 @@
+import { processWhatsAppInbox } from "./whatsapp.js";
+
 const DEFAULT_POLL_MS = 15000;
 
 let timer = null;
@@ -37,6 +39,7 @@ async function tick(db) {
   running = true;
 
   try {
+    await processWhatsAppInbox(db);
     const due = await scanDueReminders(db);
 
     if (!due.length) {
@@ -49,12 +52,6 @@ async function tick(db) {
       console.log(
         `[reminders] ${due.length} reminder(s) due. Delivery provider is not connected yet; leaving them pending.`
       );
-
-      for (const reminder of due) {
-        console.log(
-          `[reminders] READY id=${reminder.id} event="${reminder.title}" user=${reminder.user_id} channel=${reminder.channel}`
-        );
-      }
 
       lastDueSignature = signature;
     }
