@@ -458,6 +458,24 @@ footer a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
 .wrap{max-width:1180px;margin-inline:auto;padding:0 24px}
 
 
+/* --- Botones y acciones genéricos -----------------------------------------
+   404.html (y cualquier página suelta) usa .btn / .actions SIN body.cat,
+   por lo que las reglas .cat .btn no le alcanzan. Aquí va el estilo base.
+   Las reglas .cat .btn siguen ganando por especificidad.
+   ------------------------------------------------------------------------- */
+.actions{display:flex;flex-wrap:wrap;gap:11px;align-items:center;margin-top:22px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;
+  border:1px solid transparent;border-radius:var(--fc-radius);
+  background:var(--fc-primary);color:#fff;font-size:14px;font-weight:700;text-decoration:none;
+  transition:transform var(--fc-transition),background .2s,box-shadow .2s
+}
+.btn:hover{background:var(--fc-primary-hover);transform:translateY(-2px)}
+.btn:active{transform:scale(.985)}
+.btn.dark{background:var(--fc-dark);color:#fff}
+.btn.dark:hover{background:#1B2228}
+
+
 /* ==========================================================================
    5 — ARTÍCULOS Y CALCULADORAS · clases legacy
    ========================================================================== */
