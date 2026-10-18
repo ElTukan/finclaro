@@ -23,17 +23,27 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Regenerate sitemap
         run: python3 generate-sitemap.py
-      - name: Inject consent script
+      - name: Inject consent and AdSense tags
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          tag = '<script src="/consent.js"></script>'
+          consent = '<script src="/consent.js"></script>'
+          adsense = ('<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2993676855543434" '
+                     'crossorigin="anonymous"></script>')
           for path in Path('.').rglob('*.html'):
               text = path.read_text(encoding='utf-8')
-              if 'consent.js' in text or '</head>' not in text.lower():
+              low = text.lower()
+              if '</head>' not in low:
                   continue
-              i = text.lower().index('</head>')
-              text = text[:i] + tag + '\n' + text[i:]
+              # consent.js primero: fija Consent Mode en "denied" antes de AdSense.
+              if 'consent.js' not in text:
+                  i = low.index('<head>') + len('<head>')
+                  text = text[:i] + '\n  ' + consent + text[i:]
+                  low = text.lower()
+              # Etiqueta estatica de AdSense: Googlebot la ve sin aceptar cookies.
+              if 'pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' not in text:
+                  i = low.index('</head>')
+                  text = text[:i] + adsense + '\n' + text[i:]
               path.write_text(text, encoding='utf-8')
           PY
       - name: Upload artifact
