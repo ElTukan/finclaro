@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cookies | FinClaro</title>
+  <meta name="description" content="Qué cookies usa FinClaro, para qué sirven y cómo aceptar, rechazar o cambiar tu decisión.">
+  <link rel="canonical" href="https://finclaro.es/cookies.html">
+  <meta name="robots" content="index,follow">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main>
+    <article>
+      <h1>Cookies</h1>
+
+      <p class="lead">FinClaro solo carga cookies de análisis y de publicidad si das tu consentimiento. Antes de decidir, el sitio funciona con las cookies necesarias y no se ejecuta ningún script de Google Analytics ni de Google AdSense.</p>
+
+      <h2>Qué cookies usa este sitio</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Cookie o tecnología</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Para qué se usa</th>
+            <th scope="col">Duración</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>finclaro_consent</code></td>
+            <td>Necesaria (propia)</td>
+            <td>Guarda si has aceptado o rechazado las cookies opcionales para no volver a preguntarte en cada visita.</td>
+            <td>1 año</td>
+          </tr>
+          <tr>
+            <td><code>_ga</code>, <code>_ga_G-ECDR680DVZ</code></td>
+            <td>Analítica (Google Analytics 4, G-ECDR680DVZ)</td>
+            <td>Medir de forma agregada las visitas y el uso de las páginas para mejorar los contenidos.</td>
+            <td>Hasta 2 años</td>
+          </tr>
+          <tr>
+            <td><code>__gads</code>, <code>__gpi</code>, <code>IDE</code> y otras de Google AdSense (ca-pub-2993676855543434)</td>
+            <td>Publicidad (Google AdSense)</td>
+            <td>Mostrar anuncios, limitar su frecuencia y medir su rendimiento. Pueden implicar identificadores del navegador o del dispositivo.</td>
+            <td>Según Google, habitualmente entre 13 meses y 2 años</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Cookies necesarias</h2>
+      <p>Son imprescindibles para recordar tu decisión y para el funcionamiento básico del sitio. No requieren consentimiento y no se usan para elaborar perfiles publicitarios.</p>
+
+      <h2>Cookies de analítica</h2>
+      <p>Si aceptas, se carga Google Analytics 4 con el identificador G-ECDR680DVZ. Sirve para saber qué páginas se visitan y cómo se navega por el sitio, con datos agregados. Si rechazas, este servicio no se carga.</p>
+
+      <h2>Cookies de publicidad</h2>
+      <p>Si aceptas, se carga Google AdSense con el identificador ca-pub-2993676855543434. Google puede usar cookies o identificadores para mostrar anuncios, limitar su frecuencia y medir su rendimiento. Si rechazas, AdSense no se carga.</p>
+
+      <h2>Cómo cambiar tu decisión</h2>
+      <p>Puedes borrar la elección guardada y volver a decidir. Al pulsar el botón se elimina la preferencia y se recarga la página para mostrar de nuevo el aviso.</p>
+      <p><button type="button" class="btn" id="reset-consent">Cambiar mi decisión</button></p>
+      <p>También puedes borrar las cookies de este sitio desde la configuración de tu navegador.</p>
+
+      <h2>Más información</h2>
+      <p>Consulta la <a href="/privacidad.html">política de privacidad de FinClaro</a>, la <a href="https://policies.google.com/privacy?hl=es">política de privacidad de Google</a> y la <a href="https://policies.google.com/technologies/partner-sites?hl=es">información sobre el uso de datos en sitios asociados</a>. Para la publicidad, puedes gestionar la personalización en <a href="https://myadcenter.google.com/">Mi centro de anuncios</a>.</p>
+
+      <p><a href="/">← Volver a FinClaro</a></p>
+    </article>
+  </main>
+  <script>
+    (function () {
+      var button = document.getElementById("reset-consent");
+      if (!button) return;
+      button.addEventListener("click", function () {
+        if (window.finclaroConsent && typeof window.finclaroConsent.reset === "function") {
+          window.finclaroConsent.reset();
+          return;
+        }
+        document.cookie = "finclaro_consent=; Max-Age=0; Path=/; SameSite=Lax";
+        try { window.localStorage.removeItem("finclaro_consent"); } catch (e) {}
+        window.location.reload();
+      });
+    })();
+  </script>
+  <script defer src="/site.js"></script>
+</body>
+</html>
