@@ -34,7 +34,8 @@ body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .fc-nav-cta{background:var(--ink);color:var(--bg)!important;padding:10px 20px;border-radius:999px;font-weight:600;font-size:13.5px}
 .fc-menu{display:none;background:none;border:0;cursor:pointer;padding:8px}
 .fc-menu span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0;border-radius:2px}
-.fc-hero{padding:186px 0 70px;display:grid;grid-template-columns:1.08fr .92fr;gap:64px;align-items:start}
+.fc-hero{padding:186px 28px 70px;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:start}
+.fc-hero>*{min-width:0}
 .fc-kicker{display:flex;align-items:center;gap:10px;margin-bottom:30px;font-family:"JetBrains Mono",monospace;
   font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
 .fc-kicker-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--glow)}
@@ -60,7 +61,7 @@ body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opac
   letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 .fc-live i{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:fc-pulse 2s infinite}
 @keyframes fc-pulse{0%,100%{opacity:1}50%{opacity:.2}}
-.fc-result{font-size:60px;font-weight:600;letter-spacing:-.045em;line-height:.95;font-variant-numeric:tabular-nums}
+.fc-result{font-size:clamp(42px,4.4vw,60px);font-weight:600;letter-spacing:-.045em;line-height:.95;font-variant-numeric:tabular-nums}
 .fc-result small{display:block;font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:12px;font-family:"JetBrains Mono",monospace}
 .fc-slider{margin:30px 0 10px}
 .fc-slider label{display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:10.5px;
@@ -137,7 +138,7 @@ body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .fc-reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .fc-reveal.is-in{opacity:1;transform:none}
 @media(max-width:980px){
-  .fc-hero{grid-template-columns:1fr;gap:44px;padding:140px 0 50px}
+  .fc-hero{grid-template-columns:1fr;gap:40px;padding:140px 24px 50px}
   .fc-calc-card{position:static}
   .fc-shead{grid-template-columns:1fr;gap:20px}
   .fc-shead p{justify-self:start}
