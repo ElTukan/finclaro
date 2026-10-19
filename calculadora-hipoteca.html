@@ -16,11 +16,26 @@
 <meta name="twitter:description" content="Estima la cuota de tu hipoteca, los intereses y el coste total según importe, tipo y plazo.">
 <meta name="twitter:image" content="https://finclaro.es/finclaro-og.svg">
 <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/theme.css?v=1">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de hipoteca","url":"https://finclaro.es/calculadora-hipoteca.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"es-ES","description":"Calculadora orientativa de cuota hipotecaria mediante el sistema de amortización francés."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Finanzas personales","item":"https://finclaro.es/finanzas-personales.html"},{"@type":"ListItem","position":2,"name":"Hipotecas","item":"https://finclaro.es/hipotecas.html"},{"@type":"ListItem","position":3,"name":"Calculadora de hipoteca","item":"https://finclaro.es/calculadora-hipoteca.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿La cuota que calculo es la que voy a pagar realmente?","acceptedAnswer":{"@type":"Answer","text":"No exactamente. Es una estimación matemática en la que la cuota se mantiene constante, pero una oferta real puede incluir seguros, comisiones, gastos de tasación o productos vinculados que aquí no aparecen. Compara siempre la TAE."}},{"@type":"Question","name":"¿Sirve esta calculadora para una hipoteca variable o mixta?","acceptedAnswer":{"@type":"Answer","text":"Solo como referencia del periodo actual. En una hipoteca variable el tipo se revisa con el euríbor y el diferencial pactado, así que la cuota cambiará. Introduce el tipo vigente para hacerte una idea de la cuota de los próximos meses."}},{"@type":"Question","name":"¿Es mejor un plazo largo para pagar menos cada mes?","acceptedAnswer":{"@type":"Answer","text":"Depende de tu presupuesto. Un plazo mayor baja la cuota y alivia el día a día, pero encarece el préstamo porque pagas intereses durante más años. Un plazo más corto exige más cada mes, pero cuesta menos en total."}},{"@type":"Question","name":"¿Qué diferencia hay entre el TIN y la TAE?","acceptedAnswer":{"@type":"Answer","text":"El TIN es el tipo con el que se calcula la cuota. La TAE añade comisiones y gastos, así que refleja mejor el coste real del préstamo. Para comparar hipotecas, guíate por la TAE."}},{"@type":"Question","name":"¿Puedo simular cuánto subiría la cuota si el euríbor sube?","acceptedAnswer":{"@type":"Answer","text":"Sí. Introduce un tipo más alto en el campo de interés anual y compara el resultado. Es la forma más sencilla de comprobar si podrías asumir una subida sin que la cuota comprometa tu presupuesto."}}]}</script>
 </head>
 <body>
+  <header class="fc-header">
+    <div class="fc-nav">
+      <a class="fc-brand" href="/" aria-label="FinClaro, inicio"><span class="fc-brand-mark">F</span><span>FinClaro</span></a>
+      <button class="fc-menu" type="button" aria-expanded="false" aria-controls="fc-nav-links" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+      <nav class="fc-nav-links" id="fc-nav-links" aria-label="Navegación principal">
+        <a href="/ahorro.html">Ahorro</a>
+        <a href="/hipotecas.html">Vivienda</a>
+        <a href="/nomina.html">Nómina</a>
+        <a href="/inversion.html">Inversión</a>
+        <a href="/#calculadoras">Calculadoras</a>
+        <a class="fc-nav-cta" href="/finanzas-personales.html">Guías <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
 <article>
 <p class="eyebrow">CALCULADORA · HIPOTECAS</p>
 <h1>Calculadora de hipoteca</h1>
@@ -59,4 +74,14 @@
 <p><a href="/finanzas-personales.html">← Volver a FinClaro</a></p>
 <script>function calcH(){let P=+capital.value,r=(+interest.value/100)/12,n=+term.value*12;let q=P*r/(1-Math.pow(1+r,-n));out.textContent='Cuota aproximada: '+new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(q)}</script>
 </article>
-<script defer src="/site.js"></script></body></html>
+<script defer src="/site.js"></script>  <footer class="fc-footer">
+    <div class="fc-foot-cols">
+      <div><a class="fc-brand" href="/" style="margin-bottom:16px"><span class="fc-brand-mark">F</span><span>FinClaro</span></a><p>Finanzas claras para tomar mejores decisiones. Información educativa, no asesoramiento personalizado.</p></div>
+      <div><h4>Explora</h4><a href="/ahorro.html">Ahorro</a><a href="/hipotecas.html">Vivienda</a><a href="/nomina.html">Nómina</a><a href="/inversion.html">Inversión</a></div>
+      <div><h4>Recursos</h4><a href="/#calculadoras">Calculadoras</a><a href="/finanzas-personales.html">Guías</a><a href="/privacidad.html">Privacidad</a><a href="/aviso-legal.html">Aviso legal</a></div>
+      <div><h4>FinClaro</h4><a href="/cookies.html">Cookies</a><a href="/aviso-legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a></div>
+    </div>
+    <div class="fc-mark-big">FinClaro</div>
+    <div class="fc-legal"><span>© 2026 FinClaro</span><span>Información educativa, no asesoramiento financiero</span><span>Hecho en España</span></div>
+  </footer>
+</body></html>
