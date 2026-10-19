@@ -20,23 +20,29 @@
   <meta name="twitter:title" content="FinClaro | Finanzas claras para tomar mejores decisiones">
   <meta name="twitter:description" content="Guías claras y calculadoras de finanzas personales para España.">
   <meta name="twitter:image" content="https://finclaro.es/finclaro-product-og.svg">
-  <meta name="theme-color" content="#111318">
+  <meta name="theme-color" content="#06080A">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/home.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebSite","name":"FinClaro","url":"https://finclaro.es/","inLanguage":"es-ES","description":"Guías claras y calculadoras de finanzas personales para España."}
   </script>
 </head>
 <body class="fc-home">
-  <a class="fc-skip" href="#contenido">Saltar al contenido</a>
-  <header class="fc-header">
+  <a class="fc-skip" href="#contenido" style="position:absolute;left:-9999px">Saltar al contenido</a>
+  <div id="fc-bar"></div>
+  <header class="fc-header" id="fc-header">
     <div class="fc-wrap fc-nav">
       <a class="fc-brand" href="/" aria-label="FinClaro, inicio"><span class="fc-brand-mark">F</span><span>FinClaro</span></a>
       <button class="fc-menu" type="button" aria-expanded="false" aria-controls="fc-nav-links" aria-label="Abrir menú"><span></span><span></span><span></span></button>
       <nav class="fc-nav-links" id="fc-nav-links" aria-label="Navegación principal">
-        <a href="/ahorro.html">Ahorro</a><a href="/hipotecas.html">Vivienda</a><a href="/nomina.html">Nómina</a><a href="/inversion.html">Inversión</a><a href="#calculadoras">Calculadoras</a>
+        <a href="/ahorro.html">Ahorro</a>
+        <a href="/hipotecas.html">Vivienda</a>
+        <a href="/nomina.html">Nómina</a>
+        <a href="/inversion.html">Inversión</a>
+        <a href="#calculadoras">Calculadoras</a>
         <a class="fc-nav-cta" href="#calculadoras">Explorar calculadoras <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
@@ -44,47 +50,182 @@
 
   <main id="contenido">
     <section class="fc-hero" aria-labelledby="hero-title">
-      <div class="fc-wrap fc-hero-grid">
-        <div class="fc-hero-copy">
-          <p class="fc-kicker"><span class="fc-kicker-dot"></span> Finanzas personales, sin complicaciones</p>
-          <h1 id="hero-title">Entiende mejor <em>tu dinero.</em></h1>
-          <p class="fc-hero-lead">Guías claras y calculadoras para tomar decisiones financieras en España.</p>
-          <div class="fc-actions"><a class="fc-button fc-button-gold" href="#calculadoras">Ver calculadoras <span aria-hidden="true">↗</span></a><a class="fc-button fc-button-outline" href="#guias">Explorar guías</a></div>
-          <p class="fc-hero-note">Información práctica, explicada en lenguaje sencillo.</p>
+      <div>
+        <p class="fc-kicker"><span class="fc-kicker-dot"></span>Finanzas personales · España · 2026</p>
+        <h1 id="hero-title">Tu dinero,<br><span class="fc-out">explicado</span><br><em>sin ruido.</em></h1>
+        <p class="fc-hero-lead">Lo que ganas de verdad, lo que puedes apartar y lo que estás firmando. Con tus números, no con medias nacionales.</p>
+        <div class="fc-actions">
+          <a class="fc-button fc-button-gold" href="#calculadoras">Probar la calculadora <span aria-hidden="true">→</span></a>
+          <a class="fc-button fc-button-outline" href="#guias">Explorar guías</a>
         </div>
-        <div class="fc-dashboard" aria-label="Vista conceptual de una calculadora financiera">
-          <div class="fc-dashboard-top"><span class="fc-window-dots"><i></i><i></i><i></i></span><span>FinClaro / Tu panorama</span><span class="fc-live">ACTUALIZADO</span></div>
-          <div class="fc-dashboard-body"><div class="fc-dashboard-heading"><div><small>RESUMEN FINANCIERO</small><strong>Decide con más claridad.</strong></div><span class="fc-avatar">FC</span></div>
-            <div class="fc-chart"><div class="fc-chart-label"><span>Capacidad de ahorro</span><b>+12,4%</b></div><svg viewBox="0 0 520 150" role="img" aria-label="Gráfico ascendente de ejemplo"><path class="fc-chart-grid" d="M0 30h520M0 75h520M0 120h520"/><path class="fc-chart-fill" d="M0 119C52 116 54 99 105 104s54-35 103-24 53-25 103-16 51-17 104-39 58-5 105-14v139H0Z"/><path class="fc-chart-line" d="M0 119C52 116 54 99 105 104s54-35 103-24 53-25 103-16 51-17 104-39 58-5 105-14"/></svg><div class="fc-chart-axis"><span>ENE</span><span>MAR</span><span>MAY</span><span>JUL</span><span>SEP</span></div></div>
-            <div class="fc-dashboard-cards"><div><small>AHORRO MENSUAL</small><strong>450 €</strong><span class="fc-positive">↑ 8,2% este mes</span></div><div><small>PRÓXIMO OBJETIVO</small><strong>Vivienda</strong><span>Calcula tu cuota estimada</span></div></div>
-          </div><div class="fc-dashboard-foot"><span>Datos orientativos para España</span><span>Fuentes y metodología ↗</span></div>
+        <div class="fc-hero-mini">
+          <div><b>6 meses</b>de colchón antes de invertir</div>
+          <div><b>28%</b>de cuota máxima de hipoteca</div>
+          <div><b>0</b>registros para usarlo</div>
+        </div>
+      </div>
+
+      <div class="fc-calc-card" aria-label="Estimación de sueldo neto">
+        <div class="fc-calc-head">
+          <span class="fc-tag">De bruto a neto</span>
+          <span class="fc-live"><i></i>En vivo</span>
+        </div>
+        <div class="fc-result"><span id="fc-neto">1.329 €</span><small>Neto estimado al mes · 14 pagas</small></div>
+        <div class="fc-slider">
+          <label for="fc-rango">Salario bruto anual <b id="fc-bruto-label">24.000 €</b></label>
+          <input type="range" id="fc-rango" min="14000" max="70000" step="500" value="24000" aria-label="Salario bruto anual">
+        </div>
+        <div class="fc-breakdown">
+          <div class="fc-br"><span>Seguridad Social</span><b id="fc-ss">-111 €</b></div>
+          <div class="fc-br"><span>IRPF estimado</span><b id="fc-irpf">-275 €</b></div>
+          <div class="fc-br fc-total"><span>Neto mensual</span><b id="fc-neto2">1.329 €</b></div>
+        </div>
+        <p class="fc-note">Estimación orientativa. El cálculo exacto depende de tu situación familiar y de tu comunidad. <a href="/calculadora-sueldo-neto-2026.html">Calcular con precisión →</a></p>
+      </div>
+    </section>
+
+  <div class="fc-band" aria-label="Datos de referencia">
+    <div class="fc-row">
+      <div class="fc-cell"><div class="fc-k">Sueldo neto</div><div class="fc-v">14 pagas</div></div>
+      <div class="fc-cell"><div class="fc-k">Ahorro posible</div><div class="fc-v">+12,4<small>%</small></div></div>
+      <div class="fc-cell"><div class="fc-k">Fondo emergencia</div><div class="fc-v">4,2<small>meses</small></div></div>
+      <div class="fc-cell"><div class="fc-k">Cuota hipoteca</div><div class="fc-v">28<small>%</small></div></div>
+    </div>
+  </div>
+
+    <section class="fc-section" id="metodo">
+      <div class="fc-wrap">
+        <div class="fc-shead fc-reveal">
+          <h2>Tres pasos.<br><em>Ninguna trampa.</em></h2>
+          <p>El orden real en el que se toman las decisiones que mueven dinero. Sin saltarse ninguno.</p>
+        </div>
+        <div class="fc-step-grid fc-reveal">
+          <div class="fc-step"><div class="fc-num">01</div><h3>Mira tus números</h3><p>Sueldo neto real, gastos fijos y lo que te queda a fin de mes. Sin supuestos.</p></div>
+          <div class="fc-step"><div class="fc-num">02</div><h3>Entiende la cifra</h3><p>Qué significa cada número, qué depende de ti y dónde está la letra pequeña.</p></div>
+          <div class="fc-step"><div class="fc-num">03</div><h3>Decide con criterio</h3><p>Qué hacer después y cuándo conviene pagar a un profesional.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="fc-quick" aria-labelledby="quick-title"><div class="fc-wrap"><div class="fc-section-intro"><p class="fc-eyebrow">Empieza por lo que necesitas</p><h2 id="quick-title">¿Qué necesitas resolver?</h2></div><div class="fc-topic-grid">
-      <a href="/ahorro.html" class="fc-topic"><span class="fc-topic-icon">↗</span><strong>Ahorro</strong><span>Organiza tus objetivos</span></a><a href="/calculadora-sueldo-neto-2026.html" class="fc-topic"><span class="fc-topic-icon">€</span><strong>Sueldo</strong><span>Entiende tu nómina</span></a><a href="/hipotecas.html" class="fc-topic"><span class="fc-topic-icon">⌂</span><strong>Hipoteca</strong><span>Calcula tus opciones</span></a><a href="/prestamos.html" class="fc-topic"><span class="fc-topic-icon">−</span><strong>Préstamos</strong><span>Compara conceptos</span></a><a href="/inversion.html" class="fc-topic"><span class="fc-topic-icon">↗</span><strong>Inversión</strong><span>Aprende desde cero</span></a><a href="/cuentas.html" class="fc-topic"><span class="fc-topic-icon">▣</span><strong>Cuentas</strong><span>Elige con contexto</span></a>
-    </div></div></section>
+    <section class="fc-section" id="calculadoras" style="padding-top:0">
+      <div class="fc-wrap">
+        <div class="fc-shead fc-reveal" style="margin-bottom:40px">
+          <h2>Herramientas<br><em>que resuelven.</em></h2>
+          <p>Sin cuenta, sin email, sin llamadas. Metes tus datos y ves el resultado.</p>
+        </div>
+        <div class="fc-hscroll fc-reveal">
+          <a class="fc-card" href="/calculadora-sueldo-neto-2026.html"><div class="fc-top"><span class="fc-mono">01</span><span class="fc-arrow">↗</span></div><div><h3>Sueldo neto</h3><p>De bruto a lo que llega a tu cuenta, con IRPF y cotizaciones.</p></div></a>
+          <a class="fc-card" href="/calculadora-hipoteca.html"><div class="fc-top"><span class="fc-mono">02</span><span class="fc-arrow">↗</span></div><div><h3>Hipoteca</h3><p>Cuota real, intereses y cuánto pagas de más según el plazo.</p></div></a>
+          <a class="fc-card" href="/calculadora-interes-compuesto.html"><div class="fc-top"><span class="fc-mono">03</span><span class="fc-arrow">↗</span></div><div><h3>Interés compuesto</h3><p>Cómo crece una aportación con el tiempo, sin humo.</p></div></a>
+          <a class="fc-card" href="/calculadora-ahorro-mensual.html"><div class="fc-top"><span class="fc-mono">04</span><span class="fc-arrow">↗</span></div><div><h3>Ahorro mensual</h3><p>Define un objetivo y calcula el camino hasta él.</p></div></a>
+        </div>
+      </div>
+    </section>
 
-    <section class="fc-section fc-calculators" id="calculadoras" aria-labelledby="calc-title"><div class="fc-wrap"><div class="fc-section-head"><div><p class="fc-eyebrow">Herramientas prácticas</p><h2 id="calc-title">Calcula antes de decidir.</h2></div><p>Convierte una duda concreta en una cifra que puedas entender. Herramientas sencillas, con contexto y pensadas para España.</p></div><div class="fc-calc-grid">
-      <a class="fc-calc-card fc-calc-featured" href="/calculadora-sueldo-neto-2026.html"><span class="fc-calc-number">01</span><div><small>LA MÁS CONSULTADA</small><h3>Calculadora de sueldo neto</h3><p>Estima cuánto puedes recibir después de impuestos y retenciones.</p></div><span class="fc-card-arrow">↗</span></a>
-      <a class="fc-calc-card" href="/calculadora-hipoteca.html"><span class="fc-calc-number">02</span><div><small>VIVIENDA</small><h3>Calculadora de hipoteca</h3><p>Explora cuota, intereses y amortización.</p></div><span class="fc-card-arrow">↗</span></a>
-      <a class="fc-calc-card" href="/calculadora-interes-compuesto.html"><span class="fc-calc-number">03</span><div><small>INVERSIÓN</small><h3>Interés compuesto</h3><p>Descubre cómo crece una aportación con el tiempo.</p></div><span class="fc-card-arrow">↗</span></a>
-      <a class="fc-calc-card" href="/calculadora-ahorro-mensual.html"><span class="fc-calc-number">04</span><div><small>AHORRO</small><h3>Ahorro mensual</h3><p>Define un objetivo y calcula el camino.</p></div><span class="fc-card-arrow">↗</span></a>
-    </div></div></section>
+    <section class="fc-bigquote">
+      <div class="fc-wrap fc-reveal">
+        <p>«No necesitas saber de finanzas. Necesitas que alguien te lo explique <em>una vez, bien.</em>»</p>
+        <p class="fc-mono" style="margin-top:36px">Criterio editorial · FinClaro</p>
+      </div>
+    </section>
 
-    <section class="fc-trust"><div class="fc-wrap fc-trust-grid"><div><p class="fc-eyebrow">Una forma más clara de informarte</p><h2>Contenido útil, con contexto y sin promesas fáciles.</h2><p>FinClaro explica conceptos financieros cotidianos para que puedas comparar opciones y hacer mejores preguntas.</p></div><div class="fc-trust-list"><div><span>01</span><strong>Orientado a España</strong><p>Impuestos, productos y ejemplos adaptados a la realidad española.</p></div><div><span>02</span><strong>Fuentes y actualización</strong><p>Revisamos fechas, referencias y cambios relevantes en cada contenido.</p></div><div><span>03</span><strong>Sin asesoramiento personalizado</strong><p>Te damos información y herramientas; la decisión final es tuya.</p></div></div></div></section>
+    <section class="fc-section" id="guias">
+      <div class="fc-wrap">
+        <div class="fc-shead fc-reveal">
+          <h2>Guías para entender<br><em>lo importante.</em></h2>
+          <p>Explicaciones largas para cuando de verdad quieres entenderlo, no solo salir del paso.</p>
+        </div>
+        <div class="fc-guides fc-reveal">
+          <a class="fc-guide" href="/como-hacer-un-presupuesto-mensual-desde-cero.html"><small>AHORRO · 8 MIN</small><h3>Cómo hacer un presupuesto mensual desde cero</h3><span>Leer la guía ↗</span></a>
+          <a class="fc-guide" href="/sueldo-bruto-y-sueldo-neto-diferencias-y-como-calcularlos.html"><small>NÓMINA · 6 MIN</small><h3>Sueldo bruto y sueldo neto: diferencias claras</h3><span>Leer la guía ↗</span></a>
+          <a class="fc-guide" href="/fondo-de-emergencia-cuantos-meses-gastos-deberias-tener.html"><small>PLANIFICACIÓN · 7 MIN</small><h3>Fondo de emergencia: cuántos meses necesitas</h3><span>Leer la guía ↗</span></a>
+        </div>
+        <p style="margin-top:32px"><a class="fc-button fc-button-outline" href="/finanzas-personales.html">Ver todas las guías <span aria-hidden="true">→</span></a></p>
+      </div>
+    </section>
 
-    <section class="fc-section fc-guides" id="guias" aria-labelledby="guides-title"><div class="fc-wrap"><div class="fc-section-head"><div><p class="fc-eyebrow">Aprende a tu ritmo</p><h2 id="guides-title">Guías para entender lo importante.</h2></div><a class="fc-text-link" href="/finanzas-personales.html">Ver todas las guías <span aria-hidden="true">→</span></a></div><div class="fc-guide-grid"><a class="fc-guide fc-guide-dark" href="/como-hacer-un-presupuesto-mensual-desde-cero.html"><small>AHORRO · 8 MIN</small><h3>Cómo hacer un presupuesto mensual desde cero</h3><span>Leer la guía ↗</span></a><a class="fc-guide" href="/sueldo-bruto-y-sueldo-neto-diferencias-y-como-calcularlos.html"><small>NÓMINA · 6 MIN</small><h3>Sueldo bruto y sueldo neto: diferencias claras</h3><span>Leer la guía ↗</span></a><a class="fc-guide" href="/fondo-de-emergencia-cuantos-meses-gastos-deberias-tener.html"><small>PLANIFICACIÓN · 7 MIN</small><h3>Fondo de emergencia: cuántos meses necesitas</h3><span>Leer la guía ↗</span></a></div></div></section>
-
-    <section class="fc-process" aria-labelledby="process-title"><div class="fc-wrap"><div class="fc-section-head"><div><p class="fc-eyebrow">Tu recorrido</p><h2 id="process-title">De una pregunta a una decisión más clara.</h2></div></div><div class="fc-process-grid"><div><span>01</span><h3>Pregunta</h3><p>Empieza por la duda que tienes hoy.</p></div><div><span>02</span><h3>Entiende</h3><p>Lee una explicación directa, sin jerga innecesaria.</p></div><div><span>03</span><h3>Calcula</h3><p>Usa una herramienta para poner cifras a tu situación.</p></div><div><span>04</span><h3>Decide con contexto</h3><p>Compara opciones con una base más sólida.</p></div></div></div></section>
-
-    <section class="fc-final-cta" aria-labelledby="final-title"><div class="fc-wrap"><div><p class="fc-eyebrow">Empieza por una pregunta concreta</p><h2 id="final-title">Tus finanzas no tienen por qué parecer complicadas.</h2><p>Explora una calculadora o encuentra una guía que te ayude a avanzar.</p></div><div class="fc-actions"><a class="fc-button fc-button-gold" href="#calculadoras">Explorar calculadoras <span aria-hidden="true">↗</span></a><a class="fc-button fc-button-outline" href="/finanzas-personales.html">Ver guías</a></div></div></section>
+    <section class="fc-final">
+      <div class="fc-wrap">
+        <div>
+          <p class="fc-kicker"><span class="fc-kicker-dot"></span>Empieza por una pregunta concreta</p>
+          <h2>Tus finanzas no tienen por qué parecer complicadas.</h2>
+          <p>Elige una calculadora o una guía y avanza con una cifra clara delante.</p>
+        </div>
+        <div class="fc-actions" style="margin:0">
+          <a class="fc-button fc-button-gold" href="#calculadoras">Explorar calculadoras <span aria-hidden="true">↗</span></a>
+          <a class="fc-button fc-button-outline" href="/finanzas-personales.html">Ver guías</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="fc-footer"><div class="fc-wrap fc-footer-grid"><div><a class="fc-brand fc-brand-footer" href="/">FinClaro</a><p>Finanzas claras para tomar mejores decisiones.</p></div><div><strong>Explora</strong><a href="/ahorro.html">Ahorro</a><a href="/hipotecas.html">Vivienda</a><a href="/nomina.html">Nómina</a><a href="/inversion.html">Inversión</a></div><div><strong>Recursos</strong><a href="#calculadoras">Calculadoras</a><a href="/finanzas-personales.html">Guías</a><a href="/privacidad.html">Privacidad</a><a href="/aviso-legal.html">Aviso legal</a></div></div><div class="fc-wrap fc-footer-bottom"><span>© 2026 FinClaro</span><span>Información educativa, no asesoramiento financiero personalizado.</span></div></footer>
+  <footer class="fc-footer">
+    <div class="fc-wrap">
+      <div class="fc-foot-cols">
+        <div><a class="fc-brand" href="/" style="margin-bottom:16px"><span class="fc-brand-mark">F</span><span>FinClaro</span></a><p>Finanzas claras para tomar mejores decisiones. Información educativa, no asesoramiento personalizado.</p></div>
+        <div><h4>Explora</h4><a href="/ahorro.html">Ahorro</a><a href="/hipotecas.html">Vivienda</a><a href="/nomina.html">Nómina</a><a href="/inversion.html">Inversión</a></div>
+        <div><h4>Recursos</h4><a href="#calculadoras">Calculadoras</a><a href="/finanzas-personales.html">Guías</a><a href="/privacidad.html">Privacidad</a><a href="/aviso-legal.html">Aviso legal</a></div>
+        <div><h4>FinClaro</h4><a href="/cookies.html">Cookies</a><a href="/aviso-legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a></div>
+      </div>
+      <div class="fc-mark-big">FinClaro</div>
+      <div class="fc-legal"><span>© 2026 FinClaro</span><span>Información educativa, no asesoramiento financiero</span><span>Hecho en España</span></div>
+    </div>
+  </footer>
+
   <script>
-    (() => { const button=document.querySelector('.fc-menu'), links=document.querySelector('.fc-nav-links'); if(!button||!links)return; button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!open));button.setAttribute('aria-label',open?'Abrir menú':'Cerrar menú');links.classList.toggle('is-open',!open)});links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('is-open');button.setAttribute('aria-expanded','false');button.setAttribute('aria-label','Abrir menú')})); })();
+    (() => {
+      const button = document.querySelector('.fc-menu');
+      const links = document.querySelector('.fc-nav-links');
+      if (button && links) {
+        button.addEventListener('click', () => {
+          const open = button.getAttribute('aria-expanded') === 'true';
+          button.setAttribute('aria-expanded', String(!open));
+          button.setAttribute('aria-label', open ? 'Abrir menú' : 'Cerrar menú');
+          links.classList.toggle('is-open', !open);
+        });
+        links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+          links.classList.remove('is-open');
+          button.setAttribute('aria-expanded', 'false');
+          button.setAttribute('aria-label', 'Abrir menú');
+        }));
+      }
+      const rango = document.getElementById('fc-rango');
+      const fmt = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 });
+      function cuotaIRPF(base) {
+        const tramos = [[12450, .19], [20200, .24], [35200, .30], [60000, .37], [300000, .45]];
+        let prev = 0, cuota = 0;
+        for (const [lim, tipo] of tramos) {
+          if (base > prev) cuota += (Math.min(base, lim) - prev) * tipo;
+          prev = lim;
+        }
+        return Math.max(0, cuota - 5550 * 0.19);
+      }
+      function calcular() {
+        if (!rango) return;
+        const bruto = parseInt(rango.value, 10);
+        const ss = bruto * 0.0647;
+        const irpf = cuotaIRPF(bruto - ss);
+        const neto = (bruto - ss - irpf) / 14;
+        document.getElementById('fc-bruto-label').textContent = fmt.format(bruto) + ' €';
+        document.getElementById('fc-neto').textContent = fmt.format(Math.round(neto)) + ' €';
+        document.getElementById('fc-neto2').textContent = fmt.format(Math.round(neto)) + ' €';
+        document.getElementById('fc-ss').textContent = '-' + fmt.format(Math.round(ss / 14)) + ' €';
+        document.getElementById('fc-irpf').textContent = '-' + fmt.format(Math.round(irpf / 14)) + ' €';
+      }
+      if (rango) { rango.addEventListener('input', calcular); calcular(); }
+      window.addEventListener('scroll', () => {
+        const h = document.documentElement;
+        const p = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+        const bar = document.getElementById('fc-bar');
+        if (bar) bar.style.width = p + '%';
+        const hdr = document.getElementById('fc-header');
+        if (hdr) hdr.classList.toggle('is-scrolled', h.scrollTop > 20);
+      }, { passive: true });
+      const io = new IntersectionObserver((es) => {
+        es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { threshold: .1 });
+      document.querySelectorAll('.fc-reveal').forEach(el => io.observe(el));
+    })();
   </script>
 </body>
 </html>
