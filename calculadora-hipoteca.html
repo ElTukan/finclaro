@@ -72,7 +72,7 @@
 <ul class="source-list"><li><a href="https://clientebancario.bde.es/pcb/es/blog/pensando-en-pedir-una-hipoteca.html" rel="noopener">Banco de España: antes de pedir una hipoteca</a></li><li><a href="https://clientebancario.bde.es/pcb/es/menu-horizontal/podemosayudarte/simuladores/" rel="noopener">Banco de España: simuladores</a></li></ul>
 <div class="quote">FinClaro ofrece información financiera general. Las condiciones, impuestos, comisiones y normativa pueden cambiar; comprueba siempre las fuentes oficiales y la documentación vigente.</div>
 <p><a href="/finanzas-personales.html">← Volver a FinClaro</a></p>
-<script>function calcH(){let P=+capital.value,r=(+interest.value/100)/12,n=+term.value*12;let q=P*r/(1-Math.pow(1+r,-n));out.textContent='Cuota aproximada: '+new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(q)}</script>
+<script>function calcH(){let P=+capital.value,r=(+interest.value/100)/12,n=+term.value*12;if(!(P>0)||!(n>0)){out.textContent='Introduce un importe y un plazo válidos.';return}let q=r===0?P/n:P*r/(1-Math.pow(1+r,-n));out.textContent='Cuota aproximada: '+new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(q)}</script>
 </article>
 <script defer src="/site.js"></script>  <footer class="fc-footer">
     <div class="fc-foot-cols">
