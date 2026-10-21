@@ -7,13 +7,26 @@ Excluye 404.html y archivos basura.
 """
 import os
 import re
+import subprocess
 from pathlib import Path
 from datetime import date
 
 ROOT = Path(__file__).resolve().parents[0]
 BASE_URL = "https://finclaro.es"
 
-EXCLUDE = {"404.html", "index .html"}
+EXCLUDE = {"404.html"}
+
+def git_lastmod(path):
+    try:
+        value = subprocess.check_output(
+            ["git", "log", "-1", "--format=%cs", "--", str(path.relative_to(ROOT))],
+            cwd=ROOT, text=True, stderr=subprocess.DEVNULL,
+        ).strip()
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+            return value
+    except (OSError, subprocess.CalledProcessError):
+        pass
+    return date.today().isoformat()
 
 def get_canonical(html_path: Path):
     try:
@@ -31,7 +44,7 @@ def get_canonical(html_path: Path):
     return url
 
 def main():
-    urls = set()
+    urls = {}
     for path in ROOT.rglob("*.html"):
         if path.name in EXCLUDE:
             continue
@@ -39,17 +52,16 @@ def main():
             continue
         canon = get_canonical(path)
         if canon:
-            urls.add(canon)
+            urls[canon] = path
 
-    urls.add(BASE_URL + "/")
+    urls[BASE_URL + "/"] = ROOT / "index.html"
 
-    today = date.today().isoformat()
     lines = ['<?xml version="1.0" encoding="UTF-8"?>']
     lines.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
     for u in sorted(urls):
         lines.append("  <url>")
         lines.append(f"    <loc>{u}</loc>")
-        lines.append(f"    <lastmod>{today}</lastmod>")
+        lines.append(f"    <lastmod>{git_lastmod(urls[u])}</lastmod>")
         lines.append("  </url>")
     lines.append("</urlset>")
     out = "\n".join(lines) + "\n"

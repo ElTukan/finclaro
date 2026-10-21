@@ -19,6 +19,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Historial completo: generate-sitemap.py usa `git log -1` por fichero
+          # para el lastmod. Con fetch-depth 1 todas las fechas caen en hoy.
+          fetch-depth: 0
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Regenerate sitemap
